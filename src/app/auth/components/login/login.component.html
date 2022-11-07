@@ -1,0 +1,31 @@
+
+<div class="login">
+    <div class="login-container">
+        <mat-card>
+            <div class="login-content">
+                <div class="login-card-text">
+                    <h1>Welcome back</h1>
+                    <p>Enter your credentials to access your account</p>
+                </div>
+                <form [formGroup]="authForm" novalidate (ngSubmit)="submit()" class="auth-form" >
+                    <div class="login">
+                        <mat-form-field appearance="outline">
+                            <mat-icon matPrefix>login</mat-icon>
+                            <input matInput placeholder="Enter your login" formControlName="login">
+                        </mat-form-field>
+                    </div>
+                    <div class="pass">
+                    <mat-form-field appearance="outline">
+                        <mat-icon matPrefix>lock</mat-icon>
+                        <input matInput placeholder="Enter your password" type="password" formControlName="pass">
+                    </mat-form-field>
+                    </div>
+                    <button mat-flat-button [disabled]="authForm.invalid">Sign in</button>
+                </form>
+            </div>
+        </mat-card>
+        <div class="reset-password">
+            <p>Forgot your password or login?<span>Reset Password</span></p>
+        </div>
+    </div>
+</div>
