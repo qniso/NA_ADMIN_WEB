@@ -1,4 +1,3 @@
-
 <div class="login">
     <div class="login-container">
         <mat-card>
@@ -10,15 +9,16 @@
                 <form [formGroup]="authForm" novalidate (ngSubmit)="submit()" class="auth-form" >
                     <div class="login">
                         <mat-form-field appearance="outline">
-                            <mat-icon matPrefix>login</mat-icon>
+                            <mat-icon matPrefix >login</mat-icon>
                             <input matInput placeholder="Enter your login" formControlName="login">
                         </mat-form-field>
                     </div>
                     <div class="pass">
                     <mat-form-field appearance="outline">
-                        <mat-icon matPrefix>lock</mat-icon>
+                        <mat-icon matPrefix >lock</mat-icon>
                         <input matInput placeholder="Enter your password" type="password" formControlName="pass">
                     </mat-form-field>
+                    <span *ngIf="errorHint">wrong login or pass</span>
                     </div>
                     <button mat-flat-button [disabled]="authForm.invalid">Sign in</button>
                 </form>

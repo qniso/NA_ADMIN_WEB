@@ -41,7 +41,11 @@ mat-card{
         font-weight: 500;
         margin-top: 32px;
     }
- 
+    span{
+        color: #EB3636;
+        font-weight: 300;
+        font-size: 12px;
+    }
 }
 form{
     margin: 0 30px;
@@ -49,6 +53,9 @@ form{
 ::ng-deep{
     .mat-form-field-appearance-outline .mat-form-field-infix{
         padding: 0.5em 0 0.5em 0;
+    }
+    .mat-form-field-wrapper{
+        padding-bottom: 9px !important; //////////
     }
 }
 mat-icon{
@@ -69,3 +76,4 @@ mat-icon{
         cursor: pointer;
     }
 }
+
