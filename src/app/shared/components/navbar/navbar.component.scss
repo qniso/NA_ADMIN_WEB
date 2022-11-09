@@ -1,0 +1,37 @@
+:host{
+    width: 100%;
+    font-family:'Montserrat', sans-serif;
+
+}
+.navbar-container{
+    width: 100%;
+}
+.navbar-row{
+    width: 1440px;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar{
+    margin-top: 6px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    p,a{
+        font-size: 16px;
+        font-weight: 400;
+    }
+    &__left{
+        display: flex;
+        justify-content: space-between;
+        a:not(:last-child){
+            margin-right: 24px;
+        }
+        a:hover{
+            cursor: pointer;
+        }
+    }
+    &__right{
+        display: flex;
+    }
+}

@@ -9,7 +9,13 @@ const routes: Routes = [
   },
   {
     path:'main',
-    component: MainComponent
+    component: MainComponent,
+    children:[
+      {
+        path:'company',
+        loadChildren: () => import('../companies/companies.module').then(m => m.CompaniesModule)
+      }
+    ]
   }
 ];
 

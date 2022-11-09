@@ -2,11 +2,8 @@ import { Injectable } from '@angular/core';
 
 
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-
-@Injectable({
-  providedIn: 'root'
-})
+import { map, Observable } from 'rxjs';
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +16,8 @@ export class AuthService {
   ) { }
 
 
-  getAuth(userLogin:string, userPassword:string): Observable<any>{
-    return this.http.get('https://na-app-backend.herokuapp.com/login', {headers:{login: userLogin, password: userPassword}})
+  getAuth(userLogin:string, userPassword:string): Observable<User>{
+    return this.http.get<User>('https://na-app-backend.herokuapp.com/login', {headers:{login: userLogin, password: userPassword}})
   }
   
   test():void{
