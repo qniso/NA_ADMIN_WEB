@@ -1,1 +1,11 @@
-<p>company-list works!</p>
+<div class="container">
+    <div class="content">
+        <div class="control-panel">
+            <button mat-flat-button [routerLink]="['/main/company/company-list/register-new-company']">Add company</button>
+        </div>
+        <div class="company-list">
+            <app-table></app-table>
+        </div>
+    </div>
+</div>
+

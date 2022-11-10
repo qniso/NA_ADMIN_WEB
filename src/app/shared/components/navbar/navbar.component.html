@@ -2,9 +2,20 @@
     <div class="navbar-container">
         <div class="navbar">
             <div class="navbar__left">
-                <a>Головна</a>
+                <a 
+                [routerLink]="['/main']" 
+                [routerLinkActive]="'active'" 
+                [routerLinkActiveOptions]="{ exact: true }"
+                >
+                Головна
+                </a>
                 <a>Таблиця</a>
-                <a>Компанії</a>
+                <a 
+                [routerLink]="['/main/company/company-list']" 
+                [routerLinkActive]="'active'"
+                >
+                Компанії
+                </a>
                 <a>Адміністрування</a>
             </div>
             <div class="navbar__right">
