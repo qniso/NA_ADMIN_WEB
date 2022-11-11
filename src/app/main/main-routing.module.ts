@@ -5,10 +5,6 @@ import { MainComponent } from './components/main/main.component';
 const routes: Routes = [
   {
     path: '',
-    component: MainComponent
-  },
-  {
-    path:'main',
     component: MainComponent,
     children:[
       {
@@ -16,6 +12,11 @@ const routes: Routes = [
         loadChildren: () => import('../companies/companies.module').then(m => m.CompaniesModule)
       }
     ]
+  },
+  {
+    path:'main',
+    component: MainComponent,
+   
   }
 ];
 

@@ -1,0 +1,100 @@
+.container{
+    width: 1440px;
+}
+.edit-company{
+    margin-top: 22px;
+}
+.card-row{
+    display: flex;
+    justify-content: space-between;
+    .card{
+        &__left{
+            width: 50%;
+            border-right: 0.5px solid #159a9c7e;
+            padding-right: 24px;
+            mat-form-field{
+                width: 100%;
+            }
+        }
+        &__right{
+            width: 50%;
+            padding-left: 24px;
+            mat-form-field{
+                width: 100%;
+            }
+        }
+    }
+}
+.group{
+    &__first{
+        margin-bottom: 12px;
+        p{
+            font-weight: 500;
+        }
+    }
+  
+    &__second{
+        margin-bottom: 12px;
+        display: flex;
+        justify-content: space-between;
+        p{
+            font-weight: 500;
+        }
+        .section{
+            width: 100%;
+        }
+        .section:last-child{
+            margin-left: 24px;
+        }
+        .card-row {
+            width: 100%;
+            mat-card{
+                width: 100%;
+            }
+        }
+        .card{
+            
+            &__left{
+                width: 100%;
+                border-right:none ;
+                mat-form-field{
+                    width: 100%;
+                }
+            }
+        }
+    }
+    &__third{
+        p{
+            font-weight: 500;
+        }
+        .card{
+            &__left{
+                width: 50%;
+                border-right: none;
+                padding-right: 24px;
+                mat-form-field{
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+mat-card{
+    border-radius: 14px;
+}
+::ng-deep{
+    .mat-form-field-appearance-outline .mat-form-field-infix{
+        padding: 0.5em 0 0.5em 0;
+    }
+}
+.save{
+    margin-top: 12px;
+    text-align: end;
+}
+.save-button{
+    font-weight: 500;
+    font-size: 16px;
+    background-color: #159A9C;
+    color: #ffff;
+}
