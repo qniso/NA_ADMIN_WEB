@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
         this.authForm.controls['pass'].setValue(null);
         this.errorHint = true;
       }else{
-        let result = `${JSON.stringify({"login": res.login, "role": res.role})}`
+        let result = `${JSON.stringify({"id": res.id, "role": res.role})}`
         localStorage.setItem('currentUser_NA',`${result}`)
         this.router.navigate(['main']);
       }

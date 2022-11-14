@@ -26,3 +26,11 @@ export interface NewCompany{
         "licence_info": string
         }
 }
+
+export interface CompanyList{
+    companies: [];
+
+}
+export interface UserId{
+    userId: number;
+}

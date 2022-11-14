@@ -1,21 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-  setting: string
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'NOVOOLEKSANDRIVSKA', weight: 60, symbol: '12.12.2022',setting: 'settings'},
-  {position: 2, name: 'NOVOOLEKSANDRIVSKA', weight: 60, symbol: '12.12.2022',setting: 'settings'},
-  {position: 3, name: 'NOVOOLEKSANDRIVSKA', weight: 60, symbol: '12.12.2022',setting: 'settings'},
-  {position: 4, name: 'NOVOOLEKSANDRIVSKA', weight: 60, symbol: '12.12.2022',setting: 'settings'},
- 
-];
-
+import { CompanyList } from '../../models/company.model';
+import { EditCompanyService } from '../../services/edit-company.service';
 
 
 @Component({
@@ -26,11 +11,26 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class TableComponent implements OnInit {
 
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol','setting'];
-  dataSource = ELEMENT_DATA;
-  constructor() { }
+  displayedColumns: string[] = ['position', 'name', 'symbol'];
+  dataSource = [];
+
+  constructor(
+    private company: EditCompanyService
+  ) { }
 
   ngOnInit(): void {
+    this.getTableList()
+  }
+
+  getTableList(){
+    let userId = JSON.parse(localStorage.getItem('currentUser_NA') || '');
+    this.company.getCompanyList(userId.id).subscribe(res => {
+      this.dataSource = res.companies
+      console.log(res.companies);
+
+    })
+    console.log(userId.id);
+    
   }
 
 }

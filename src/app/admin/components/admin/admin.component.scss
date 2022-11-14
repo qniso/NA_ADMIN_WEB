@@ -1,0 +1,19 @@
+
+.container{
+    margin-top: 32px;
+    width: 1440px;
+}
+.dashboard-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.content{
+    width: 80%;
+    height: 100%;
+    p{
+        display: flex;
+        justify-content: center;
+        font-weight: 500;
+    }
+}

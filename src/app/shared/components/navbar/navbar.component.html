@@ -9,14 +9,17 @@
                 >
                 Головна
                 </a>
-                <a>Таблиця</a>
+                <a>Транспорт</a>
                 <a 
                 [routerLink]="['/company/company-list']" 
                 [routerLinkActive]="'active'"
                 >
                 Компанії
                 </a>
-                <a>Адміністрування</a>
+                <a
+                [routerLink]="['/admin/admin-dashboard']" 
+                [routerLinkActive]="'active'"
+                >Адміністрування</a>
             </div>
             <div class="navbar__right">
                 <p>super admin</p>
