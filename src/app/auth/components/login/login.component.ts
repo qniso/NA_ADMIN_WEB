@@ -38,7 +38,9 @@ export class LoginComponent implements OnInit {
     
     this.auth.getAuth(login, pass).subscribe(res => {
       console.log(res);
-      if(res.code == 402){
+      console.log(res.error.code);
+      
+      if(res.error.code == 402){
         this.authForm.controls['login'].setValue(null);
         this.authForm.controls['pass'].setValue(null);
         this.errorHint = true;
