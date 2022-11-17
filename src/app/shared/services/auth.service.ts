@@ -16,12 +16,11 @@ export class AuthService {
 
 
   getAuth(userLogin:string, userPassword:string): Observable<User>{
-    return this.http.post<User>('http://ec2-54-91-44-147.compute-1.amazonaws.com:8080/authenticate', {login: userLogin, password: userPassword})
+    return this.http.post<User>('http://ec2-54-91-44-147.compute-1.amazonaws.com:8080/na-app-api/authenticate', {login: userLogin, password: userPassword})
   }
   
   getRole(){
     let data = JSON.parse(localStorage.getItem("currentUser_NA") || '');
-
     return data.role
   }
 
