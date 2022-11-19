@@ -24,6 +24,11 @@ export class AuthService {
     return data.role
   }
 
+  isLogined(){
+    let user = JSON.parse(localStorage.getItem("currentUser_NA") || '');
+    return !!user;
+  }
+
   test():void{
     console.log(true);
     

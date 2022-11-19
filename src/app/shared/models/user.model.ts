@@ -1,7 +1,10 @@
 export interface User{
-    id:number;
-    login: string;
-    role: string;
-    error: any;
-    code?: number;
+    accessToken:string;
+    expDate: string;
+    issueAt: string;
+    error: {
+        code: number;
+        description: string;
+    };
+    refreshToken: string;
 }

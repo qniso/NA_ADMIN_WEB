@@ -14,10 +14,10 @@ export class EditCompanyService {
 
 
   test(data: Object):Observable<NewCompany>{
-    return this.http.post<NewCompany>("http://na-app-backend.herokuapp.com/company/save_new" ,data)
+    return this.http.post<NewCompany>("http://ec2-54-91-44-147.compute-1.amazonaws.com:8080/na-app-api/company/save_new" ,data)
   }
   
   getCompanyList(Id: number):Observable<CompanyList>{
-    return this.http.get<CompanyList>('http://ec2-54-91-44-147.compute-1.amazonaws.com:8080/company/get_all', {headers:{userId: `${Id}`}})
+    return this.http.get<CompanyList>('http://ec2-54-91-44-147.compute-1.amazonaws.com:8080/na-app-api/company/get_all', {headers:{userId: `${Id}`}})
   }
 }

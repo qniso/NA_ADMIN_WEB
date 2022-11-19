@@ -17,7 +17,7 @@ export class MainComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.checkCurrentUser();
+    // this.checkCurrentUser();
 
     
   }
