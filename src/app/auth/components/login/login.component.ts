@@ -2,6 +2,7 @@ import { NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthService } from '../../../shared/services/auth.service';
 
 @Component({
@@ -35,20 +36,25 @@ export class LoginComponent implements OnInit {
   submit(){
     let login = this.authForm.controls['login'].value
     let pass = this.authForm.controls['pass'].value
-    
+
+
     this.auth.getAuth(login, pass).subscribe(res => {
       console.log(res);
       console.log(res.error.code);
       
-      if(res.error.code == 402){
+      if(res.error.code !== 0){
         this.authForm.controls['login'].setValue(null);
         this.authForm.controls['pass'].setValue(null);
+        let result = `${JSON.stringify({"error": res.error})}`
+        localStorage.setItem('error_NA',`${result}`);
+        localStorage.removeItem('currentUser_NA');
         this.errorHint = true;
       }else{
-        let result = `${JSON.stringify({"token": res.accessToken, "error": res.error})}`
+        let result = `${JSON.stringify({"accessToken": res.accessToken})}`
         localStorage.setItem('currentUser_NA',`${result}`)
-        this.router.navigate(['main']);
+        this.router.navigate(['']);
       }
     })
+   
   }
 }

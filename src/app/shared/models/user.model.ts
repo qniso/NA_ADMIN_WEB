@@ -8,3 +8,7 @@ export interface User{
     };
     refreshToken: string;
 }
+export interface CurrUser{
+    token: string;
+    
+}
