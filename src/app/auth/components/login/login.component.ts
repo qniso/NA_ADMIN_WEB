@@ -51,6 +51,7 @@ export class LoginComponent implements OnInit {
         this.errorHint = true;
       }else{
         let result = `${JSON.stringify({"accessToken": res.accessToken})}`
+        localStorage.removeItem('error_NA');
         localStorage.setItem('currentUser_NA',`${result}`)
         this.router.navigate(['']);
       }
