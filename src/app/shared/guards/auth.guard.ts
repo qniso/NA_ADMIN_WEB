@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from "@angular/router";
 import { AuthService } from "../services/auth.service";
+import { TokenInterceptor } from "../services/token.interceptor";
 
 @Injectable({
     providedIn: 'root'
@@ -16,12 +17,11 @@ export class AuthGuard {
     }
     //route: ActivatedRouteSnapshot, state: RouterStateSnapshot
     canActivate(){
-        console.log(this.authServise.isLogined());
-        
+
         if(this.authServise.isLogined()){
             return true;
         }
-        this.router.navigate(['login']);
+        this.router.navigate(['/login']);
         return false;
     }
     
