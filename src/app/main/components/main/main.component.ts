@@ -17,17 +17,16 @@ export class MainComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.checkCurrentUser();
-    this.auth.checkAuth().subscribe(res => {
-      console.log(res);
-      
-    })
-    
+    this.checkCurrentUser();
   }
 
   checkCurrentUser():void{
-    if(!localStorage.getItem("currentUser_NA"))
-      this.router.navigate(['login']);
+    const token = JSON.parse(localStorage.getItem("currentUser_NA")!).accessToken;
+    if(!token || token == null){
+      this.router.navigate(['/login']);
+    }else{
+      this.auth.setToken(token);
+    }
   }
 
 }

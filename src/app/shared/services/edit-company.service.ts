@@ -18,7 +18,7 @@ export class EditCompanyService {
     return this.http.post<NewCompany>(URLS.BASE_URL + URLS.NA_API + URLS.COMPANY + URLS.NEW_COMPANY , data)
   }
   
-  getCompanyList(auth: string):Observable<any>{
+  getCompanyList():Observable<any>{
     //
     return this.http.get<any>("http://ec2-54-91-44-147.compute-1.amazonaws.com:8080/na-app-api/company/get_all")
   }

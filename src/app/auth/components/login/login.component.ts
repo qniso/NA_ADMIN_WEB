@@ -1,8 +1,8 @@
 import { NgIf } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { TokenInterceptor } from 'src/app/shared/services/token.interceptor';
 import { AuthService } from '../../../shared/services/auth.service';
 
@@ -11,20 +11,33 @@ import { AuthService } from '../../../shared/services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
   authForm!: FormGroup;
   errorHint: boolean = false;
+  subscription!: Subscription
   
   constructor(
     private auth: AuthService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute,
   ) { }
 
 
   ngOnInit(): void {
     this.initializeForm();
+    this.route.queryParams.subscribe((params:Params)=> {
+      if(params['accessDenied']){
+        console.log(`Для доступа необходимо авторизоваться`);
+      }
+    })
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription){
+      this.subscription.unsubscribe();
+    }
   }
 
   private initializeForm(): void{
@@ -35,11 +48,11 @@ export class LoginComponent implements OnInit {
   }
   
   submit(){
-    let login = this.authForm.controls['login'].value
-    let pass = this.authForm.controls['pass'].value
+    let login = this.authForm.controls['login'].value;
+    let pass = this.authForm.controls['pass'].value;
 
 
-    this.auth.getAuth(login, pass).subscribe(res => {
+    this.subscription = this.auth.getAuth(login, pass).subscribe(res => {
       if(res.error.code !== 0){
         this.authForm.controls['login'].setValue(null);
         this.authForm.controls['pass'].setValue(null);
@@ -48,11 +61,7 @@ export class LoginComponent implements OnInit {
         localStorage.removeItem('currentUser_NA');
         this.errorHint = true;
       }else{
-        let result = `${JSON.stringify({"accessToken": res.accessToken})}`
         localStorage.removeItem('error_NA');
-        localStorage.setItem('currentUser_NA',`${result}`);
-
-        TokenInterceptor.accessToken = res.accessToken;
         this.router.navigate(['/main']);
       }
     })

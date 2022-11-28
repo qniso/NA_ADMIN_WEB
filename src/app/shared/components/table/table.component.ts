@@ -23,14 +23,10 @@ export class TableComponent implements OnInit {
   }
 
   getTableList(){
-    let token = JSON.parse(localStorage.getItem('currentUser_NA')!);
-    this.company.getCompanyList(token.accessToken).subscribe(res => {
+    this.company.getCompanyList().subscribe(res => {
       this.dataSource = res.companies
       console.log(res.companies);
-
     })
-    console.log(token.accessToken);
-    
   }
 
 }
