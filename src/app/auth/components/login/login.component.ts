@@ -32,6 +32,8 @@ export class LoginComponent implements OnInit, OnDestroy {
         console.log(`Для доступа необходимо авторизоваться`);
       }
     })
+
+
   }
 
   ngOnDestroy(): void {
@@ -47,6 +49,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     })
   }
   
+
   submit(){
     let login = this.authForm.controls['login'].value;
     let pass = this.authForm.controls['pass'].value;

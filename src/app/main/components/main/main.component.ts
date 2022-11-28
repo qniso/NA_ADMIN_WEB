@@ -22,10 +22,13 @@ export class MainComponent implements OnInit {
 
   checkCurrentUser():void{
     const token = JSON.parse(localStorage.getItem("currentUser_NA")!).accessToken;
-    if(!token || token == null){
-      this.router.navigate(['/login']);
-    }else{
+    console.log(token);
+    
+    if(token || token !== null){
       this.auth.setToken(token);
+      
+    }else{
+      this.router.navigate(['/login']);
     }
   }
 

@@ -4,6 +4,7 @@ import { Observable, tap } from 'rxjs';
 import { User } from '../models/user.model';
 import { URLS } from 'src/app/app.config';
 import { TokenInterceptor } from './token.interceptor';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
+    private router: Router
   ) {}
 
 
@@ -22,7 +24,10 @@ export class AuthService {
     return this.http.post<User>(URLS.BASE_URL + URLS.NA_API + URLS.LOGIN, {login: userLogin, password: userPassword})
     .pipe(
       tap((token)=> {
-        localStorage.setItem('currentUser_NA', `{"accessToken":"${token.accessToken}"}`);
+        localStorage.setItem(
+          'currentUser_NA', 
+          `{"accessToken":"${token.accessToken}"}`
+          );
         this.setToken(token.accessToken);
       })
     )
@@ -36,8 +41,14 @@ export class AuthService {
     return this.token;
   }
 
-  checkAuth(): Observable<any>{
-    return this.http.get<any>(URLS.BASE_URL + URLS.NA_API + '/')
+  checkAuth(){
+    const token = JSON.parse(localStorage.getItem("currentUser_NA")!).accessToken;
+
+    if(token || token !== null){
+      this.setToken(token);
+    }else{
+      this.router.navigate(['/login']);
+    }
   }
   
   isLogined(): boolean{

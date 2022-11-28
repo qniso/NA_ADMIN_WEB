@@ -26,6 +26,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
 
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean>{
+        console.log(this.authServise.isLogined());
         if(this.authServise.isLogined()){
             return of(true);
         }else{

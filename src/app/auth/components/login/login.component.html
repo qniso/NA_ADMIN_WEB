@@ -9,13 +9,15 @@
                 <form [formGroup]="authForm" novalidate (ngSubmit)="submit()" class="auth-form" >
                     <div class="login">
                         <mat-form-field appearance="outline">
-                            <mat-icon matPrefix >login</mat-icon>
+                            <mat-icon matPrefix *ngIf="authForm.get('login')?.invalid && authForm.get('login')?.touched" style="color: red;">login</mat-icon>
+                            <mat-icon matPrefix *ngIf="authForm.get('login')?.untouched || authForm.get('login')?.valid">login</mat-icon>
                             <input matInput placeholder="Enter your login" formControlName="login">
                         </mat-form-field>
                     </div>
                     <div class="pass">
                     <mat-form-field appearance="outline">
-                        <mat-icon matPrefix >lock</mat-icon>
+                        <mat-icon matPrefix *ngIf="authForm.get('pass')?.invalid && authForm.get('pass')?.touched" style="color: red;">lock</mat-icon>
+                        <mat-icon matPrefix *ngIf="authForm.get('pass')?.untouched || authForm.get('pass')?.valid">lock</mat-icon>
                         <input matInput placeholder="Enter your password" type="password" formControlName="pass">
                     </mat-form-field>
                     <span *ngIf="errorHint">wrong login or pass</span>
