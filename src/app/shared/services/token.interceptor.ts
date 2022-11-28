@@ -8,6 +8,7 @@ import {
   HttpClient
 } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
@@ -15,14 +16,15 @@ export class TokenInterceptor implements HttpInterceptor {
   static accessToken = '';
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private auth: AuthService
   ) {}
 
   intercept(
-    request: HttpRequest<unknown>, 
+    request: HttpRequest<any>, 
     next: HttpHandler
-    ): Observable<HttpEvent<unknown>> {
-    request  = request.clone({
+    ): Observable<HttpEvent<any>> {
+    request = request.clone({
       setHeaders: {
         Authorization: `${TokenInterceptor.accessToken}`
       }
@@ -34,7 +36,6 @@ export class TokenInterceptor implements HttpInterceptor {
       catchError((err: HttpErrorResponse) => {
         if(err.status === 401){
           console.log(true);
-          
         }
 
         return throwError(()=> err);

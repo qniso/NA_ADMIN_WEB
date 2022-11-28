@@ -18,7 +18,10 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     // this.checkCurrentUser();
-
+    this.auth.checkAuth().subscribe(res => {
+      console.log(res);
+      
+    })
     
   }
 

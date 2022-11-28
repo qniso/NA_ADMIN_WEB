@@ -20,6 +20,6 @@ export class EditCompanyService {
   
   getCompanyList(auth: string):Observable<any>{
     //
-    return this.http.get<any>("http://ec2-54-91-44-147.compute-1.amazonaws.com:8080/na-app-api/company/get_all", {headers: {'Authorization': auth}})
+    return this.http.get<any>("http://ec2-54-91-44-147.compute-1.amazonaws.com:8080/na-app-api/company/get_all")
   }
 }

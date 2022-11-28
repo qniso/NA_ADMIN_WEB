@@ -20,6 +20,10 @@ export class AuthService {
     return this.http.post<User>(URLS.BASE_URL + URLS.NA_API + URLS.LOGIN, {login: userLogin, password: userPassword})
   }
   
+  checkAuth(): Observable<any>{
+    return this.http.get<any>(URLS.BASE_URL + URLS.NA_API + '/')
+  }
+  
   // initializeValues(): Observable<any>{
   //   let accessToken;
   //   let expires; 
