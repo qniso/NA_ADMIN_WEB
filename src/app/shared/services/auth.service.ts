@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
+import { EMPTY, Observable, tap } from 'rxjs';
 import { User } from '../models/user.model';
 import { URLS } from 'src/app/app.config';
 import { TokenInterceptor } from './token.interceptor';
@@ -16,7 +16,7 @@ const ONE_HOUR = 5 * 60 * 1000;
 export class AuthService {
 
   private token: string | null  = null ;
-  private refreshToken: string | null = null;
+  private refreshTokenStr: string | null = null;
   private exp: any = null;
   private refreshTokenTimer: any;
 
@@ -30,6 +30,7 @@ export class AuthService {
     return this.http.post<User>(URLS.BASE_URL + URLS.NA_API + URLS.LOGIN, {login: userLogin, password: userPassword})
     .pipe(
       tap((token)=> {
+        
         localStorage.setItem(
           'currentUser_NA', 
           `{
@@ -50,32 +51,34 @@ export class AuthService {
   }
 
   setRefreshToken(refreshToken: string, exp:any){
-    this.refreshToken = refreshToken;
+    this.refreshTokenStr = refreshToken;
     this.exp = exp;
   }
 
-  getRefreshToken(){
-    // return {
-    //   "refreshToken": this.refreshToken,
-    //   "expDate": this.exp
-    // }
+  refreshToken(): Observable<any>{
+    return this.http.get<any>('')
+  }
+
+  getRefreshToken(): Observable<any>{
+    let expDate = JSON.parse( localStorage.getItem('currentUser_NA')!)
+    console.log(expDate.expDate);
     
-    let time = `${this.exp.split('T')[1]}:00`.split(':');
-    // const expTime = this.toDate(time, "h:m:s");
-    // console.log();
+    let time = `${expDate.expDate.split('T')[1]}:00`.split(':');
     let expTime = new Date();
-    
+    let dateNow = Date.now();
     expTime.setHours(Number(time[0]));
     expTime.setMinutes(Number(time[1]));
     expTime.setMilliseconds(Number(time[2]));
-    // const expTime = 
-    // const expDate = new Date ("h:m:s");
-    console.log(time);
+
+    console.log(expTime.getTime() - dateNow);
     
-    // const 
-    console.log(expTime);
-    if(this.exp){
-      this.startRefreshTokenTimer()
+
+    if(expTime.getTime() - dateNow){
+      this.startRefreshTokenTimer();
+      return EMPTY;
+    }else{
+      console.log("RefreshToken");
+      return this.refreshToken();
     }
     
   }
@@ -107,7 +110,7 @@ export class AuthService {
 
   private startRefreshTokenTimer(): void{
     this.refreshTokenTimer = setTimeout(() => {
-      console.log(true);
+      console.log('Запрос на обновление токена пошёл ');
       
     }, 5000)
   }

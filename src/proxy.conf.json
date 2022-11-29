@@ -1,0 +1,7 @@
+{
+    "/na-app-api/*": {
+        "target": "http://ec2-54-91-44-147.compute-1.amazonaws.com:8080/na-app-api",
+        "secure": true,
+        "changeOrigin": true
+    }
+}
