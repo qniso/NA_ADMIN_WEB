@@ -18,11 +18,11 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.checkCurrentUser();
+    this.auth.getRefreshToken();
   }
 
   checkCurrentUser():void{
     const token = JSON.parse(localStorage.getItem("currentUser_NA")!).accessToken;
-    console.log(token);
     
     if(token || token !== null){
       this.auth.setToken(token);
