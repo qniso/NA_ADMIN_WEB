@@ -20,10 +20,6 @@ const routes: Routes = [
       }
     ]
   },
-  {
-    path:'main',
-    component: MainComponent,
-  }
 ];
 
 @NgModule({
