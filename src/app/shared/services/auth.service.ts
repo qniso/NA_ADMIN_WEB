@@ -6,7 +6,7 @@ import { URLS } from 'src/app/app.config';
 import { TokenInterceptor } from './token.interceptor';
 import { Router } from '@angular/router';
 
-const ONE_HOUR = 5 * 60 * 1000;
+const ONE_HOUR = 60 * 60 * 1000;
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +16,6 @@ const ONE_HOUR = 5 * 60 * 1000;
 export class AuthService {
 
   private token: string | null  = null ;
-  private refreshTokenStr: string | null = null;
-  private exp: any = null;
   private refreshTokenTimer: any;
 
   constructor(
@@ -30,19 +28,16 @@ export class AuthService {
     return this.http.post<User>(URLS.BASE_URL + URLS.NA_API + URLS.LOGIN, {login: userLogin, password: userPassword})
     .pipe(
       tap((token)=> {
-        
         localStorage.setItem(
           'currentUser_NA', 
           `{
             "accessToken":"${token.accessToken}",
+            "refresh": "${token.refreshToken}",
             "expDate": "${token.expDate}"
           }`
           );
         this.setToken(token.accessToken);
       }),
-      tap((refreshToken)=> {
-        this.setRefreshToken(refreshToken.refreshToken, refreshToken.expDate);
-      })
     )
   }
 
@@ -50,35 +45,42 @@ export class AuthService {
     this.token = token;
   }
 
-  setRefreshToken(refreshToken: string, exp:any){
-    this.refreshTokenStr = refreshToken;
-    this.exp = exp;
-  }
-
   refreshToken(): Observable<any>{
-    return this.http.get<any>('')
+    let data = JSON.parse( localStorage.getItem('currentUser_NA')!);
+    return this.http.post<any>('http://ec2-54-91-44-147.compute-1.amazonaws.com:8080/na-app-api/refreshToken', {refreshToken: data.refresh}).pipe(
+      tap((refreshToken) => {
+        localStorage.setItem(
+          'currentUser_NA', 
+          `{
+            "accessToken":"${refreshToken.accessToken}",
+            "refresh": "${refreshToken.refreshToken}",
+            "expDate": "${refreshToken.expDate}"
+          }`
+          );
+          this.setToken(refreshToken.accessToken);
+      })
+    )
   }
 
   getRefreshToken(): Observable<any>{
     let expDate = JSON.parse( localStorage.getItem('currentUser_NA')!)
-    console.log(expDate.expDate);
-    
+
     let time = `${expDate.expDate.split('T')[1]}:00`.split(':');
     let expTime = new Date();
     let dateNow = Date.now();
+
     expTime.setHours(Number(time[0]));
     expTime.setMinutes(Number(time[1]));
     expTime.setMilliseconds(Number(time[2]));
 
-    console.log(expTime.getTime() - dateNow);
-    
-
-    if(expTime.getTime() - dateNow){
+    if(expTime.getTime() <= dateNow){
+      //Зaпуск таймера
       this.startRefreshTokenTimer();
       return EMPTY;
     }else{
-      console.log("RefreshToken");
-      return this.refreshToken();
+      //Токен просрочен идёт запрос на обновление токена
+       this.router.navigate(['/login']);
+       return EMPTY;
     }
     
   }
@@ -92,7 +94,7 @@ export class AuthService {
   checkAuth(){
     const token = JSON.parse(localStorage.getItem("currentUser_NA")!).accessToken;
 
-    if(token || token !== null){
+    if(token || token !== null || token !== this.getToken()){
       this.setToken(token);
     }else{
       this.router.navigate(['/login']);
@@ -110,8 +112,9 @@ export class AuthService {
 
   private startRefreshTokenTimer(): void{
     this.refreshTokenTimer = setTimeout(() => {
-      console.log('Запрос на обновление токена пошёл ');
-      
-    }, 5000)
+      // Запрос на обновление токена пошёл 
+      this.refreshToken().subscribe();
+      this.getRefreshToken();
+    }, ONE_HOUR)
   }
 }
