@@ -6,6 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { RolesComponent } from './components/roles/roles.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NewUserComponent } from './components/new-user/new-user.component';
+import { UserListComponent } from './components/user-list/user-list.component';
 
 
 
@@ -14,7 +15,8 @@ import { NewUserComponent } from './components/new-user/new-user.component';
     AdminComponent,
     RolesComponent,
     DashboardComponent,
-    NewUserComponent
+    NewUserComponent,
+    UserListComponent
   ],
   imports: [
     CommonModule,

@@ -5,7 +5,9 @@ export const URLS = {
     NA_API: environment.apiUrlPrefix,
     LOGIN: '/authenticate',
     COMPANY: '/company',
+    USERS: '/user',
     NEW_COMPANY: '/save_new',
     GET_COMPANY_LIST: '/get_all',
+    GET_EMPLOYEE_LIST: '/get_employee_list',
 
 }

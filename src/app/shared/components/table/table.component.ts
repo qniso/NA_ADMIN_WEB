@@ -24,8 +24,7 @@ export class TableComponent implements OnInit {
 
   getTableList(){
     this.company.getCompanyList().subscribe(res => {
-      this.dataSource = res.companies
-      console.log(res.companies);
+      this.dataSource = res.companies;
     })
   }
 

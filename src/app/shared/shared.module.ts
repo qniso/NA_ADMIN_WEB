@@ -14,6 +14,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTableModule} from '@angular/material/table';
+import { UserTableComponent } from './components/user-table/user-table.component';
 
 
 
@@ -23,7 +24,8 @@ import {MatTableModule} from '@angular/material/table';
   declarations: [
     NavbarComponent,
     TableComponent,
-    AdminNavComponent
+    AdminNavComponent,
+    UserTableComponent
   ],
   imports: [
     CommonModule,
@@ -41,6 +43,7 @@ import {MatTableModule} from '@angular/material/table';
   exports: [
     NavbarComponent,
     TableComponent,
+    UserTableComponent,
     AdminNavComponent,
     RouterModule,
     //MATERIAL

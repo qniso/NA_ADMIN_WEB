@@ -4,6 +4,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NewUserComponent } from './components/new-user/new-user.component';
 import { RolesComponent } from './components/roles/roles.component';
+import { UserListComponent } from './components/user-list/user-list.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,10 @@ const routes: Routes = [
       {
         path: "new-user",
         component: NewUserComponent
+      },
+      {
+        path:'user-list',
+        component: UserListComponent
       }
     ]
   },

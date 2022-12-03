@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { EMPTY, Observable, tap } from 'rxjs';
 import { User } from '../models/user.model';
 import { URLS } from 'src/app/app.config';
-import { TokenInterceptor } from './token.interceptor';
 import { Router } from '@angular/router';
 
 const ONE_HOUR = 60 * 60 * 1000;
@@ -79,6 +78,8 @@ export class AuthService {
       return EMPTY;
     }else{
       //Токен просрочен идёт запрос на обновление токена
+      console.log('Просрочен токен');
+
        this.router.navigate(['/login']);
        return EMPTY;
     }
@@ -97,6 +98,7 @@ export class AuthService {
     if(token || token !== null || token !== this.getToken()){
       this.setToken(token);
     }else{
+      
       this.router.navigate(['/login']);
     }
   }
