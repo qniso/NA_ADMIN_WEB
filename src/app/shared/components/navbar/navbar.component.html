@@ -9,7 +9,11 @@
                 >
                 Головна
                 </a>
-                <a>Транспорт</a>
+                <a
+                [routerLink]="['/main/cars/table']" 
+                [routerLinkActive]="'active'" 
+                [routerLinkActiveOptions]="{ exact: true }"
+                >Транспорт</a>
                 <a 
                 [routerLink]="['/main/company/company-list']" 
                 [routerLinkActive]="'active'"
