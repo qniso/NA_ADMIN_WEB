@@ -7,6 +7,7 @@ import { RolesComponent } from './components/roles/roles.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NewUserComponent } from './components/new-user/new-user.component';
 import { UserListComponent } from './components/user-list/user-list.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -21,7 +22,9 @@ import { UserListComponent } from './components/user-list/user-list.component';
   imports: [
     CommonModule,
     AdminRoutingModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class AdminModule { }

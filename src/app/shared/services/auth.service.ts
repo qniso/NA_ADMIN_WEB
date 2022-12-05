@@ -72,7 +72,7 @@ export class AuthService {
     expTime.setMinutes(Number(time[1]));
     expTime.setMilliseconds(Number(time[2]));
 
-    if(expTime.getTime() <= dateNow){
+    if(expTime.getTime() >= dateNow){
       //Зaпуск таймера
       this.startRefreshTokenTimer();
       return EMPTY;
@@ -80,8 +80,8 @@ export class AuthService {
       //Токен просрочен идёт запрос на обновление токена
       console.log('Просрочен токен');
 
-       this.router.navigate(['/login']);
-       return EMPTY;
+      this.router.navigate(['/login']);
+      return EMPTY;
     }
     
   }

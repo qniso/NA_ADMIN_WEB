@@ -5,6 +5,7 @@ import {RouterModule} from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { TableComponent } from './components/table/table.component';
 import { AdminNavComponent } from './components/admin-nav/admin-nav.component';
+import { UserTableComponent } from './components/user-table/user-table.component';
 
 //MATERIAL
 import {MatCardModule} from '@angular/material/card';
@@ -14,10 +15,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTableModule} from '@angular/material/table';
-import { UserTableComponent } from './components/user-table/user-table.component';
-
-
-
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -38,7 +36,7 @@ import { UserTableComponent } from './components/user-table/user-table.component
     MatIconModule,
     MatToolbarModule,
     MatTableModule,
-
+    MatSelectModule,
   ],
   exports: [
     NavbarComponent,
@@ -54,6 +52,7 @@ import { UserTableComponent } from './components/user-table/user-table.component
     MatIconModule,
     MatToolbarModule,
     MatTableModule,
+    MatSelectModule,
   ]
 })
 export class SharedModule { }

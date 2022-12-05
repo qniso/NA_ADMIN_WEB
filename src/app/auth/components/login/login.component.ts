@@ -54,11 +54,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     let login = this.authForm.controls['login'].value;
     let pass = this.authForm.controls['pass'].value;
 
-    
     this.subscription = this.auth.getAuth(login, pass).subscribe(res => {
     console.log(res);
-    
-
       if(res.error.code !== 0){
         this.authForm.controls['login'].setValue(null);
         this.authForm.controls['pass'].setValue(null);

@@ -9,5 +9,6 @@ export const URLS = {
     NEW_COMPANY: '/save_new',
     GET_COMPANY_LIST: '/get_all',
     GET_EMPLOYEE_LIST: '/get_employee_list',
-
+    GET_ALL_ROLES: '/get_all_roles',
+    NEW_USER: '/save_new_user',
 }
