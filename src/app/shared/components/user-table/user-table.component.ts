@@ -20,7 +20,9 @@ export class UserTableComponent implements OnInit {
   }
 
   getUsersList(){
-    this.users.getUserList().subscribe();
+    this.users.getUserList().subscribe(res=> {
+      this.dataSource = res.employeeInfo;
+    });
     // this.company.getCompanyList().subscribe(res => {
     //   this.dataSource = res.companies;
     // })
