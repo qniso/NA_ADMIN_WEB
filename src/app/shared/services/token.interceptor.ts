@@ -44,7 +44,7 @@ export class TokenInterceptor implements HttpInterceptor {
       catchError((err: HttpErrorResponse) => {
         if(err.status === 500){
           console.log('500 Jwt EXPIRED');
-          localStorage.removeItem('currentUser_NA');
+          this.auth.refreshToken()
         }
 
         return throwError(()=> err);

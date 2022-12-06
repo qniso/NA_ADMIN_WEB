@@ -26,3 +26,11 @@
     background-color: #b4bec9;
     margin-right: 12px;
 }
+
+.date-picker{
+    ::ng-deep{
+        .mat-form-field-infix{
+            display: flex ;
+        }
+    }
+}

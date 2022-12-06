@@ -17,6 +17,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTableModule} from '@angular/material/table';
 import {MatSelectModule} from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 
 @NgModule({
@@ -39,6 +41,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatToolbarModule,
     MatTableModule,
     MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   exports: [
     NavbarComponent,
@@ -56,6 +60,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatToolbarModule,
     MatTableModule,
     MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ]
 })
 export class SharedModule { }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserRole } from 'src/app/shared/models/user.model';
 import { UsersService } from 'src/app/shared/services/users.service';
 
@@ -16,6 +17,7 @@ export class NewUserComponent implements OnInit {
   constructor(
     private users : UsersService,
     private fb: FormBuilder,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -54,5 +56,8 @@ export class NewUserComponent implements OnInit {
     }
 
     this.users.saveNewUser(user).subscribe();
+  }
+  cancel():void{
+    this.router.navigate(['/main/admin/admin-dashboard/user-list']);
   }
 }

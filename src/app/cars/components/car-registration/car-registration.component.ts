@@ -34,25 +34,54 @@ export class CarRegistrationComponent implements OnInit {
       governmentNumber: ["test", [Validators.required]],
       VINCode: ["test", [Validators.required]],
       color: ["test", [Validators.required]],
-      numberOfSeats: [0, [Validators.required]],
-      fullWeight: [0, [Validators.required]],
-      massWithoutLoad:[0, [Validators.required]],
+      numberOfSeats: [0, [
+        Validators.required, 
+        Validators.pattern(/^[0-9]/)]
+      ],
+      fullWeight: [0, [
+        Validators.required, 
+        Validators.pattern(/^[0-9]/)]
+      ],
+      massWithoutLoad:[0, [
+        Validators.required, 
+        Validators.pattern(/^[0-9]/)]
+      ],
       category:["test", [Validators.required]],
       typeOfFuel: ["GAS_GASOLINE", [Validators.required]],
       bodyType: ["test", [Validators.required]],
-      engineCapacity: [0, [Validators.required]],
-      power: [0, [Validators.required]],
+      engineCapacity: [0, [
+        Validators.required, 
+        Validators.pattern(/^[0-9]/)]
+      ],
+      power: [0, [Validators.required, 
+        Validators.pattern(/^[0-9]/)]
+      ],
       ecologicalStandard: ["EURO_1", [Validators.required]],
       contractNameAndNumber: ["test", [Validators.required]],
       dateOfTheContract: ["12.10.2022", [Validators.required]],
       contractIsFixedterm: [true, [Validators.required]],
       expiryDate: ["12.12.2022", [Validators.required]],
       futureUsagePlans: ["12.12.2024", [Validators.required]],
-      odonometerIndicator: [0, [Validators.required]],
-      fuelTankValue: [0, [Validators.required]],
-      height: [0, [Validators.required]],
-      width: [0, [Validators.required]],
-      length: [0, [Validators.required]],
+      odonometerIndicator: [0, [
+        Validators.required, 
+        Validators.pattern(/^[0-9]/)]
+      ],
+      fuelTankValue: [0, [
+        Validators.required, 
+        Validators.pattern(/^[0-9]/)]
+      ],
+      height: [0, [
+        Validators.required, 
+        Validators.pattern(/^[0-9]/)]
+      ],
+      width: [0, [
+        Validators.required, 
+        Validators.pattern(/^[0-9]/)]
+      ],
+      length: [0, [
+        Validators.required, 
+        Validators.pattern(/^[0-9]/)]
+      ],
     })
   }
 
@@ -99,13 +128,7 @@ export class CarRegistrationComponent implements OnInit {
         }
     }
     this.transportService.saveNewTransport(transport).subscribe(
-      res => {
-        if(res.error.code == 0){
-          this.router.navigate(['/main/cars/table']);
-        }
-        console.log(res.error.description);
-      }
-    );    
+      res => this.router.navigate(['/main/cars/table']));    
   }
   
   cancel():void{
