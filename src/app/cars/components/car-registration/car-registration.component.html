@@ -1,5 +1,5 @@
 <div class="container">
-    <form>
+    <form [formGroup]="carRegistration" (submit)="submit()">
         <div class="section">
             <p>Відомості про транспортний засіб</p>
             <div class="card-row">
@@ -7,7 +7,7 @@
                         <p>Номенклатурна назва</p>
                         <div class="edit-input">
                             <mat-form-field appearance="outline">
-                                <input matInput placeholder="Номенклатурна назва" formControlName="phoneNum">
+                                <input matInput placeholder="Номенклатурна назва" formControlName="nomenclatureName">
                             </mat-form-field>
                         </div>
                 </mat-card>
@@ -21,7 +21,7 @@
                         <p>Номер та серія техпаспорту</p>
                         <div class="edit-input">
                             <mat-form-field appearance="outline">
-                                <input matInput placeholder="Номер та серія техпаспорту" formControlName="phoneNum">
+                                <input matInput placeholder="Номер та серія техпаспорту" formControlName="technicalPassportSeries">
                             </mat-form-field>
                         </div>
                     </div>
@@ -29,7 +29,7 @@
                         <p>Техпаспорт виданий органом</p>
                         <div class="edit-input">
                             <mat-form-field appearance="outline">
-                                <input matInput placeholder="Техпаспорт виданий органом" formControlName="phoneNum">
+                                <input matInput placeholder="Техпаспорт виданий органом" formControlName="technicalPassportIssuedBy">
                             </mat-form-field>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                         <p>Техпаспорт дійсний до</p>
                         <div class="edit-input">
                             <mat-form-field appearance="outline">
-                                <input matInput placeholder="Техпаспорт дійсний до" formControlName="phoneNum">
+                                <input matInput placeholder="Техпаспорт дійсний до" formControlName="validUntil">
                             </mat-form-field>
                         </div>
                     </div>
@@ -45,7 +45,7 @@
                         <p>Взятий на облік (дата видачі техпаспорту)</p>
                         <div class="edit-input">
                             <mat-form-field appearance="outline">
-                                <input matInput placeholder="Взятий на облік (дата видачі техпаспорту)" formControlName="phoneNum">
+                                <input matInput placeholder="Взятий на облік (дата видачі техпаспорту)" formControlName="dateOfIssuance">
                             </mat-form-field>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
                         <p>Марка</p>
                         <div class="edit-input">
                             <mat-form-field appearance="outline">
-                                <input matInput placeholder="Марка" formControlName="phoneNum">
+                                <input matInput placeholder="Марка" formControlName="brand">
                             </mat-form-field>
                         </div>
                     </div>
@@ -68,7 +68,7 @@
                         <p>Держ номер</p>
                         <div class="edit-input">
                             <mat-form-field appearance="outline">
-                                <input matInput placeholder="Держ номер" formControlName="phoneNum">
+                                <input matInput placeholder="Держ номер" formControlName="governmentNumber">
                             </mat-form-field>
                         </div>
                     </div>
@@ -76,7 +76,7 @@
                         <p>VIN-код</p>
                         <div class="edit-input">
                             <mat-form-field appearance="outline">
-                                <input matInput placeholder="VIN-код" formControlName="phoneNum">
+                                <input matInput placeholder="VIN-код" formControlName="VINCode">
                             </mat-form-field>
                         </div>
                     </div>
@@ -84,7 +84,7 @@
                         <p>Колір</p>
                         <div class="edit-input">
                             <mat-form-field appearance="outline">
-                                <input matInput placeholder="Колір" formControlName="phoneNum">
+                                <input matInput placeholder="Колір" formControlName="color">
                             </mat-form-field>
                         </div>
                     </div>  
@@ -92,7 +92,7 @@
                         <p>Кількість місць для сидіння</p>
                         <div class="edit-input">
                             <mat-form-field appearance="outline">
-                                <input matInput placeholder="Кількість місць для сидіння" formControlName="phoneNum">
+                                <input matInput placeholder="Кількість місць для сидіння" formControlName="numberOfSeats">
                             </mat-form-field>
                         </div>
                     </div>  
@@ -100,7 +100,7 @@
                         <p>Повна маса</p>
                         <div class="edit-input">
                             <mat-form-field appearance="outline">
-                                <input matInput placeholder="Повна маса" formControlName="phoneNum">
+                                <input matInput placeholder="Повна маса" formControlName="fullWeight">
                             </mat-form-field>
                         </div>
                     </div>
@@ -108,7 +108,7 @@
                         <p>Маса без навантаження</p>
                         <div class="edit-input">
                             <mat-form-field appearance="outline">
-                                <input matInput placeholder="Маса без навантаження" formControlName="phoneNum">
+                                <input matInput placeholder="Маса без навантаження" formControlName="massWithoutLoad">
                             </mat-form-field>
                         </div>
                     </div>
@@ -116,7 +116,7 @@
                         <p>Категорія</p>
                         <div class="edit-input">
                             <mat-form-field appearance="outline">
-                                <input matInput placeholder="Категорія" formControlName="phoneNum">
+                                <input matInput placeholder="Категорія" formControlName="category">
                             </mat-form-field>
                         </div>
                     </div>
@@ -124,7 +124,7 @@
                         <p>Вид палива</p>
                         <div class="edit-input">
                             <mat-form-field appearance="outline">
-                                <input matInput placeholder="Вид палива" formControlName="phoneNum">
+                                <input matInput placeholder="Вид палива" formControlName="typeOfFuel">
                             </mat-form-field>
                         </div>
                     </div>
@@ -132,7 +132,7 @@
                         <p>Тип кузова</p>
                         <div class="edit-input">
                             <mat-form-field appearance="outline">
-                                <input matInput placeholder="Тип кузова" formControlName="phoneNum">
+                                <input matInput placeholder="Тип кузова" formControlName="bodyType">
                             </mat-form-field>
                         </div>
                     </div>
@@ -140,7 +140,7 @@
                         <p>Обʼєм двигуна, см.куб.</p>
                         <div class="edit-input">
                             <mat-form-field appearance="outline">
-                                <input matInput placeholder="Обʼєм двигуна, см.куб." formControlName="phoneNum">
+                                <input matInput placeholder="Обʼєм двигуна, см.куб." formControlName="engineCapacity">
                             </mat-form-field>
                         </div>
                     </div>
@@ -148,7 +148,7 @@
                         <p>Потужність кВт</p>
                         <div class="edit-input">
                             <mat-form-field appearance="outline">
-                                <input matInput placeholder="Потужність кВт" formControlName="phoneNum">
+                                <input matInput placeholder="Потужність кВт" formControlName="power">
                             </mat-form-field>
                         </div>
                     </div>
@@ -156,7 +156,7 @@
                         <p>Екологічний стандарт</p>
                         <div class="edit-input">
                             <mat-form-field appearance="outline">
-                                <input matInput placeholder="Екологічний стандарт" formControlName="phoneNum">
+                                <input matInput placeholder="Екологічний стандарт" formControlName="ecologicalStandard">
                             </mat-form-field>
                         </div>
                     </div>
@@ -168,10 +168,10 @@
             <div class="card-row">
                 <mat-card>
                     <div>
-                        <p>Підстава для використання (назва договору та номер )</p>
+                        <p>Підстава для використання (назва договору та номер)</p>
                         <div class="edit-input">
                             <mat-form-field appearance="outline">
-                                <input matInput placeholder="Підстава для використання (назва договору та номер )" formControlName="phoneNum">
+                                <input matInput placeholder="Підстава для використання (назва договору та номер)" formControlName="contractNameAndNumber">
                             </mat-form-field>
                         </div>
                     </div>
@@ -179,7 +179,7 @@
                         <p>Дата договору</p>
                         <div class="edit-input">
                             <mat-form-field appearance="outline">
-                                <input matInput placeholder="Дата договору" formControlName="phoneNum">
+                                <input matInput placeholder="Дата договору" formControlName="dateOfTheContract">
                             </mat-form-field>
                         </div>
                     </div>
@@ -187,7 +187,7 @@
                         <p>Договір строковий (так, ні)</p>
                         <div class="edit-input">
                             <mat-form-field appearance="outline">
-                                <input matInput placeholder="Договір строковий (так, ні)" formControlName="phoneNum">
+                                <input matInput placeholder="Договір строковий (так, ні)" formControlName="contractIsFixedterm">
                             </mat-form-field>
                         </div>
                     </div>
@@ -195,7 +195,7 @@
                         <p>Дата закінчення строку користування</p>
                         <div class="edit-input">
                             <mat-form-field appearance="outline">
-                                <input matInput placeholder="Дата закінчення строку користування" formControlName="phoneNum">
+                                <input matInput placeholder="Дата закінчення строку користування" formControlName="expiryDate">
                             </mat-form-field>
                         </div>
                     </div>
@@ -203,7 +203,7 @@
                         <p>Подальші плани використання</p>
                         <div class="edit-input">
                             <mat-form-field appearance="outline">
-                                <input matInput placeholder="Подальші плани використання" formControlName="phoneNum">
+                                <input matInput placeholder="Подальші плани використання" formControlName="futureUsagePlans">
                             </mat-form-field>
                         </div>
                     </div>
@@ -218,7 +218,7 @@
                         <p>Показник одонометру, км</p>
                         <div class="edit-input">
                             <mat-form-field appearance="outline">
-                                <input matInput placeholder="Показник одонометру, км" formControlName="phoneNum">
+                                <input matInput placeholder="Показник одонометру, км" formControlName="odonometerIndicator">
                             </mat-form-field>
                         </div>
                     </div>
@@ -226,7 +226,7 @@
                         <p>Обʼєм паливного баку, л</p>
                         <div class="edit-input">
                             <mat-form-field appearance="outline">
-                                <input matInput placeholder="Обʼєм паливного баку, л" formControlName="phoneNum">
+                                <input matInput placeholder="Обʼєм паливного баку, л" formControlName="fuelTankValue">
                             </mat-form-field>
                         </div>
                     </div>
@@ -234,7 +234,7 @@
                         <p>Висота, м</p>
                         <div class="edit-input">
                             <mat-form-field appearance="outline">
-                                <input matInput placeholder="Висота, м" formControlName="phoneNum">
+                                <input matInput placeholder="Висота, м" formControlName="height">
                             </mat-form-field>
                         </div>
                     </div>
@@ -242,7 +242,7 @@
                         <p>Ширина, м</p>
                         <div class="edit-input">
                             <mat-form-field appearance="outline">
-                                <input matInput placeholder="Ширина, м" formControlName="phoneNum">
+                                <input matInput placeholder="Ширина, м" formControlName="width">
                             </mat-form-field>
                         </div>
                     </div>
@@ -250,7 +250,7 @@
                         <p>Довжина, м</p>
                         <div class="edit-input">
                             <mat-form-field appearance="outline">
-                                <input matInput placeholder="Довжина, м" formControlName="phoneNum">
+                                <input matInput placeholder="Довжина, м" formControlName="length">
                             </mat-form-field>
                         </div>
                     </div>
