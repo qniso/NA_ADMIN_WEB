@@ -1,0 +1,28 @@
+.container{
+        width: 1440px;
+}
+.section{
+    margin-top: 22px;
+    p{
+        font-weight: 500;
+    }
+    mat-form-field{
+        width: 50%;
+    }
+    mat-card{
+        border-radius: 14px;
+    }
+}
+.control-panel{
+    margin: 12px auto 50px auto;
+    text-align: end;
+}
+.save-transport{
+    color: #FFFF;
+    background-color: #159A9C;
+}
+.cancel{
+    color: #02374f;
+    background-color: #b4bec9;
+    margin-right: 12px;
+}
