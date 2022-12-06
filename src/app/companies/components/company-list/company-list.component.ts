@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EditCompanyService } from 'src/app/shared/services/edit-company.service';
 
 @Component({
   selector: 'app-company-list',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompanyListComponent implements OnInit {
 
-  constructor() { }
+  dataSource:[] = [];
+  displayedColumns: string[] = ['position', 'name', 'symbol'];
+
+
+  constructor(
+    private company: EditCompanyService
+  ) { }
 
   ngOnInit(): void {
+    this.getTableList();
   }
 
+
+  getTableList(){
+    this.company.getCompanyList().subscribe(res => {
+      this.dataSource = res.companies;
+      console.log(this.dataSource);
+      
+    })
+  }
 }

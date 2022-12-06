@@ -13,6 +13,7 @@ import {
   throwError 
 } from 'rxjs';
 import { AuthService } from './auth.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
@@ -21,13 +22,16 @@ export class TokenInterceptor implements HttpInterceptor {
 
   constructor(
     private http: HttpClient,
-    private auth: AuthService
+    private auth: AuthService,
+    private router: Router
   ) {}
 
   intercept(
     request: HttpRequest<any>, 
     next: HttpHandler
     ): Observable<HttpEvent<any>> {
+      console.log(this.auth.getToken());
+      
         request = request.clone({
           setHeaders: {
             Authorization:`${this.auth.getToken()}`
@@ -38,8 +42,9 @@ export class TokenInterceptor implements HttpInterceptor {
     .handle(request)
     .pipe(
       catchError((err: HttpErrorResponse) => {
-        if(err.status === 401){
-          console.log(true);
+        if(err.status === 500){
+          console.log('500 Jwt EXPIRED');
+          localStorage.removeItem('currentUser_NA');
         }
 
         return throwError(()=> err);

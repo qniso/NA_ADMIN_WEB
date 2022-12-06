@@ -6,6 +6,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { TableComponent } from './components/table/table.component';
 import { AdminNavComponent } from './components/admin-nav/admin-nav.component';
 import { UserTableComponent } from './components/user-table/user-table.component';
+import { CarListComponent } from './components/car-list/car-list.component';
 
 //MATERIAL
 import {MatCardModule} from '@angular/material/card';
@@ -23,7 +24,8 @@ import {MatSelectModule} from '@angular/material/select';
     NavbarComponent,
     TableComponent,
     AdminNavComponent,
-    UserTableComponent
+    UserTableComponent,
+    CarListComponent
   ],
   imports: [
     CommonModule,
@@ -43,6 +45,7 @@ import {MatSelectModule} from '@angular/material/select';
     TableComponent,
     UserTableComponent,
     AdminNavComponent,
+    CarListComponent,
     RouterModule,
     //MATERIAL
     MatCardModule,
