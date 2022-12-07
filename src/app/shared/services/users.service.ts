@@ -15,12 +15,7 @@ export class UsersService {
   ) { }
 
   getUserList():Observable<any>{
-    return this.http.get<any>(URLS.BASE_URL + URLS.NA_API + URLS.USERS + URLS.GET_EMPLOYEE_LIST)
-    .pipe(
-      tap(res => {
-        console.log(res);
-      })
-    );
+    return this.http.get<any>(URLS.BASE_URL + URLS.NA_API + URLS.USERS + URLS.GET_EMPLOYEE_LIST);
   }
   getRoles():Observable<UserRole>{
     return this.http.get<UserRole>(URLS.BASE_URL + URLS.NA_API + URLS.USERS + URLS.GET_ALL_ROLES);
@@ -28,5 +23,9 @@ export class UsersService {
 
   saveNewUser(value: Object):Observable<any>{
     return this.http.post<any>(URLS.BASE_URL + URLS.NA_API + URLS.USERS + URLS.NEW_USER, value);
+  }
+  
+  saveUserProfile(value: Object):Observable<any>{
+    return this.http.post<any>(URLS.BASE_URL + URLS.NA_API + URLS.USERS + URLS.SAVE_USER_PROFILE, value);
   }
 }

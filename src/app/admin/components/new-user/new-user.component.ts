@@ -14,6 +14,7 @@ export class NewUserComponent implements OnInit {
   switchPage: boolean = true;
   userForm !: FormGroup;
   roleList:any;
+  userId!: number;
 
   constructor(
     private users : UsersService,
@@ -36,8 +37,7 @@ export class NewUserComponent implements OnInit {
   }
 
   submit():void{
-    // this.newUser();
-    this.switchPage = false;
+    this.newUser();
   }
 
   getUserRole():void{
@@ -56,14 +56,18 @@ export class NewUserComponent implements OnInit {
       "password": this.userForm.controls['pass'].value,
       "role": selectedRole.role
     }
-
-    this.users.saveNewUser(user).subscribe();
+    
+    this.users.saveNewUser(user).subscribe(res => {
+        console.log(res);
+        this.userId = res.id;
+        this.switchPage = false;
+    });
   }
   cancel():void{
     this.router.navigate(['/main/admin/admin-dashboard/user-list']);
   }
   back():void{
     this.switchPage = true;
-    
   }
+
 }

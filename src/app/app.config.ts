@@ -4,6 +4,7 @@ export const URLS = {
     BASE_URL: environment.apiUrl,
     NA_API: environment.apiUrlPrefix,
     LOGIN: '/authenticate',
+    REFRESH_TOKEN:'/refreshToken',
     COMPANY: '/company',
     USERS: '/user',
     TRANSPORT: '/transport',
@@ -12,5 +13,6 @@ export const URLS = {
     GET_EMPLOYEE_LIST: '/get_employee_list',
     GET_ALL_ROLES: '/get_all_roles',
     NEW_USER: '/save_new_user',
+    SAVE_USER_PROFILE: '/save_user_profile',
     SAVE_NEW_TRANSPORT: '/save_new_transport',
 }

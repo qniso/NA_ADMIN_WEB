@@ -14,6 +14,7 @@ import {
 } from 'rxjs';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
+import { URLS } from 'src/app/app.config';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
@@ -30,14 +31,21 @@ export class TokenInterceptor implements HttpInterceptor {
     request: HttpRequest<any>, 
     next: HttpHandler
     ): Observable<HttpEvent<any>> {
-      console.log(this.auth.getToken());
-      
+      // console.log(this.auth.getToken());
+      if(request.url == URLS.BASE_URL + URLS.NA_API + URLS.LOGIN || request.url == URLS.BASE_URL + URLS.NA_API + URLS.REFRESH_TOKEN){
+        request = request.clone({
+          setHeaders: {
+            Authorization: ''
+          }
+        });
+      }else{
         request = request.clone({
           setHeaders: {
             Authorization:`${this.auth.getToken()}`
           }
         });
-
+      }
+      
     return next
     .handle(request)
     .pipe(
@@ -46,7 +54,6 @@ export class TokenInterceptor implements HttpInterceptor {
           console.log('500 Jwt EXPIRED');
           this.auth.refreshToken()
         }
-
         return throwError(()=> err);
       })
     );

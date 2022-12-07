@@ -34,8 +34,6 @@
         </div>
     </div>
     <div class="user-profile" *ngIf="switchPage == false">
-        <user-profile></user-profile>
-        <a mat-flat-button class="cancel" (click)="back()">Назад</a>
-        <button mat-flat-button >Зберегти</button>
+        <user-profile [userId]="userId"></user-profile>
     </div>
 </div>

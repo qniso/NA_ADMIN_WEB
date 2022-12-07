@@ -5,7 +5,7 @@ import { User } from '../models/user.model';
 import { URLS } from 'src/app/app.config';
 import { Router } from '@angular/router';
 
-const ONE_HOUR = 60 * 60 * 1000;
+const ONE_HOUR = 50 * 60 * 1000;
 
 @Injectable({
   providedIn: 'root'
@@ -46,7 +46,7 @@ export class AuthService {
 
   refreshToken(): Observable<any>{
     let data = JSON.parse( localStorage.getItem('currentUser_NA')!);
-    return this.http.post<any>('http://ec2-54-91-44-147.compute-1.amazonaws.com:8080/na-app-api/refreshToken', {refreshToken: data.refresh}).pipe(
+    return this.http.post<any>(URLS.BASE_URL + URLS.NA_API + URLS.REFRESH_TOKEN, {refreshToken: data.refresh}).pipe(
       tap((refreshToken) => {
         localStorage.setItem(
           'currentUser_NA', 
@@ -72,7 +72,7 @@ export class AuthService {
     expTime.setMinutes(Number(time[1]));
     expTime.setMilliseconds(Number(time[2]));
 
-    if(expTime.getTime() >= dateNow){
+    if(expTime.getTime() > new Date(dateNow).getTime()){
       //Зaпуск таймера
       this.startRefreshTokenTimer();
       return EMPTY;

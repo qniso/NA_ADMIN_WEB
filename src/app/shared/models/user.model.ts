@@ -44,4 +44,10 @@ export interface UserProfile{
     previous_info_work_mp:string;
     sufficient_experience_mp: string;
     registration_address:string;
+    actual_address:string;
+    education: {
+        certificate:string;
+        specialty: string;
+        advanced_qualification:string;
+    }
 }

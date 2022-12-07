@@ -20,6 +20,9 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import {MatDividerModule} from '@angular/material/divider';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -34,6 +37,8 @@ import {MatNativeDateModule} from '@angular/material/core';
   imports: [
     CommonModule,
     RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
     //MATERIAL
     MatCardModule,
     MatFormFieldModule,
@@ -45,6 +50,7 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatDividerModule,
   ],
   exports: [
     NavbarComponent,
@@ -65,6 +71,7 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatDividerModule,
   ]
 })
 export class SharedModule { }
