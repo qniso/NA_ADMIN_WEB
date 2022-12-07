@@ -20,8 +20,14 @@ export class TransportService {
     .pipe(
       tap(res=> {
         console.log(res);
-        
       })
+    );
+  }
+
+  getAllTransport():Observable<any>{
+    return this.http.get<any>(URLS.BASE_URL + URLS.NA_API + URLS.TRANSPORT + URLS.GET_ALL_TRANSPORT)
+    .pipe(
+      tap(res => console.log(res))
     );
   }
 }

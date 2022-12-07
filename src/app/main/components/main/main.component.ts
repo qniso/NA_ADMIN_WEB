@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { ContentService } from 'src/app/shared/services/content.service';
+
 
 @Component({
   selector: 'app-main',
@@ -14,11 +16,13 @@ export class MainComponent implements OnInit {
   constructor(
     private router: Router,
     private auth: AuthService,
+    private contentService: ContentService
   ) { }
 
   ngOnInit(): void {
     this.checkCurrentUser();
     this.auth.getRefreshToken();
+    this.contentService.getRoleButtons().subscribe();
   }
 
   checkCurrentUser():void{

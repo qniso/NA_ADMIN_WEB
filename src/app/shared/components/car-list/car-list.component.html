@@ -5,7 +5,7 @@
       <td mat-cell *matCellDef="let element"> {{element.id}} </td>
     </ng-container>
   
-    <ng-container matColumnDef="name">
+    <ng-container matColumnDef="brand">
       <th mat-header-cell *matHeaderCellDef>Марка</th>
       <td 
       mat-cell 
@@ -14,29 +14,29 @@
       color: rgba(21, 154, 156, 0.7); 
       font-weight: 600;"
       > 
-      {{element.name}} 
+      {{element.brand}} 
     </td>
     </ng-container>
   
-    <ng-container matColumnDef="symbol">
+    <ng-container matColumnDef="stateNumber">
       <th mat-header-cell *matHeaderCellDef>Держ номер</th>
-      <td mat-cell *matCellDef="let element"> {{element.registrationDate}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.state_number}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="symbol">
+    <ng-container matColumnDef="nomenclatureName">
       <th mat-header-cell *matHeaderCellDef>Номенклатурна назва</th>
-      <td mat-cell *matCellDef="let element"> {{element.registrationDate}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.nomenclature_name}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="symbol">
+    <ng-container matColumnDef="transportStatus">
       <th mat-header-cell *matHeaderCellDef>Стан</th>
-      <td mat-cell *matCellDef="let element"> {{element.registrationDate}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.transport_status}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="symbol">
+    <!-- <ng-container matColumnDef="symbol">
       <th mat-header-cell *matHeaderCellDef>Редагувати</th>
       <td mat-cell *matCellDef="let element"> {{element.registrationDate}} </td>
-    </ng-container>
+    </ng-container> -->
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

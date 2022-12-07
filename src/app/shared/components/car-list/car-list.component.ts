@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EditCompanyService } from '../../services/edit-company.service';
+import { TransportService } from '../../services/transport.service';
 
 @Component({
   selector: 'car-list',
@@ -8,20 +9,21 @@ import { EditCompanyService } from '../../services/edit-company.service';
 })
 export class CarListComponent implements OnInit {
 
-  displayedColumns: string[] = ['position', 'name', 'symbol'];
+  displayedColumns: string[] = ['position', 'brand', 'stateNumber', 'nomenclatureName', 'transportStatus'];
   dataSource = [];
 
   constructor(
-    private company: EditCompanyService
+    private transportService: TransportService
   ) { }
 
   ngOnInit(): void {
-    this.getTableList()
+    this.getTransportList()
   }
 
-  getTableList(){
-    this.company.getCompanyList().subscribe(res => {
-      this.dataSource = res.companies;
-    })
+
+  getTransportList():void{
+    this.transportService.getAllTransport().subscribe(res => {
+      this.dataSource = res.transports;
+    });
   }
 }

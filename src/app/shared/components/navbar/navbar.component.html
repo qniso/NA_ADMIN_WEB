@@ -2,14 +2,15 @@
     <div class="navbar-container">
         <div class="navbar">
             <div class="navbar__left">
-                <a 
+                    <a *ngFor="let item of obj"  [routerLink]="item.rout"  [routerLinkActive]="'active'" >{{item.item}}</a>
+               <!-- <a 
                 [routerLink]="['/main']" 
                 [routerLinkActive]="'active'" 
                 [routerLinkActiveOptions]="{ exact: true }"
                 >
                 Головна
-                </a>
-                <a
+                </a> -->
+                <!-- <a
                 [routerLink]="['/main/cars/table']" 
                 [routerLinkActive]="'active'" 
                 [routerLinkActiveOptions]="{ exact: true }"
@@ -23,7 +24,7 @@
                 <a
                 [routerLink]="['/main/admin/admin-dashboard']" 
                 [routerLinkActive]="'active'"
-                >Адміністрування</a>
+                >Адміністрування</a> -->
             </div>
             <div class="navbar__right">
                 <p>super admin</p>
