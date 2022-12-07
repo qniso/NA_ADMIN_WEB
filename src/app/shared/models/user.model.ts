@@ -31,3 +31,17 @@ export interface NewUser{
     password: string;
     role: string;
 }
+
+export interface UserProfile{ 
+    id?: number;
+    email: string;
+    fio: string;
+    acc_order_number: string;
+    acc_order_date: string;
+    salary:number;
+    birthday:string;
+    previous_work_exp:string;
+    previous_info_work_mp:string;
+    sufficient_experience_mp: string;
+    registration_address:string;
+}

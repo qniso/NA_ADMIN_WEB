@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="add-user">
+    <div class="add-user" *ngIf="switchPage">
         <p>Додавання нового користувача</p>
         <div class="user-profile">
             <form [formGroup]="userForm" (ngSubmit)="submit()">
@@ -29,8 +29,13 @@
                     </mat-form-field>
                 </div>
                 <a mat-flat-button class="cancel" (click)="cancel()">Скасувати</a>
-                <button mat-flat-button >Зберегти</button>
+                <button mat-flat-button >Продовжити</button>
             </form>
         </div>
+    </div>
+    <div class="user-profile" *ngIf="switchPage == false">
+        <user-profile></user-profile>
+        <a mat-flat-button class="cancel" (click)="back()">Назад</a>
+        <button mat-flat-button >Зберегти</button>
     </div>
 </div>

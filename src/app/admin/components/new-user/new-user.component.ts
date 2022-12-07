@@ -11,6 +11,7 @@ import { UsersService } from 'src/app/shared/services/users.service';
 })
 export class NewUserComponent implements OnInit {
 
+  switchPage: boolean = true;
   userForm !: FormGroup;
   roleList:any;
 
@@ -35,7 +36,8 @@ export class NewUserComponent implements OnInit {
   }
 
   submit():void{
-    this.newUser();
+    // this.newUser();
+    this.switchPage = false;
   }
 
   getUserRole():void{
@@ -59,5 +61,9 @@ export class NewUserComponent implements OnInit {
   }
   cancel():void{
     this.router.navigate(['/main/admin/admin-dashboard/user-list']);
+  }
+  back():void{
+    this.switchPage = true;
+    
   }
 }

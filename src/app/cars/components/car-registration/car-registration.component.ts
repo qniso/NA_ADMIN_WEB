@@ -29,7 +29,7 @@ export class CarRegistrationComponent implements OnInit {
       technicalPassportSeries: ["test", [Validators.required]],
       technicalPassportIssuedBy: ["test", [Validators.required]],
       validUntil: ["14.12.2024", [Validators.required]],
-      dateOfIssuance: ["14.12.2022", [Validators.required]],
+      dateOfIssuance: ["14.12.2022", [Validators.required]],//datepicker
       brand:["test", [Validators.required]],
       governmentNumber: ["test", [Validators.required]],
       VINCode: ["test", [Validators.required]],
@@ -47,7 +47,7 @@ export class CarRegistrationComponent implements OnInit {
         Validators.pattern(/^[0-9]/)]
       ],
       category:["test", [Validators.required]],
-      typeOfFuel: ["GAS_GASOLINE", [Validators.required]],
+      typeOfFuel: ["GAS_GASOLINE", [Validators.required]],//select
       bodyType: ["test", [Validators.required]],
       engineCapacity: [0, [
         Validators.required, 
@@ -56,12 +56,12 @@ export class CarRegistrationComponent implements OnInit {
       power: [0, [Validators.required, 
         Validators.pattern(/^[0-9]/)]
       ],
-      ecologicalStandard: ["EURO_1", [Validators.required]],
+      ecologicalStandard: ["EURO_1", [Validators.required]],//select
       contractNameAndNumber: ["test", [Validators.required]],
-      dateOfTheContract: ["12.10.2022", [Validators.required]],
+      dateOfTheContract: ["12.10.2022", [Validators.required]],//datepicker
       contractIsFixedterm: [true, [Validators.required]],
-      expiryDate: ["12.12.2022", [Validators.required]],
-      futureUsagePlans: ["12.12.2024", [Validators.required]],
+      expiryDate: ["12.12.2022", [Validators.required]],//datepicker
+      futureUsagePlans: ["12.12.2024", [Validators.required]],//datepicker
       odonometerIndicator: [0, [
         Validators.required, 
         Validators.pattern(/^[0-9]/)]

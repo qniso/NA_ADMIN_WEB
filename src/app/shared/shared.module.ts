@@ -7,6 +7,7 @@ import { TableComponent } from './components/table/table.component';
 import { AdminNavComponent } from './components/admin-nav/admin-nav.component';
 import { UserTableComponent } from './components/user-table/user-table.component';
 import { CarListComponent } from './components/car-list/car-list.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 //MATERIAL
 import {MatCardModule} from '@angular/material/card';
@@ -27,7 +28,8 @@ import {MatNativeDateModule} from '@angular/material/core';
     TableComponent,
     AdminNavComponent,
     UserTableComponent,
-    CarListComponent
+    CarListComponent,
+    UserProfileComponent
   ],
   imports: [
     CommonModule,
@@ -50,6 +52,7 @@ import {MatNativeDateModule} from '@angular/material/core';
     UserTableComponent,
     AdminNavComponent,
     CarListComponent,
+    UserProfileComponent,
     RouterModule,
     //MATERIAL
     MatCardModule,
