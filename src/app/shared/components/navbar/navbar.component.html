@@ -13,19 +13,20 @@
                 [routerLink]="['/main/cars/table']" 
                 [routerLinkActive]="'active'" 
                 [routerLinkActiveOptions]="{ exact: true }"
-                *canAccess="[roles.DIRECTOR, roles.SUPER_ADMIN,]"
+                *canAccess="userRoles | async in [ROLES.DIRECTOR, ROLES.SUPER_ADMIN]"
                 >Транспорт</a>
                 <a 
                 [routerLink]="['/main/company/company-list']" 
                 [routerLinkActive]="'active'"
-                *canAccess="[roles.SUPER_ADMIN]"
+                *canAccess="userRoles | async in [ROLES.SUPER_ADMIN]"
                 >
                 Компанії
                 </a>
+                {{userRoles | async}}
                 <a
                 [routerLink]="['/main/admin/admin-dashboard']" 
                 [routerLinkActive]="'active'"
-                *canAccess="[roles.SUPER_ADMIN, roles.DIRECTOR]"
+                *canAccess="userRoles | async in [ROLES.SUPER_ADMIN, ROLES.DIRECTOR]"
                 >Адміністрування</a>
             </div>
             <div class="navbar__right">

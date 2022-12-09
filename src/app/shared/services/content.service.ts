@@ -5,23 +5,20 @@ import { Observable, tap } from 'rxjs';
 import { URLS } from 'src/app/app.config';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ContentService {
+  constructor(private http: HttpClient) {}
 
-  constructor(
-    private http: HttpClient,
-    private router: Router
-  ) { }
-
-  getRoleButtons():Observable<any>{
-    return this.http.get<any>(URLS.BASE_URL + URLS.NA_API + URLS.ROLLE_BUTTONS + URLS.GET_ALLOWED)
-    .pipe(
-      tap(res => {
-        localStorage.setItem('role', `${[res.role]}`)
-        console.log(res);
-        
-      })
-    );
+  getRoleButtons(): Observable<any> {
+    return this.http
+      .get<any>(
+        URLS.BASE_URL + URLS.NA_API + URLS.ROLLE_BUTTONS + URLS.GET_ALLOWED
+      )
+      .pipe(
+        tap((userRoles) => {
+          localStorage.setItem('role', JSON.stringify(userRoles));
+        })
+      );
   }
 }
