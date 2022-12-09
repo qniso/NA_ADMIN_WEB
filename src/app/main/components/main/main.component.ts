@@ -22,7 +22,6 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
     this.checkCurrentUser();
     this.auth.getRefreshToken();
-    this.contentService.getRoleButtons().subscribe();
   }
 
   checkCurrentUser():void{

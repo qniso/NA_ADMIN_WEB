@@ -2,29 +2,31 @@
     <div class="navbar-container">
         <div class="navbar">
             <div class="navbar__left">
-                    <a *ngFor="let item of obj"  [routerLink]="item.rout"  [routerLinkActive]="'active'" >{{item.item}}</a>
-               <!-- <a 
+               <a 
                 [routerLink]="['/main']" 
                 [routerLinkActive]="'active'" 
                 [routerLinkActiveOptions]="{ exact: true }"
                 >
                 Головна
-                </a> -->
-                <!-- <a
+                </a>
+                <a
                 [routerLink]="['/main/cars/table']" 
                 [routerLinkActive]="'active'" 
                 [routerLinkActiveOptions]="{ exact: true }"
+                *canAccess="[roles.DIRECTOR, roles.SUPER_ADMIN,]"
                 >Транспорт</a>
                 <a 
                 [routerLink]="['/main/company/company-list']" 
                 [routerLinkActive]="'active'"
+                *canAccess="[roles.SUPER_ADMIN]"
                 >
                 Компанії
                 </a>
                 <a
                 [routerLink]="['/main/admin/admin-dashboard']" 
                 [routerLinkActive]="'active'"
-                >Адміністрування</a> -->
+                *canAccess="[roles.SUPER_ADMIN, roles.DIRECTOR]"
+                >Адміністрування</a>
             </div>
             <div class="navbar__right">
                 <p>super admin</p>

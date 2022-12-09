@@ -63,6 +63,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         localStorage.setItem('error_NA',`${result}`);
         localStorage.removeItem('currentUser_NA');
         this.errorHint = true;
+        
       }else{
         localStorage.removeItem('error_NA');
         this.router.navigate(['/main']);

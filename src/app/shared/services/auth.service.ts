@@ -4,6 +4,7 @@ import { EMPTY, Observable, tap } from 'rxjs';
 import { User } from '../models/user.model';
 import { URLS } from 'src/app/app.config';
 import { Router } from '@angular/router';
+import { ContentService } from './content.service';
 
 const ONE_HOUR = 50 * 60 * 1000;
 
@@ -18,6 +19,7 @@ export class AuthService {
   private refreshTokenTimer: any;
 
   constructor(
+    private contentService: ContentService,
     private http: HttpClient,
     private router: Router
   ) {}
@@ -36,6 +38,7 @@ export class AuthService {
           }`
           );
         this.setToken(token.accessToken);
+        this.contentService.getRoleButtons().subscribe()
       }),
     )
   }

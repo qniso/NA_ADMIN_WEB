@@ -9,6 +9,7 @@ import {
 } from "@angular/router";
 import { Observable, of } from "rxjs";
 import { AuthService } from "../services/auth.service";
+import { ContentService } from "../services/content.service";
 import { TokenInterceptor } from "../services/token.interceptor";
 
 @Injectable({
@@ -19,6 +20,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
 
     constructor(
         private authServise: AuthService,
+        private contentService: ContentService,
         private router: Router
     ){
 
@@ -37,8 +39,10 @@ export class AuthGuard implements CanActivate, CanActivateChild {
             })
             return of(false);
         }
+
     }
     
+
     canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
         return this.canActivate(childRoute, state);
     }

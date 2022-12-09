@@ -15,6 +15,13 @@ export class ContentService {
   ) { }
 
   getRoleButtons():Observable<any>{
-    return this.http.get<any>(URLS.BASE_URL + URLS.NA_API + URLS.ROLLE_BUTTONS + URLS.GET_ALLOWED);
+    return this.http.get<any>(URLS.BASE_URL + URLS.NA_API + URLS.ROLLE_BUTTONS + URLS.GET_ALLOWED)
+    .pipe(
+      tap(res => {
+        localStorage.setItem('role', `${[res.role]}`)
+        console.log(res);
+        
+      })
+    );
   }
 }
