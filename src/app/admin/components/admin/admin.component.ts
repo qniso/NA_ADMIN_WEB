@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, observable } from 'rxjs';
+import { LoadingService } from 'src/app/shared/services/loading.service';
 
 @Component({
   selector: 'app-admin',
@@ -8,6 +9,7 @@ import { Observable, observable } from 'rxjs';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
+
 
   path = this.router.url;
   data:string =''

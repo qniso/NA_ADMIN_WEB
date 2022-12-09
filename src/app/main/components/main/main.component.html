@@ -1,9 +1,14 @@
-<mat-toolbar>
-    <mat-toolbar-row>
-        <navbar class="navbar" ></navbar>
-    </mat-toolbar-row>
-</mat-toolbar>
-<div class="container">
-    <router-outlet></router-outlet>
+
+<div class="content">
+    <mat-toolbar>
+        <mat-toolbar-row>
+            <navbar class="navbar" ></navbar>
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <div class="container">
+        <router-outlet></router-outlet>
+        <mat-spinner *ngIf="loader$ | async"></mat-spinner>
+    </div>
 </div>
+
 

@@ -37,8 +37,10 @@ export class AuthService {
             "expDate": "${token.expDate}"
           }`
           );
+        this.contentService.getRoleButtons().subscribe();
+
         this.setToken(token.accessToken);
-        this.contentService.getRoleButtons().subscribe()
+        // this.router.navigate(['/main']);
       }),
     )
   }

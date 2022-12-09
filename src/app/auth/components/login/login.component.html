@@ -1,6 +1,8 @@
 <div class="login">
     <div class="login-container">
         <mat-card>
+        <mat-spinner *ngIf="loader$  || showSpinner | async" ></mat-spinner>
+
             <div class="login-content">
                 <div class="login-card-text">
                     <h1>Welcome back</h1>

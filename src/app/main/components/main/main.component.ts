@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { ContentService } from 'src/app/shared/services/content.service';
+import { LoadingService } from 'src/app/shared/services/loading.service';
 
 
 @Component({
@@ -11,15 +12,22 @@ import { ContentService } from 'src/app/shared/services/content.service';
 })
 export class MainComponent implements OnInit {
 
+  loader$ = this.load.loading$;
 
 
   constructor(
+    private load: LoadingService,
     private router: Router,
     private auth: AuthService,
     private contentService: ContentService
   ) { }
 
   ngOnInit(): void {
+    console.log(
+    localStorage.getItem('role')
+
+    );
+    
     this.checkCurrentUser();
     this.auth.getRefreshToken();
   }

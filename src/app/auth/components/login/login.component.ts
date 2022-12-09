@@ -3,6 +3,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+import { ContentService } from 'src/app/shared/services/content.service';
+import { LoadingService } from 'src/app/shared/services/loading.service';
 import { TokenInterceptor } from 'src/app/shared/services/token.interceptor';
 import { AuthService } from '../../../shared/services/auth.service';
 
@@ -13,11 +15,15 @@ import { AuthService } from '../../../shared/services/auth.service';
 })
 export class LoginComponent implements OnInit, OnDestroy {
 
+  loader$ = this.load.loading$;
   authForm!: FormGroup;
   errorHint: boolean = false;
-  subscription!: Subscription
+  subscription!: Subscription;
+  showSpinner: boolean = false;
   
   constructor(
+    private contentService: ContentService,
+    private load: LoadingService,
     private auth: AuthService,
     private fb: FormBuilder,
     private router: Router,
@@ -55,6 +61,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     let pass = this.authForm.controls['pass'].value;
 
     this.subscription = this.auth.getAuth(login, pass).subscribe(res => {
+
     console.log(res);
       if(res.error.code !== 0){
         this.authForm.controls['login'].setValue(null);
@@ -66,7 +73,10 @@ export class LoginComponent implements OnInit, OnDestroy {
         
       }else{
         localStorage.removeItem('error_NA');
-        this.router.navigate(['/main']);
+        this.showSpinner = true;
+        setTimeout(()=> {
+          this.router.navigate(['/main']);
+        },1500)
       }
     })
    

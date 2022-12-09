@@ -14,6 +14,7 @@ import { UserTableComponent } from './components/user-table/user-table.component
 import { CarListComponent } from './components/car-list/car-list.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
+
 import { UserAccessDirective } from './directives/user-access.directive';
 
 //MATERIAL
@@ -28,6 +29,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 
@@ -40,7 +42,7 @@ import {MatDividerModule} from '@angular/material/divider';
     UserTableComponent,
     CarListComponent,
     UserProfileComponent,
-    UserAccessDirective
+    UserAccessDirective,
   ],
   imports: [
     CommonModule,
@@ -59,6 +61,7 @@ import {MatDividerModule} from '@angular/material/divider';
     MatDatepickerModule,
     MatNativeDateModule,
     MatDividerModule,
+    MatProgressSpinnerModule,
   ],
   exports: [
     NavbarComponent,
@@ -81,6 +84,7 @@ import {MatDividerModule} from '@angular/material/divider';
     MatDatepickerModule,
     MatNativeDateModule,
     MatDividerModule,
+    MatProgressSpinnerModule,
   ]
 })
 export class SharedModule { }

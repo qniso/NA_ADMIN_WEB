@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoadingService } from 'src/app/shared/services/loading.service';
 
 @Component({
   selector: 'app-user-list',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserListComponent implements OnInit {
 
-  constructor() { }
+  loader$ = this.load.loading$;
+
+
+  constructor(
+    private load: LoadingService,
+
+  ) { }
 
   ngOnInit(): void {
   }

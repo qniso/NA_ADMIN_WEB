@@ -24,9 +24,9 @@ export class UserAccessDirective {
 
     ngOnInit(): void {
         let renderView:boolean = false;
-        let userPermissions = [`${localStorage.getItem('role')}`];
-        if (!userPermissions) console.log('User has no permissions!');
-        let intersection = userPermissions.filter(permission => this.canAccess.includes(permission));
+        let userAddress = [`${localStorage.getItem('role')}`];
+        if (!userAddress) console.log('User has no permissions!');
+        let intersection = userAddress.filter(permission => this.canAccess.includes(permission));
         if (intersection.length > 0) {
             renderView =  true;
         }
@@ -39,6 +39,7 @@ export class UserAccessDirective {
             this.viewContainer.clear();
         }
     }
+    
 
   
 }

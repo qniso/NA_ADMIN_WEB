@@ -9,12 +9,14 @@ import {
 } from '@angular/common/http';
 import { 
   catchError, 
+  finalize, 
   Observable, 
   throwError 
 } from 'rxjs';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
 import { URLS } from 'src/app/app.config';
+import { LoadingService } from './loading.service';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
@@ -22,6 +24,7 @@ export class TokenInterceptor implements HttpInterceptor {
   static accessToken = '';
 
   constructor(
+    private loader: LoadingService,
     private http: HttpClient,
     private auth: AuthService,
     private router: Router
@@ -32,6 +35,7 @@ export class TokenInterceptor implements HttpInterceptor {
     next: HttpHandler
     ): Observable<HttpEvent<any>> {
       // console.log(this.auth.getToken());
+      this.loader.show();
       if(request.url == URLS.BASE_URL + URLS.NA_API + URLS.LOGIN || request.url == URLS.BASE_URL + URLS.NA_API + URLS.REFRESH_TOKEN){
         request = request.clone({
           setHeaders: {
@@ -56,6 +60,9 @@ export class TokenInterceptor implements HttpInterceptor {
           console.log('500 Jwt EXPIRED');
         }
         return throwError(()=> err);
+      }),
+      finalize(()=> {
+        this.loader.hide();
       })
     );
   }
