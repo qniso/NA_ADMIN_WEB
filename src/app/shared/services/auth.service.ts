@@ -50,7 +50,6 @@ export class AuthService {
           })
           .pipe(
             tap((updatedUserInfo) => {
-              if (!updatedUserInfo) return;
               localStorage.setItem(
                 'currentUser_NA',
                 `{
@@ -59,6 +58,8 @@ export class AuthService {
                 "expDate": "${updatedUserInfo.expDate || ''}"
               }`
               );
+              if (!updatedUserInfo) return;
+
               this.setToken(updatedUserInfo.accessToken);
             })
           );

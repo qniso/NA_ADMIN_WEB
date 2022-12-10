@@ -84,11 +84,14 @@ export class LoginComponent implements OnInit, OnDestroy {
         )
       )
       .subscribe(([auth, roles]) => {
-        if (auth.error.code === 0) this.handleError(auth); // handle error
-
-        this.userService.userRoles$$.next(roles);
-        this.userService.userInfo$$.next(auth);
-        this.handleSuccess();
+        if (auth.error.code === 0) {
+          this.userService.userRoles$$.next(roles);
+          this.userService.userInfo$$.next(auth);
+          this.handleSuccess();
+        } else {
+          // handle error
+          this.handleError(auth);
+        }
       });
   }
 
@@ -100,7 +103,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   private handleError(authData: User) {
     let result = `${JSON.stringify({ error: authData.error })}`;
     localStorage.setItem('error_NA', `${result}`);
-    localStorage.removeItem('currentUser_NA');
+    // localStorage.removeItem('currentUser_NA');
     this.errorHint = true;
   }
 }
