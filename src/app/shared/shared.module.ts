@@ -9,6 +9,9 @@ import { AdminNavComponent } from './components/admin-nav/admin-nav.component';
 import { UserTableComponent } from './components/user-table/user-table.component';
 import { CarListComponent } from './components/car-list/car-list.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { UserInfoComponent } from './components/user-info/user-info.component';
+import { UserEditGeneralInfoComponent } from './components/dialog-components/user-edit-general-info/user-edit-general-info.component';
+import { UserEditEducationInfoComponent } from './components/dialog-components/user-edit-education-info/user-edit-education-info.component';
 
 import { UserAccessDirective } from './directives/user-access.directive';
 
@@ -25,7 +28,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { UserInfoComponent } from './components/user-info/user-info.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,8 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
     UserProfileComponent,
     UserAccessDirective,
     UserInfoComponent,
+    UserEditGeneralInfoComponent,
+    UserEditEducationInfoComponent,
   ],
   imports: [
     CommonModule,
@@ -56,6 +61,7 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
     MatNativeDateModule,
     MatDividerModule,
     MatProgressSpinnerModule,
+    MatDialogModule,
   ],
   exports: [
     NavbarComponent,
@@ -79,6 +85,7 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatDividerModule,
+    MatDialogModule,
     MatProgressSpinnerModule,
   ],
 })

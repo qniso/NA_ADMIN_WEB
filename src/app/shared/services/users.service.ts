@@ -4,13 +4,14 @@ import { HttpClient } from '@angular/common/http';
 import {
   BehaviorSubject,
   forkJoin,
+  map,
   Observable,
   share,
   shareReplay,
   Subject,
   tap,
 } from 'rxjs';
-import { User, UserRole } from '../models/user.model';
+import { User, UserProfile, UserRole } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -18,9 +19,11 @@ import { User, UserRole } from '../models/user.model';
 export class UsersService {
   userInfo$$ = new BehaviorSubject<User | undefined>(undefined);
   userRoles$$ = new BehaviorSubject<any | undefined>(undefined);
+  userProfile$$ = new BehaviorSubject<UserProfile | undefined>(undefined);
 
   userInfo$ = this.userInfo$$.asObservable().pipe(share());
   userRoles$ = this.userRoles$$.asObservable().pipe(share());
+  userProfile$ = this.userProfile$$.asObservable().pipe(share());
 
   userInfoWithRoles$ = forkJoin([this.userInfo$, this.userRoles$]).pipe(
     tap((data) => console.log(data))
@@ -40,6 +43,10 @@ export class UsersService {
 
   set userRoles(data: any) {
     if (data) this.userRoles$$.next(data);
+  }
+
+  set userProfile(data: any) {
+    if (data) this.userProfile$$.next(data);
   }
 
   getUserList(): Observable<any> {
@@ -66,5 +73,17 @@ export class UsersService {
       URLS.BASE_URL + URLS.NA_API + URLS.USERS + URLS.SAVE_USER_PROFILE,
       value
     );
+  }
+
+  getUserProfile(id: number): Observable<any> {
+    return this.http
+      .post<any>(
+        URLS.BASE_URL + URLS.NA_API + URLS.USER_PROFILE + URLS.GET_USER_PROFILE,
+        { userId: id }
+      )
+      .pipe(
+        tap(() => console.log(id)),
+        map((res) => (this.userProfile$$ = res))
+      );
   }
 }

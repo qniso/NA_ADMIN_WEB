@@ -1,30 +1,31 @@
+<div *ngIf="userInfo">
 <mat-card>
     <div class="card-header">
         <p>Відомості про користувача</p>
-        <button mat-flat-button><mat-icon>edit</mat-icon>Редагувати</button>
+        <button mat-flat-button (click)="openDialog('general')"><mat-icon>edit</mat-icon>Редагувати</button>
     </div>
     <mat-divider></mat-divider>
     <div class="card-content">
-        <p>ПІБ праціника :  -</p>
+        <p>ПІБ праціника :  {{userInfo.fio }} </p>
         <p>Посада : -</p>
-        <p>Номер наказу : -</p>
-        <p>Дата наказу : -</p>
-        <p>Оклад  : -</p>
-        <p>Дата народження : -</p>
-        <p>Email : -</p>
-        <p>Стаж роботи на попередньому місці : -</p>
-        <p>Відомості щодо попередньої роботи для МП : -</p>
-        <p>Достатній стаж роботи для МП : -</p>
+        <p>Номер наказу : {{userInfo.acc_order_number}}</p>
+        <p>Дата наказу : {{userInfo.acc_order_date}}</p>
+        <p>Оклад  : {{userInfo.salary}}</p>
+        <p>Дата народження : {{userInfo.birthday}}</p>
+        <p>Email : {{userInfo.email}}</p>
+        <p>Стаж роботи на попередньому місці : {{userInfo.previous_work_exp}}</p>
+        <p>Відомості щодо попередньої роботи для МП : {{userInfo.previous_info_work_mp}}</p>
+        <p>Достатній стаж роботи для МП : {{userInfo.sufficient_experience_mp}}</p>
         <p>Телефон : -</p>
-        <p>Адреса реєстрації : -</p>
-        <p>Адреса фактичного мешкання : -</p>
+        <p>Адреса реєстрації : {{userInfo.registration_address}}</p>
+        <p>Адреса фактичного мешкання : {{userInfo.actual_address}}</p>
     </div>
 </mat-card>
 <mat-card>
     <div class="card-header">
         <p>Освіта</p>
         <div class="control-panel">
-            <button mat-flat-button><mat-icon>edit</mat-icon>Редагувати</button>
+            <button mat-flat-button (click)="openDialog('education')"><mat-icon>edit</mat-icon>Редагувати</button>
             <button mat-flat-button><mat-icon>add</mat-icon>Додати</button>
         </div>
     </div>
@@ -69,7 +70,10 @@
 <mat-card>
     <div class="card-header">
         <p>Стажування</p>
-        <button mat-flat-button><mat-icon>edit</mat-icon>Редагувати</button>
+        <div class="control-panel">
+            <button mat-flat-button><mat-icon>edit</mat-icon>Редагувати</button>
+            <button mat-flat-button><mat-icon>add</mat-icon>Додати</button>
+        </div>
     </div>
     <mat-divider></mat-divider>
     <div class="card-content">
@@ -80,7 +84,10 @@
 <mat-card>
     <div class="card-header">
         <p>Інстркутаж</p>
-        <button mat-flat-button><mat-icon>edit</mat-icon>Редагувати</button>
+        <div class="control-panel">
+            <button mat-flat-button><mat-icon>edit</mat-icon>Редагувати</button>
+            <button mat-flat-button><mat-icon>add</mat-icon>Додати</button>
+        </div>
     </div>
     <mat-divider></mat-divider>
     <div class="card-content">
@@ -89,3 +96,4 @@
         <p>Дата : -</p>
     </div>
 </mat-card>
+</div>
