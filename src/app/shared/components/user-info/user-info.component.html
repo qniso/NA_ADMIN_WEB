@@ -6,19 +6,19 @@
     </div>
     <mat-divider></mat-divider>
     <div class="card-content">
-        <p>ПІБ праціника :  {{userInfo.fio }} </p>
+        <p>ПІБ праціника :  {{userInfo.fio || "-"}} </p>
         <p>Посада : -</p>
-        <p>Номер наказу : {{userInfo.acc_order_number}}</p>
-        <p>Дата наказу : {{userInfo.acc_order_date}}</p>
-        <p>Оклад  : {{userInfo.salary}}</p>
-        <p>Дата народження : {{userInfo.birthday}}</p>
-        <p>Email : {{userInfo.email}}</p>
-        <p>Стаж роботи на попередньому місці : {{userInfo.previous_work_exp}}</p>
-        <p>Відомості щодо попередньої роботи для МП : {{userInfo.previous_info_work_mp}}</p>
-        <p>Достатній стаж роботи для МП : {{userInfo.sufficient_experience_mp}}</p>
+        <p>Номер наказу : {{userInfo.acc_order_number || "-"}}</p>
+        <p>Дата наказу : {{userInfo.acc_order_date || "-"}}</p>
+        <p>Оклад  : {{userInfo.salary || "-"}}</p>
+        <p>Дата народження : {{userInfo.birthday || "-"}}</p>
+        <p>Email : {{userInfo.email || "-"}}</p>
+        <p>Стаж роботи на попередньому місці : {{userInfo.previous_work_exp || "-"}}</p>
+        <p>Відомості щодо попередньої роботи для МП : {{userInfo.previous_info_work_mp || "-"}}</p>
+        <p>Достатній стаж роботи для МП : {{userInfo.sufficient_experience_mp || "-"}}</p>
         <p>Телефон : -</p>
-        <p>Адреса реєстрації : {{userInfo.registration_address}}</p>
-        <p>Адреса фактичного мешкання : {{userInfo.actual_address}}</p>
+        <p>Адреса реєстрації : {{userInfo.registration_address || "-"}}</p>
+        <p>Адреса фактичного мешкання : {{userInfo.actual_address || "-"}}</p>
     </div>
 </mat-card>
 <mat-card>
