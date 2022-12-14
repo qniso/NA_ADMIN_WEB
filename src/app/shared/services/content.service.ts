@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, tap } from 'rxjs';
+import { map, Observable, tap } from 'rxjs';
 import { URLS } from 'src/app/app.config';
 
 @Injectable({
@@ -17,7 +17,7 @@ export class ContentService {
       )
       .pipe(
         tap((userRoles) => {
-          localStorage.setItem('role', JSON.stringify(userRoles));
+          sessionStorage.setItem('role', JSON.stringify(userRoles));
         })
       );
   }

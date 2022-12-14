@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { map } from 'rxjs';
+import { UserButtons } from 'src/app/shared/models/rights.model';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { ContentService } from 'src/app/shared/services/content.service';
 import { LoadingService } from 'src/app/shared/services/loading.service';
@@ -22,8 +24,7 @@ export class MainComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(localStorage.getItem('role'));
-
+    // console.log(sessionStorage.getItem('role'));
     this.checkCurrentUser();
     this.auth.getRefreshToken().subscribe();
   }
@@ -36,11 +37,5 @@ export class MainComponent implements OnInit {
       if (token) this.auth.setToken(token);
       this.router.navigate(['/login']);
     });
-
-    // if (token || token !== null) {
-    //   this.auth.setToken(token);
-    // } else {
-    //   this.router.navigate(['/login']);
-    // }
   }
 }

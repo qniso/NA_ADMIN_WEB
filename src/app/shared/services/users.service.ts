@@ -30,7 +30,7 @@ export class UsersService {
     const userData = localStorage.getItem('currentUser_NA');
     if (userData) this.userInfo$$.next(JSON.parse(userData));
 
-    const userRoles = localStorage.getItem('role');
+    const userRoles = sessionStorage.getItem('role');
     if (userRoles) this.userRoles$$.next(JSON.parse(userRoles));
   }
 

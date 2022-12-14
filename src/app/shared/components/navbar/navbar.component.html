@@ -2,7 +2,8 @@
     <div class="navbar-container">
         <div class="navbar">
             <div class="navbar__left">
-               <a 
+                <a *ngFor="let element of userButtons" [routerLink]="[element.rote]" >{{element.title}}</a>
+               <!-- <a 
                 [routerLink]="['/main']" 
                 [routerLinkActive]="'active'" 
                 [routerLinkActiveOptions]="{ exact: true }"
@@ -15,7 +16,7 @@
                 [routerLinkActiveOptions]="{ exact: true }"
                 *canAccess="[ROLES.DIRECTOR, ROLES.SUPER_ADMIN]"
                 >Транспорт</a>
-                <!--  -->
+         
                 <a 
                 [routerLink]="['/main/company/company-list']" 
                 [routerLinkActive]="'active'"
@@ -27,7 +28,7 @@
                 [routerLink]="['/main/admin/admin-dashboard']" 
                 [routerLinkActive]="'active'"
                 *canAccess="[ROLES.SUPER_ADMIN, ROLES.DIRECTOR]"
-                >Адміністрування</a>
+                >Адміністрування</a> -->
             </div>
             <div class="navbar__right">
                 <p>super admin</p>

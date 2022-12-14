@@ -9,37 +9,33 @@ const routes: Routes = [
   {
     path: '',
     component: MainComponent,
-    children:[
+    children: [
       {
-        path:'company',
-        loadChildren: () => import('../companies/companies.module').then(m => m.CompaniesModule),
-        canActivate:[AuthGuard, RoleGuard],
-        data: {
-          roles: [Roles.SUPER_ADMIN]
-        }
+        path: 'company',
+        loadChildren: () =>
+          import('../companies/companies.module').then(
+            (m) => m.CompaniesModule
+          ),
+        canActivate: [AuthGuard],
       },
       {
         path: 'admin',
-        loadChildren: () => import('../admin/admin.module').then(m => m.AdminModule),
-        canActivate:[AuthGuard, RoleGuard],
-        data: {
-          roles: [Roles.SUPER_ADMIN,Roles.DIRECTOR]
-        }
+        loadChildren: () =>
+          import('../admin/admin.module').then((m) => m.AdminModule),
+        canActivate: [AuthGuard],
       },
       {
         path: 'cars',
-        loadChildren: () => import('../cars/cars.module').then(m => m.CarsModule),
-        canActivate:[AuthGuard, RoleGuard],
-        data: {
-          roles: [Roles.SUPER_ADMIN,Roles.DIRECTOR]
-        }
+        loadChildren: () =>
+          import('../cars/cars.module').then((m) => m.CarsModule),
+        canActivate: [AuthGuard],
       },
-    ]
+    ],
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class MainRoutingModule { }
+export class MainRoutingModule {}

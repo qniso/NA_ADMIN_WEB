@@ -102,7 +102,7 @@ export class AuthService {
 
   checkAuth() {
     this.userService.userInfo$.subscribe((userInfo) => {
-      console.log(userInfo);
+      // console.log(userInfo);
       if (userInfo?.accessToken) {
         this.setToken(userInfo.accessToken);
         return;
@@ -118,6 +118,7 @@ export class AuthService {
   logout() {
     this.setToken('null');
     localStorage.removeItem('currentUser_NA');
+    sessionStorage.removeItem('role');
   }
 
   private startRefreshTokenTimer(): void {
