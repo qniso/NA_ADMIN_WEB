@@ -8,6 +8,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NewUserComponent } from './components/new-user/new-user.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserComponent } from './components/user/user.component';
 
 
 
@@ -17,7 +18,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RolesComponent,
     DashboardComponent,
     NewUserComponent,
-    UserListComponent
+    UserListComponent,
+    UserComponent
   ],
   imports: [
     CommonModule,
