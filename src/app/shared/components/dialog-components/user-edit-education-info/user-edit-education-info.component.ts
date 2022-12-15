@@ -20,9 +20,9 @@ export class UserEditEducationInfoComponent implements OnInit {
 
   private initializeForm(): void {
     this.userEducation = this.fb.group({
-      certificate: ['test', [Validators.required]],
-      specialty: ['test', [Validators.required]],
-      advancedQualification: ['test', [Validators.required]],
+      certificate: ['', [Validators.required]],
+      specialty: ['', [Validators.required]],
+      advancedQualification: ['', [Validators.required]],
     });
   }
 

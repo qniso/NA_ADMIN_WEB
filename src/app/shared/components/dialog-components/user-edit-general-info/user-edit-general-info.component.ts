@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { UsersService } from 'src/app/shared/services/users.service';
 
 @Component({
   selector: 'app-user-edit-general-info',
@@ -9,26 +10,55 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class UserEditGeneralInfoComponent implements OnInit {
   userEditForm!: FormGroup;
+  userObject = this.userService.userProfile$$;
 
-  constructor(public dialog: MatDialog, private fb: FormBuilder) {}
+  constructor(
+    public dialog: MatDialog,
+    private fb: FormBuilder,
+    private userService: UsersService
+  ) {}
   ngOnInit(): void {
     this.initializeForm();
   }
 
   private initializeForm(): void {
     this.userEditForm = this.fb.group({
-      fio: ['Test Test', [Validators.required]],
-      birthday: ['12.12.2022', [Validators.required]],
+      fio: [this.userService.data.fio, [Validators.required]],
+      birthday: [this.userService.data.birthday, [Validators.required]],
       // phone: [null, [Validators.required]],
-      registrationAddress: ['Test test', [Validators.required]],
-      email: ['kaneki@gmail.com', [Validators.required]],
-      actualAddress: ['Test test', [Validators.required]],
-      accOrderNumber: ['Test test', [Validators.required]],
-      accOrderDate: ['12.12.2022', [Validators.required]],
-      salary: [228, [Validators.required, Validators.pattern(/^[0-9]/)]],
-      previousWorkExp: ['Test test', [Validators.required]],
-      previousInfoWorkMp: ['Test test', [Validators.required]],
-      sufficientExperienceMp: ['Test test', [Validators.required]],
+      registrationAddress: ['', [Validators.required]],
+      email: [
+        this.userService.data.registration_address,
+        [Validators.required],
+      ],
+      actualAddress: [
+        this.userService.data.actual_address,
+        [Validators.required],
+      ],
+      accOrderNumber: [
+        this.userService.data.acc_order_number,
+        [Validators.required],
+      ],
+      accOrderDate: [
+        this.userService.data.acc_order_date,
+        [Validators.required],
+      ],
+      salary: [
+        this.userService.data.salary,
+        [Validators.required, Validators.pattern(/^[0-9]/)],
+      ],
+      previousWorkExp: [
+        this.userService.data.previous_work_exp,
+        [Validators.required],
+      ],
+      previousInfoWorkMp: [
+        this.userService.data.previous_info_work_mp,
+        [Validators.required],
+      ],
+      sufficientExperienceMp: [
+        this.userService.data.sufficient_experience_mp,
+        [Validators.required],
+      ],
     });
   }
 
