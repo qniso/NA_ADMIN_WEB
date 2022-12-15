@@ -1,1 +1,103 @@
-<user-info></user-info>
+<div *ngIf="userInfo">
+    <mat-card>
+        <div class="card-header">
+            <p>Відомості про користувача</p>
+            <button mat-flat-button (click)="openDialog('general')"><mat-icon>edit</mat-icon>Редагувати</button>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="card-content">
+            <p>ПІБ праціника :  {{userInfo.fio || "-"}} </p>
+            <p>Посада : -</p>
+            <p>Номер наказу : {{userInfo.acc_order_number || "-"}}</p>
+            <p>Дата наказу : {{userInfo.acc_order_date || "-"}}</p>
+            <p>Оклад  : {{userInfo.salary || "-"}}</p>
+            <p>Дата народження : {{userInfo.birthday || "-"}}</p>
+            <p>Email : {{userInfo.email || "-"}}</p>
+            <p>Стаж роботи на попередньому місці : {{userInfo.previous_work_exp || "-"}}</p>
+            <p>Відомості щодо попередньої роботи для МП : {{userInfo.previous_info_work_mp || "-"}}</p>
+            <p>Достатній стаж роботи для МП : {{userInfo.sufficient_experience_mp || "-"}}</p>
+            <p>Телефон : -</p>
+            <p>Адреса реєстрації : {{userInfo.registration_address || "-"}}</p>
+            <p>Адреса фактичного мешкання : {{userInfo.actual_address || "-"}}</p>
+        </div>
+    </mat-card>
+    <mat-card>
+        <div class="card-header">
+            <p>Освіта</p>
+            <div class="control-panel">
+                <button mat-flat-button disabled><mat-icon>edit</mat-icon>Редагувати</button>
+                <button mat-flat-button (click)="openDialog('education')"><mat-icon>add</mat-icon>Додати</button>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="card-content" *ngFor="let element of userInfo.educationInfo">
+                <p>Свідоцтво про освіту :  {{element.certificate}}</p>
+                <p>Спеціальність : {{element.specialty}} </p>
+                <p>Підвищення кваліфікації, свідоцтво : {{element.advanced_qualification}}</p>
+        </div>
+        <div class="card-content" *ngIf="!userInfo.educationInfo.length">
+                <p>Свідоцтво про освіту :  -</p>
+                <p>Спеціальність : - </p>
+                <p>Підвищення кваліфікації, свідоцтво : -</p>
+        </div>
+    </mat-card>
+    <mat-card>
+        <div class="card-header">
+            <p>Посвідчення водія</p>
+            <button mat-flat-button><mat-icon>edit</mat-icon>Редагувати</button>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="card-content">
+            <p>Категорії :  -</p>
+            <p>Дата видачі : -</p>
+            <p>Дата закінчення : -</p>
+        </div>
+    </mat-card>
+    <mat-card>
+        <div class="card-header">
+            <p>Наявні документи</p>
+            <button mat-flat-button><mat-icon>edit</mat-icon>Редагувати</button>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="card-content">
+            <p>Паспорт :  -</p>
+            <p>Інн : - </p>
+            <p>Трудова книжка : -</p>
+            <mat-divider></mat-divider>
+            <p class="card-content-header">Довідка про стан здоровʼя</p>
+            <p>Номер довідки та форма: -</p>
+            <p>Дата отримання : -</p>
+            <p>Дата наступного огляду : -</p>
+            <p>Військово-облікові документи : -</p>
+        </div>
+    </mat-card>
+    <mat-card>
+        <div class="card-header">
+            <p>Стажування</p>
+            <div class="control-panel">
+                <button mat-flat-button><mat-icon>edit</mat-icon>Редагувати</button>
+                <button mat-flat-button><mat-icon>add</mat-icon>Додати</button>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="card-content">
+            <p>Номер докмуента :  -</p>
+            <p>Дата : -</p>
+        </div>
+    </mat-card>
+    <mat-card>
+        <div class="card-header">
+            <p>Інстркутаж</p>
+            <div class="control-panel">
+                <button mat-flat-button><mat-icon>edit</mat-icon>Редагувати</button>
+                <button mat-flat-button><mat-icon>add</mat-icon>Додати</button>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="card-content">
+            <p class="card-content-header">Вступний</p>
+            <p>Номер докмуента :  -</p>
+            <p>Дата : -</p>
+        </div>
+    </mat-card>
+    </div>

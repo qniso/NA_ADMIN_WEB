@@ -20,5 +20,6 @@ export const URLS = {
   NEW_USER: '/save_new_user',
   SAVE_USER_PROFILE: '/save_user_profile',
   SAVE_NEW_TRANSPORT: '/save_new_transport',
+  SAVE_INFO_EDUCATION: '/save_info_education',
   //
 };

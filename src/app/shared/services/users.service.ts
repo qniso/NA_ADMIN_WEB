@@ -20,7 +20,7 @@ export class UsersService {
   userInfo$$ = new BehaviorSubject<User | undefined>(undefined);
   userRoles$$ = new BehaviorSubject<any | undefined>(undefined);
   userProfile$$ = new BehaviorSubject<UserProfile | undefined>(undefined);
-
+  data: any;
   userInfo$ = this.userInfo$$.asObservable().pipe(share());
   userRoles$ = this.userRoles$$.asObservable().pipe(share());
   userProfile$ = this.userProfile$$.asObservable().pipe(share());
@@ -83,7 +83,16 @@ export class UsersService {
       )
       .pipe(
         tap(() => console.log(id)),
-        map((res) => (this.userProfile$$ = res))
+        map((res) => (this.data = res))
       );
+  }
+  saveUserEducation(body: {}): Observable<any> {
+    return this.http.post(
+      URLS.BASE_URL +
+        URLS.NA_API +
+        URLS.USER_PROFILE +
+        URLS.SAVE_INFO_EDUCATION,
+      body
+    );
   }
 }
