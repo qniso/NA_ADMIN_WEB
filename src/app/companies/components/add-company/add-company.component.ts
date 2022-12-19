@@ -23,20 +23,20 @@ export class AddCompanyComponent implements OnInit {
 
   private initializeForm(): void{
     this.editCompany = this.fb.group({
-      companyFullNameUa: ["test", [Validators.required]],
-      companyNameUa: ["test", [Validators.required]],
-      companyFullNameEng: ["test", [Validators.required]],
-      companyNameEng: ["test", [Validators.required]],
-      phoneNum: ["test", [Validators.required]],
-      email:["test", [Validators.required]],
-      generalAddress: ["test", [Validators.required]],
-      postAddress: ["test", [Validators.required]],
-      edrpou: ["test", [Validators.required]],
-      registrationCertificate: ["test", [Validators.required]],
-      ipn: ["test", [Validators.required]],
-      accountingTaxInfo:["test", [Validators.required]],
-      taxForm:["test", [Validators.required]],
-      licenceInfo: ["test", [Validators.required]],
+      companyFullNameUa: ["", [Validators.required]],
+      companyNameUa: ["", [Validators.required]],
+      companyFullNameEng: ["", [Validators.required]],
+      companyNameEng: ["", [Validators.required]],
+      phoneNum: ["", [Validators.required]],
+      email:["", [Validators.required]],
+      generalAddress: ["", [Validators.required]],
+      postAddress: ["", [Validators.required]],
+      edrpou: ["", [Validators.required]],
+      registrationCertificate: ["", [Validators.required]],
+      ipn: ["", [Validators.required]],
+      accountingTaxInfo:["", [Validators.required]],
+      taxForm:["", [Validators.required]],
+      licenceInfo: ["", [Validators.required]],
     })
   }
 

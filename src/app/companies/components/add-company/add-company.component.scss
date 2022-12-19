@@ -35,48 +35,16 @@
   
     &__second{
         margin-bottom: 12px;
-        display: flex;
-        justify-content: space-between;
+       
         p{
             font-weight: 500;
-        }
-        .section{
-            width: 100%;
-        }
-        .section:last-child{
-            margin-left: 24px;
-        }
-        .card-row {
-            width: 100%;
-            mat-card{
-                width: 100%;
-            }
-        }
-        .card{
-            
-            &__left{
-                width: 100%;
-                border-right:none ;
-                mat-form-field{
-                    width: 100%;
-                }
-            }
         }
     }
     &__third{
         p{
             font-weight: 500;
         }
-        .card{
-            &__left{
-                width: 50%;
-                border-right: none;
-                padding-right: 24px;
-                mat-form-field{
-                    width: 100%;
-                }
-            }
-        }
+
     }
 }
 
@@ -98,3 +66,15 @@ mat-card{
     background-color: #159A9C;
     color: #ffff;
 }
+
+
+.card-content {
+    margin-top: 24px;
+    mat-divider{
+        margin-bottom:12px;
+    }
+    .card-content-header {
+      margin-top: 12px;
+      font-weight: 500;
+    }
+  }

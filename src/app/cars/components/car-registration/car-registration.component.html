@@ -1,22 +1,28 @@
 <div class="container">
     <form [formGroup]="carRegistration" (submit)="submit()">
         <div class="section">
-            <p>Відомості про транспортний засіб</p>
-            <div class="card-row">
-                <mat-card>
-                        <p>Номенклатурна назва</p>
-                        <div class="edit-input">
-                            <mat-form-field appearance="outline">
-                                <input matInput placeholder="Номенклатурна назва" formControlName="nomenclatureName">
-                            </mat-form-field>
-                        </div>
-                </mat-card>
-            </div>
+            <mat-card>
+                <div class="card-header">
+                    <p>Відомості про транспортний засіб</p>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="card-content">
+                    <p>Номенклатурна назва</p>
+                    <div class="edit-input">
+                        <mat-form-field appearance="outline">
+                            <input matInput placeholder="Номенклатурна назва" formControlName="nomenclatureName">
+                        </mat-form-field>
+                    </div>
+                </div>
+            </mat-card>
         </div>
         <div class="section">
-            <p>Відомості техпаспорту</p>
-            <div class="card-row">
-                <mat-card>
+            <mat-card>
+                <div class="card-header">
+                    <p>Відомості техпаспорту</p>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="card-content">
                     <div>
                         <p>Номер та серія техпаспорту</p>
                         <div class="edit-input">
@@ -62,13 +68,16 @@
                               </mat-form-field>
                         </div>
                     </div>
-                </mat-card>
-            </div>
+                </div>
+            </mat-card>
         </div>
         <div class="section">
-            <p>Відомості про транспортний засіб згідно з техпаспортом</p>
-            <div class="card-row">
-                <mat-card>
+            <mat-card>
+                <div class="card-header">
+                    <p>Відомості про транспортний засіб згідно з техпаспортом</p>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="card-content">
                     <div>
                         <p>Марка</p>
                         <div class="edit-input">
@@ -173,13 +182,16 @@
                             </mat-form-field>
                         </div>
                     </div>
-                </mat-card>
-            </div>
+                </div>
+            </mat-card>
         </div>
         <div class="section">
-            <p>Відомості про підставу користування</p>
-            <div class="card-row">
-                <mat-card>
+            <mat-card>
+                <div class="card-header">
+                    <p>Відомості про підставу користування</p>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="card-content">
                     <div>
                         <p>Підстава для використання (назва договору та номер)</p>
                         <div class="edit-input">
@@ -220,13 +232,16 @@
                             </mat-form-field>
                         </div>
                     </div>
-                </mat-card>
-            </div>
+                </div>
+            </mat-card>
         </div>
         <div class="section">
-            <p>Загальні відомості про транспортний засіб</p>
-            <div class="card-row">
-                <mat-card>
+            <mat-card>
+                <div class="card-header">
+                    <p>Загальні відомості про транспортний засіб</p>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="card-content">
                     <div>
                         <p>Показник одонометру, км</p>
                         <div class="edit-input">
@@ -267,8 +282,8 @@
                             </mat-form-field>
                         </div>
                     </div>
-                </mat-card>
-            </div>
+                </div>
+            </mat-card>
         </div>
         <div class="control-panel">
             <a mat-flat-button class="cancel" (click)="cancel()">Скасувати</a>

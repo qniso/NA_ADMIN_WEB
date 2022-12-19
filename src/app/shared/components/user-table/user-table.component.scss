@@ -2,6 +2,7 @@ table {
   margin-top: 20px;
   width: 100%;
   text-align: center;
+  border-radius: 14px;
   td.mat-cell:last-of-type {
     cursor: pointer;
     text-align: end;
@@ -13,4 +14,16 @@ table {
   th.mat-header-cell:last-of-type {
     text-align: end;
   }
+}
+.mat-header-row{
+  height: 32px;
+  border-radius: 5px 5px 0 0;
+  color: #ffff;
+  background-color: #159a9c  ;//#002333
+
+  th{ 
+      text-align: center;
+      color: #ffff;
+  }
+
 }
