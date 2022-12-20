@@ -44,11 +44,11 @@
                         <div class="edit-input">
                             <mat-form-field class="date-picker" appearance="outline">
                                 <!-- <mat-label>Choose a date</mat-label> -->
-                                <input matInput [matDatepicker]="picker" formControlName="validUntil" placeholder="Техпаспорт дійсний до">
-                                <mat-datepicker-toggle matIconSuffix [for]="picker">
+                                <input matInput [matDatepicker]="validUntil" formControlName="validUntil" placeholder="Техпаспорт дійсний до">
+                                <mat-datepicker-toggle matIconSuffix [for]="validUntil">
                                   <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
                                 </mat-datepicker-toggle>
-                                <mat-datepicker #picker></mat-datepicker>
+                                <mat-datepicker #validUntil></mat-datepicker>
                               </mat-form-field>
                         </div>
                     </div>
@@ -60,11 +60,11 @@
                             </mat-form-field> -->
                             <mat-form-field class="date-picker" appearance="outline">
                                 <!-- <mat-label>Choose a date</mat-label> -->
-                                <input matInput [matDatepicker]="picker" formControlName="dateOfIssuance" placeholder="Взятий на облік (дата видачі техпаспорту)">
-                                <mat-datepicker-toggle matIconSuffix [for]="picker">
+                                <input matInput [matDatepicker]="dateOfIssuance" formControlName="dateOfIssuance" placeholder="Взятий на облік (дата видачі техпаспорту)">
+                                <mat-datepicker-toggle matIconSuffix [for]="dateOfIssuance">
                                   <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
                                 </mat-datepicker-toggle>
-                                <mat-datepicker #picker></mat-datepicker>
+                                <mat-datepicker #dateOfIssuance></mat-datepicker>
                               </mat-form-field>
                         </div>
                     </div>

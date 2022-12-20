@@ -51,4 +51,13 @@ export interface UserProfile {
       advanced_qualification: string;
     }
   ];
+  driving_license: UserDriverLicense;
+}
+
+export interface UserDriverLicense {
+  id?: number;
+  userId?: number;
+  categories: string[];
+  date_issue: string;
+  date_end: string;
 }

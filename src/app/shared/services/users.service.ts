@@ -95,4 +95,22 @@ export class UsersService {
       body
     );
   }
+  saveUserDriverLicense(body: {}): Observable<any> {
+    return this.http.post(
+      URLS.BASE_URL +
+        URLS.NA_API +
+        URLS.USER_PROFILE +
+        URLS.SAVE_INFO_DRIVING_LICENSE,
+      body
+    );
+  }
+  editUserDriverLicense(body: {}): Observable<any> {
+    return this.http.post(
+      URLS.BASE_URL +
+        URLS.NA_API +
+        URLS.USER_PROFILE +
+        URLS.EDIT_INFO_DRIVING_LICENSE,
+      body
+    );
+  }
 }

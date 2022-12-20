@@ -1,9 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { UserAddDriverLicenseComponent } from 'src/app/shared/components/dialog-components/user-add-driver-license/user-add-driver-license.component';
+import { UserEditDriverLicenseComponent } from 'src/app/shared/components/dialog-components/user-edit-driver-license/user-edit-driver-license.component';
 import { UserEditEducationInfoComponent } from 'src/app/shared/components/dialog-components/user-edit-education-info/user-edit-education-info.component';
 import { UserEditGeneralInfoComponent } from 'src/app/shared/components/dialog-components/user-edit-general-info/user-edit-general-info.component';
-import { UserProfile } from 'src/app/shared/models/user.model';
+import {
+  UserDriverLicense,
+  UserProfile,
+} from 'src/app/shared/models/user.model';
 import { UsersService } from 'src/app/shared/services/users.service';
 
 @Component({
@@ -13,8 +18,10 @@ import { UsersService } from 'src/app/shared/services/users.service';
 })
 export class UserComponent implements OnInit {
   userInfo!: UserProfile | undefined;
+  userDriverLicense!: UserDriverLicense | undefined;
 
   userId!: number | null;
+
   constructor(
     public dialog: MatDialog,
     private userService: UsersService,
@@ -45,6 +52,26 @@ export class UserComponent implements OnInit {
       }
       case 'education': {
         const dialogRef = this.dialog.open(UserEditEducationInfoComponent, {
+          height: '70%',
+          width: '70%',
+        });
+        dialogRef.afterClosed().subscribe(() => {
+          console.log('The dialog was closed');
+        });
+        break;
+      }
+      case 'addDriverLicense': {
+        const dialogRef = this.dialog.open(UserAddDriverLicenseComponent, {
+          height: '70%',
+          width: '70%',
+        });
+        dialogRef.afterClosed().subscribe(() => {
+          console.log('The dialog was closed');
+        });
+        break;
+      }
+      case 'editDriverLicense': {
+        const dialogRef = this.dialog.open(UserEditDriverLicenseComponent, {
           height: '70%',
           width: '70%',
         });

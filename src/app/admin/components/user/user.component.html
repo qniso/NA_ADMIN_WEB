@@ -37,19 +37,24 @@
         </div>
         <div class="card-content" *ngIf="!userInfo.educationInfo.length">
                 <p>Результатів не знайдено</p>
-                
         </div>
     </mat-card>
     <mat-card>
         <div class="card-header">
             <p>Посвідчення водія</p>
-            <button mat-flat-button><mat-icon>edit</mat-icon>Редагувати</button>
+            <div class="control-panel">
+                <button mat-flat-button (click)="openDialog('editDriverLicense')"><mat-icon>edit</mat-icon>Редагувати</button>
+                <button mat-flat-button (click)="openDialog('addDriverLicense')"><mat-icon>add</mat-icon>Додати</button>
+            </div>
         </div>
         <mat-divider></mat-divider>
-        <div class="card-content">
-            <p>Категорії :  -</p>
-            <p>Дата видачі : -</p>
-            <p>Дата закінчення : -</p>
+        <div class="card-content" *ngIf="userInfo.driving_license.categories !== null">
+            <p>Категорії :  <span *ngFor="let element of userInfo.driving_license.categories">{{element}}</span></p>
+            <p>Дата видачі : {{userInfo.driving_license.date_issue}}</p>
+            <p>Дата закінчення : {{userInfo.driving_license.date_end}}</p>
+        </div>
+        <div class="card-content" *ngIf="userInfo.driving_license.categories == null">
+            <p>Результатів не знайдено</p>
         </div>
     </mat-card>
     <mat-card>

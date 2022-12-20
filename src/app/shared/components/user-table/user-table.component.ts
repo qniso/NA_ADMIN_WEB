@@ -7,7 +7,7 @@ import { UsersService } from '../../services/users.service';
   styleUrls: ['./user-table.component.scss'],
 })
 export class UserTableComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'symbol', 'edit'];
+  displayedColumns: string[] = ['name', 'symbol', 'edit'];
   dataSource = [];
 
   constructor(private users: UsersService) {}
