@@ -63,18 +63,23 @@
             <button mat-flat-button (click)="openDialog('editExistDocument')"><mat-icon>edit</mat-icon>Редагувати</button>
         </div>
         <mat-divider></mat-divider>
-        <div class="card-content" *ngIf="userInfo.available_documents !== null">
+        <div class="card-content" *ngIf="userInfo.available_documents.passport !== null">
             <p>Паспорт :  {{userInfo.available_documents.passport}}</p>
             <p>Інн : {{userInfo.available_documents.ipn}} </p>
             <p>Трудова книжка : {{userInfo.available_documents.employment_history}}</p>
             <mat-divider></mat-divider>
-            <p class="card-content-header">Довідка про стан здоровʼя</p>
+            <p class="card-content-header" >Довідка про стан здоровʼя</p>
+            <div *ngIf="userInfo.available_documents.health_certificate !== null">
             <p>Номер довідки та форма: {{userInfo.available_documents.health_certificate.certificate_number}}</p>
             <p>Дата отримання : {{userInfo.available_documents.health_certificate.date_issue}}</p>
             <p>Дата наступного огляду : {{userInfo.available_documents.health_certificate.date_next_review}}</p>
             <p>Військово-облікові документи : {{userInfo.available_documents.military_registration_doc}}</p>
+            </div>
+            <div *ngIf="userInfo.available_documents.health_certificate == null">
+                <p>Результатів не знайдено</p>
+            </div>
         </div>
-        <div class="card-content" *ngIf="userInfo.available_documents === null">
+        <div class="card-content" *ngIf="userInfo.available_documents.passport === null">
             <p>Результатів не знайдено</p>
         </div>
     </mat-card>
@@ -90,6 +95,7 @@
         <div class="card-content" *ngFor="let element of userInfo.internshipInfo">
             <p>Номер докмуента :  {{element.doc_number}}</p>
             <p>Дата : {{element.date}}</p>
+            <mat-divider *ngIf="userInfo.internshipInfo.length > 1"></mat-divider>
         </div>
         <div class="card-content" *ngIf="!userInfo.internshipInfo.length">
             <p>Результатів не знайдено</p>
@@ -99,18 +105,22 @@
         <div class="card-header">
             <p>Інстркутаж</p>
             <div class="control-panel">
-                <button mat-flat-button><mat-icon>edit</mat-icon>Редагувати</button>
+                <button mat-flat-button (click)="openDialog('editUserInternship')"><mat-icon>edit</mat-icon>Редагувати</button>
                 <button mat-flat-button><mat-icon>add</mat-icon>Додати</button>
             </div>
         </div>
         <mat-divider></mat-divider>
-        <div class="card-content">
+        <div class="card-content"  >
             <p class="card-content-header">Вступний</p>
-            <p>Номер докмуента :  -</p>
-            <p>Дата : -</p>
+            <div *ngFor="let element of userInfo.instructionInfo">
+            <p *ngIf="userInfo.instructionInfo.length > 1">Повторний</p>
+            <p>Номер докмуента :  {{element.doc_number}}</p>
+            <p>Дата : {{element.date}}</p>
+
+            </div>
         </div>
-        <!-- <div class="card-content" *ngIf="!userInfo.internshipInfo.length">
+        <div class="card-content" *ngIf="!userInfo.instructionInfo.length">
             <p>Результатів не знайдено</p>
-        </div> -->
+        </div>
     </mat-card>
     </div>

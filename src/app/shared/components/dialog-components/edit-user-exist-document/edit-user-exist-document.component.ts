@@ -67,6 +67,8 @@ export class EditUserExistDocumentComponent implements OnInit {
       },
     };
 
-    this.userService.saveExistDocument(body).subscribe();
+    this.userService
+      .saveExistDocument(body)
+      .subscribe((res) => console.log(res));
   }
 }

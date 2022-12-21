@@ -1,0 +1,19 @@
+button {
+  text-align: end;
+  color: #ffff;
+  background-color: #159a9c;
+}
+
+mat-form-field {
+  width: 50%;
+}
+.date {
+  ::ng-deep {
+    .mat-form-field-infix {
+      display: flex;
+    }
+    .mat-form-field-appearance-outline .mat-form-field-infix {
+      padding: 0;
+    }
+  }
+}

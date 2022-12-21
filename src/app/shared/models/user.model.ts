@@ -54,6 +54,7 @@ export interface UserProfile {
   driving_license: UserDriverLicense;
   available_documents: AvailableDocuments;
   internshipInfo: [UserInternship];
+  instructionInfo: [UserUnstruction];
 }
 
 export interface UserDriverLicense {
@@ -78,6 +79,13 @@ export interface AvailableDocuments {
 }
 
 export interface UserInternship {
+  userId?: number;
+  doc_number: string;
+  date: string;
+  type?: string;
+}
+
+export interface UserUnstruction {
   userId?: number;
   doc_number: string;
   date: string;

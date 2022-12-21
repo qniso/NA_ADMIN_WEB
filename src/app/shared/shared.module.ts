@@ -33,6 +33,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
 import { EditUserIntershipComponent } from './components/dialog-components/edit-user-intership/edit-user-intership.component';
 import { AddUserIntershipComponent } from './components/dialog-components/add-user-intership/add-user-intership.component';
+import { EditUserInstructionComponent } from './components/dialog-components/edit-user-instruction/edit-user-instruction.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { AddUserIntershipComponent } from './components/dialog-components/add-us
     EditUserExistDocumentComponent,
     EditUserIntershipComponent,
     AddUserIntershipComponent,
+    EditUserInstructionComponent,
   ],
   imports: [
     CommonModule,

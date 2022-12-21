@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+
 import { AddUserIntershipComponent } from 'src/app/shared/components/dialog-components/add-user-intership/add-user-intership.component';
 import { EditUserExistDocumentComponent } from 'src/app/shared/components/dialog-components/edit-user-exist-document/edit-user-exist-document.component';
-
+import { EditUserInstructionComponent } from 'src/app/shared/components/dialog-components/edit-user-instruction/edit-user-instruction.component';
 import { UserAddDriverLicenseComponent } from 'src/app/shared/components/dialog-components/user-add-driver-license/user-add-driver-license.component';
 import { UserEditDriverLicenseComponent } from 'src/app/shared/components/dialog-components/user-edit-driver-license/user-edit-driver-license.component';
 import { UserEditEducationInfoComponent } from 'src/app/shared/components/dialog-components/user-edit-education-info/user-edit-education-info.component';
 import { UserEditGeneralInfoComponent } from 'src/app/shared/components/dialog-components/user-edit-general-info/user-edit-general-info.component';
+
 import {
   UserDriverLicense,
   UserProfile,
@@ -22,7 +24,6 @@ import { UsersService } from 'src/app/shared/services/users.service';
 export class UserComponent implements OnInit {
   userInfo!: UserProfile | undefined;
   userDriverLicense!: UserDriverLicense | undefined;
-
   userId!: number | null;
 
   constructor(
@@ -95,6 +96,16 @@ export class UserComponent implements OnInit {
       }
       case 'addUserInternship': {
         const dialogRef = this.dialog.open(AddUserIntershipComponent, {
+          height: '70%',
+          width: '70%',
+        });
+        dialogRef.afterClosed().subscribe(() => {
+          console.log('The dialog was closed');
+        });
+        break;
+      }
+      case 'editUserInternship': {
+        const dialogRef = this.dialog.open(EditUserInstructionComponent, {
           height: '70%',
           width: '70%',
         });
