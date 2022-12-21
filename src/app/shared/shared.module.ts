@@ -11,6 +11,9 @@ import { CarListComponent } from './components/car-list/car-list.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { UserEditGeneralInfoComponent } from './components/dialog-components/user-edit-general-info/user-edit-general-info.component';
 import { UserEditEducationInfoComponent } from './components/dialog-components/user-edit-education-info/user-edit-education-info.component';
+import { UserEditDriverLicenseComponent } from './components/dialog-components/user-edit-driver-license/user-edit-driver-license.component';
+import { UserAddDriverLicenseComponent } from './components/dialog-components/user-add-driver-license/user-add-driver-license.component';
+import { EditUserExistDocumentComponent } from './components/dialog-components/edit-user-exist-document/edit-user-exist-document.component';
 
 import { UserAccessDirective } from './directives/user-access.directive';
 
@@ -28,8 +31,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
-import { UserEditDriverLicenseComponent } from './components/dialog-components/user-edit-driver-license/user-edit-driver-license.component';
-import { UserAddDriverLicenseComponent } from './components/dialog-components/user-add-driver-license/user-add-driver-license.component';
+import { EditUserIntershipComponent } from './components/dialog-components/edit-user-intership/edit-user-intership.component';
+import { AddUserIntershipComponent } from './components/dialog-components/add-user-intership/add-user-intership.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +47,9 @@ import { UserAddDriverLicenseComponent } from './components/dialog-components/us
     UserEditEducationInfoComponent,
     UserEditDriverLicenseComponent,
     UserAddDriverLicenseComponent,
+    EditUserExistDocumentComponent,
+    EditUserIntershipComponent,
+    AddUserIntershipComponent,
   ],
   imports: [
     CommonModule,

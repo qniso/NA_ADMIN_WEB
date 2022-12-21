@@ -95,7 +95,7 @@ export class UsersService {
       body
     );
   }
-  saveUserDriverLicense(body: {}): Observable<any> {
+  addUserDriverLicense(body: {}): Observable<any> {
     return this.http.post(
       URLS.BASE_URL +
         URLS.NA_API +
@@ -110,6 +110,18 @@ export class UsersService {
         URLS.NA_API +
         URLS.USER_PROFILE +
         URLS.EDIT_INFO_DRIVING_LICENSE,
+      body
+    );
+  }
+  saveExistDocument(body: {}): Observable<any> {
+    return this.http.post(
+      URLS.BASE_URL + URLS.NA_API + URLS.USER_PROFILE + URLS.EXIST_DOCUMENT,
+      body
+    );
+  }
+  editUserInternship(body: {}): Observable<any> {
+    return this.http.post(
+      URLS.BASE_URL + URLS.NA_API + URLS.USER_PROFILE + URLS.SAVE_INTERSHIP,
       body
     );
   }

@@ -11,6 +11,7 @@ import { UsersService } from 'src/app/shared/services/users.service';
 export class UserEditDriverLicenseComponent implements OnInit {
   userDriverLicense!: FormGroup;
   userObject = this.userService.userProfile$$;
+  driverCategories: string[] = this.userService.data.driving_license.categories;
 
   constructor(private fb: FormBuilder, private userService: UsersService) {}
 
@@ -36,16 +37,15 @@ export class UserEditDriverLicenseComponent implements OnInit {
     let dateEnd = this.formatDate(_dateEnd);
 
     const body: UserDriverLicense = {
-      id: this.userService.data.id,
       userId: this.userService.data.id,
-      categories: [this.userDriverLicense.controls['categories'].value],
+      categories: this.driverCategories.concat(
+        this.userDriverLicense.controls['categories'].value
+      ),
       date_issue: dateIssue,
       date_end: dateEnd,
     };
 
-    this.userService
-      .editUserDriverLicense(body)
-      .subscribe((res) => console.log(res));
+    this.userService.editUserDriverLicense(body).subscribe();
   }
 
   formatDate(value: any) {

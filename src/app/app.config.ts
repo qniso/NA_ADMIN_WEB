@@ -10,18 +10,21 @@ export const URLS = {
   USER_PROFILE: '/user_profile',
   TRANSPORT: '/transport',
   ROLLE_BUTTONS: '/role_buttons',
-  GET_ALLOWED: '/get_allowed',
   NEW_COMPANY: '/save_new',
   GET_COMPANY_LIST: '/get_all',
   GET_EMPLOYEE_LIST: '/get_employee_list',
   GET_ALL_ROLES: '/get_all_roles',
   GET_ALL_TRANSPORT: '/get_all_transport',
   GET_USER_PROFILE: '/get_user_profile',
+  GET_ALLOWED: '/get_allowed',
   NEW_USER: '/save_new_user',
   SAVE_USER_PROFILE: '/save_user_profile',
   SAVE_NEW_TRANSPORT: '/save_new_transport',
   SAVE_INFO_EDUCATION: '/save_info_education',
-  EDIT_INFO_DRIVING_LICENSE: '/edit_info_driving_license',
+  SAVE_INTERSHIP: '/save_internship',
   SAVE_INFO_DRIVING_LICENSE: '/save_info_driving_license',
-  //user_profile
+  EDIT_INFO_DRIVING_LICENSE: '/edit_info_driving_license',
+  EXIST_DOCUMENT: '/exist_document',
+
+  //user_profile/save_internship
 };

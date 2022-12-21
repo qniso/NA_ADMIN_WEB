@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { AddUserIntershipComponent } from 'src/app/shared/components/dialog-components/add-user-intership/add-user-intership.component';
+import { EditUserExistDocumentComponent } from 'src/app/shared/components/dialog-components/edit-user-exist-document/edit-user-exist-document.component';
+
 import { UserAddDriverLicenseComponent } from 'src/app/shared/components/dialog-components/user-add-driver-license/user-add-driver-license.component';
 import { UserEditDriverLicenseComponent } from 'src/app/shared/components/dialog-components/user-edit-driver-license/user-edit-driver-license.component';
 import { UserEditEducationInfoComponent } from 'src/app/shared/components/dialog-components/user-edit-education-info/user-edit-education-info.component';
@@ -72,6 +75,26 @@ export class UserComponent implements OnInit {
       }
       case 'editDriverLicense': {
         const dialogRef = this.dialog.open(UserEditDriverLicenseComponent, {
+          height: '70%',
+          width: '70%',
+        });
+        dialogRef.afterClosed().subscribe(() => {
+          console.log('The dialog was closed');
+        });
+        break;
+      }
+      case 'editExistDocument': {
+        const dialogRef = this.dialog.open(EditUserExistDocumentComponent, {
+          height: '70%',
+          width: '70%',
+        });
+        dialogRef.afterClosed().subscribe(() => {
+          console.log('The dialog was closed');
+        });
+        break;
+      }
+      case 'addUserInternship': {
+        const dialogRef = this.dialog.open(AddUserIntershipComponent, {
           height: '70%',
           width: '70%',
         });

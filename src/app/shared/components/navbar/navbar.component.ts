@@ -21,7 +21,6 @@ export class NavbarComponent implements OnInit {
   userButtons!: Array<UserButtons>;
 
   ngOnInit(): void {
-    console.log();
     this.getButtons();
   }
 

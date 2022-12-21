@@ -52,12 +52,34 @@ export interface UserProfile {
     }
   ];
   driving_license: UserDriverLicense;
+  available_documents: AvailableDocuments;
+  internshipInfo: [UserInternship];
 }
 
 export interface UserDriverLicense {
-  id?: number;
   userId?: number;
   categories: string[];
   date_issue: string;
   date_end: string;
+}
+
+export interface AvailableDocuments {
+  id?: number;
+  passport: string;
+  ipn: string;
+  employment_history: string;
+  military_registration_doc: string;
+  health_certificate: {
+    certificate_number: string;
+    date_issue: string;
+    date_next_review: string;
+  };
+  userId?: number;
+}
+
+export interface UserInternship {
+  userId?: number;
+  doc_number: string;
+  date: string;
+  type?: string;
 }

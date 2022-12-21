@@ -43,13 +43,13 @@
         <div class="card-header">
             <p>Посвідчення водія</p>
             <div class="control-panel">
-                <button mat-flat-button (click)="openDialog('editDriverLicense')"><mat-icon>edit</mat-icon>Редагувати</button>
-                <button mat-flat-button (click)="openDialog('addDriverLicense')"><mat-icon>add</mat-icon>Додати</button>
+                <button mat-flat-button (click)="openDialog('addDriverLicense')"><mat-icon>edit</mat-icon>Редагувати</button>
+                <button mat-flat-button (click)="openDialog('editDriverLicense')"><mat-icon>add</mat-icon>Додати</button>
             </div>
         </div>
         <mat-divider></mat-divider>
         <div class="card-content" *ngIf="userInfo.driving_license.categories !== null">
-            <p>Категорії :  <span *ngFor="let element of userInfo.driving_license.categories">{{element}}</span></p>
+            <p>Категорії :  <span *ngFor="let element of userInfo.driving_license.categories">{{element}}, </span></p>
             <p>Дата видачі : {{userInfo.driving_license.date_issue}}</p>
             <p>Дата закінчення : {{userInfo.driving_license.date_end}}</p>
         </div>
@@ -60,33 +60,39 @@
     <mat-card>
         <div class="card-header">
             <p>Наявні документи</p>
-            <button mat-flat-button><mat-icon>edit</mat-icon>Редагувати</button>
+            <button mat-flat-button (click)="openDialog('editExistDocument')"><mat-icon>edit</mat-icon>Редагувати</button>
         </div>
         <mat-divider></mat-divider>
-        <div class="card-content">
-            <p>Паспорт :  -</p>
-            <p>Інн : - </p>
-            <p>Трудова книжка : -</p>
+        <div class="card-content" *ngIf="userInfo.available_documents !== null">
+            <p>Паспорт :  {{userInfo.available_documents.passport}}</p>
+            <p>Інн : {{userInfo.available_documents.ipn}} </p>
+            <p>Трудова книжка : {{userInfo.available_documents.employment_history}}</p>
             <mat-divider></mat-divider>
             <p class="card-content-header">Довідка про стан здоровʼя</p>
-            <p>Номер довідки та форма: -</p>
-            <p>Дата отримання : -</p>
-            <p>Дата наступного огляду : -</p>
-            <p>Військово-облікові документи : -</p>
+            <p>Номер довідки та форма: {{userInfo.available_documents.health_certificate.certificate_number}}</p>
+            <p>Дата отримання : {{userInfo.available_documents.health_certificate.date_issue}}</p>
+            <p>Дата наступного огляду : {{userInfo.available_documents.health_certificate.date_next_review}}</p>
+            <p>Військово-облікові документи : {{userInfo.available_documents.military_registration_doc}}</p>
+        </div>
+        <div class="card-content" *ngIf="userInfo.available_documents === null">
+            <p>Результатів не знайдено</p>
         </div>
     </mat-card>
     <mat-card>
         <div class="card-header">
             <p>Стажування</p>
             <div class="control-panel">
-                <button mat-flat-button><mat-icon>edit</mat-icon>Редагувати</button>
-                <button mat-flat-button><mat-icon>add</mat-icon>Додати</button>
+                <button mat-flat-button disabled><mat-icon>edit</mat-icon>Редагувати</button>
+                <button mat-flat-button (click)="openDialog('addUserInternship')"><mat-icon>add</mat-icon>Додати</button>
             </div>
         </div>
         <mat-divider></mat-divider>
-        <div class="card-content">
-            <p>Номер докмуента :  -</p>
-            <p>Дата : -</p>
+        <div class="card-content" *ngFor="let element of userInfo.internshipInfo">
+            <p>Номер докмуента :  {{element.doc_number}}</p>
+            <p>Дата : {{element.date}}</p>
+        </div>
+        <div class="card-content" *ngIf="!userInfo.internshipInfo.length">
+            <p>Результатів не знайдено</p>
         </div>
     </mat-card>
     <mat-card>
@@ -103,5 +109,8 @@
             <p>Номер докмуента :  -</p>
             <p>Дата : -</p>
         </div>
+        <!-- <div class="card-content" *ngIf="!userInfo.internshipInfo.length">
+            <p>Результатів не знайдено</p>
+        </div> -->
     </mat-card>
     </div>

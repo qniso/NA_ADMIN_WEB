@@ -36,10 +36,8 @@ export class UserAddDriverLicenseComponent implements OnInit {
   }
 
   submit() {
-    const _dateIssue =
-      this.userDriverLicense.controls['dateIssue'].value.toISOString();
-    const _dateEnd =
-      this.userDriverLicense.controls['dateEnd'].value.toISOString();
+    const _dateIssue = this.userDriverLicense.controls['dateIssue'].value;
+    const _dateEnd = this.userDriverLicense.controls['dateEnd'].value;
 
     let dateIssue = this.formatDate(_dateIssue);
     let dateEnd = this.formatDate(_dateEnd);
@@ -51,9 +49,7 @@ export class UserAddDriverLicenseComponent implements OnInit {
       date_end: dateEnd,
     };
 
-    this.userService
-      .saveUserDriverLicense(body)
-      .subscribe((res) => console.log(res));
+    this.userService.addUserDriverLicense(body).subscribe();
   }
 
   formatDate(value: any) {
