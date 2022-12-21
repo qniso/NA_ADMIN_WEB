@@ -36,4 +36,11 @@ export class UserEditEducationInfoComponent implements OnInit {
     };
     this.userService.saveUserEducation(education).subscribe();
   }
+
+  delete() {
+    const body = {
+      userId: this.userService.data.id,
+    };
+    this.userService.deleteUserEducation(body).subscribe();
+  }
 }

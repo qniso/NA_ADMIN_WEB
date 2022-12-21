@@ -125,4 +125,14 @@ export class UsersService {
       body
     );
   }
+
+  deleteUserEducation(body: {}): Observable<any> {
+    return this.http.delete(
+      URLS.BASE_URL +
+        URLS.NA_API +
+        URLS.USER_PROFILE +
+        URLS.REMOVE_INFO_EDUCATION,
+      body
+    );
+  }
 }

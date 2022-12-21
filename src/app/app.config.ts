@@ -25,6 +25,6 @@ export const URLS = {
   SAVE_INFO_DRIVING_LICENSE: '/save_info_driving_license',
   EDIT_INFO_DRIVING_LICENSE: '/edit_info_driving_license',
   EXIST_DOCUMENT: '/exist_document',
-
-  //user_profile/save_internship
+  REMOVE_INFO_EDUCATION: '/remove_info_education',
+  ///user_profile
 };
