@@ -41,15 +41,12 @@ export class AddUserIntershipComponent implements OnInit {
   submit() {
     const _date = this.userInternship.controls['date'].value;
     let date = this.formatDate(_date);
-
     const body: UserInternship = {
       userId: this.userService.data.id,
       doc_number: this.userInternship.controls['docNumber'].value,
       date: date,
       type: 'INTERNSHIP',
     };
-
     this.userService.editUserInternship(body).subscribe();
-    location.reload();
   }
 }

@@ -38,19 +38,15 @@ export class UserAddDriverLicenseComponent implements OnInit {
   submit() {
     const _dateIssue = this.userDriverLicense.controls['dateIssue'].value;
     const _dateEnd = this.userDriverLicense.controls['dateEnd'].value;
-
     let dateIssue = this.formatDate(_dateIssue);
     let dateEnd = this.formatDate(_dateEnd);
-
     const body: UserDriverLicense = {
       userId: this.userService.data.id,
       categories: [this.userDriverLicense.controls['categories'].value],
       date_issue: dateIssue,
       date_end: dateEnd,
     };
-
     this.userService.addUserDriverLicense(body).subscribe();
-    location.reload();
   }
 
   formatDate(value: any) {

@@ -57,7 +57,7 @@ export class UserComponent implements OnInit {
           width: '70%',
         });
         dialogRef.afterClosed().subscribe(() => {
-          console.log('The dialog was closed');
+          location.reload();
         });
         break;
       }
@@ -75,7 +75,7 @@ export class UserComponent implements OnInit {
         this.userService.userEducation$$.next(body);
 
         dialogRef.afterClosed().subscribe(() => {
-          console.log('The dialog was closed');
+          location.reload();
         });
         break;
       }
@@ -85,7 +85,7 @@ export class UserComponent implements OnInit {
           width: '70%',
         });
         dialogRef.afterClosed().subscribe(() => {
-          console.log('The dialog was closed');
+          location.reload();
         });
         break;
       }
@@ -95,7 +95,7 @@ export class UserComponent implements OnInit {
           width: '70%',
         });
         dialogRef.afterClosed().subscribe(() => {
-          console.log('The dialog was closed');
+          location.reload();
         });
         break;
       }
@@ -105,7 +105,7 @@ export class UserComponent implements OnInit {
           width: '70%',
         });
         dialogRef.afterClosed().subscribe(() => {
-          console.log('The dialog was closed');
+          location.reload();
         });
         break;
       }
@@ -115,7 +115,7 @@ export class UserComponent implements OnInit {
           width: '70%',
         });
         dialogRef.afterClosed().subscribe(() => {
-          console.log('The dialog was closed');
+          location.reload();
         });
         break;
       }
@@ -125,7 +125,7 @@ export class UserComponent implements OnInit {
           width: '70%',
         });
         dialogRef.afterClosed().subscribe(() => {
-          console.log('The dialog was closed');
+          location.reload();
         });
         break;
       }
@@ -135,7 +135,7 @@ export class UserComponent implements OnInit {
           width: '70%',
         });
         dialogRef.afterClosed().subscribe(() => {
-          console.log('The dialog was closed');
+          location.reload();
         });
         break;
       }

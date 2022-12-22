@@ -35,7 +35,6 @@ export class UserEditDriverLicenseComponent implements OnInit {
 
     let dateIssue = this.formatDate(_dateIssue);
     let dateEnd = this.formatDate(_dateEnd);
-
     const body: UserDriverLicense = {
       userId: this.userService.data.id,
       categories: this.driverCategories.concat(
@@ -44,9 +43,7 @@ export class UserEditDriverLicenseComponent implements OnInit {
       date_issue: dateIssue,
       date_end: dateEnd,
     };
-
     this.userService.editUserDriverLicense(body).subscribe();
-    location.reload();
   }
 
   formatDate(value: any) {

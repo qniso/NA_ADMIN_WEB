@@ -66,10 +66,8 @@ export class EditUserExistDocumentComponent implements OnInit {
         date_next_review: dateNextReview,
       },
     };
-
     this.userService
       .saveExistDocument(body)
       .subscribe((res) => console.log(res));
-    location.reload();
   }
 }

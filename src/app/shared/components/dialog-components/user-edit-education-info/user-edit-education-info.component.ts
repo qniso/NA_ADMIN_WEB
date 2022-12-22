@@ -49,7 +49,6 @@ export class UserEditEducationInfoComponent implements OnInit {
         this.userEducation.controls['advancedQualification'].value,
     };
     this.userService.editUserEducation(education).subscribe();
-    location.reload();
   }
 
   delete() {
