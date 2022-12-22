@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { AddUserEducationInfoComponent } from 'src/app/shared/components/dialog-components/add-user-education-info/add-user-education-info.component';
 
 import { AddUserIntershipComponent } from 'src/app/shared/components/dialog-components/add-user-intership/add-user-intership.component';
 import { EditUserExistDocumentComponent } from 'src/app/shared/components/dialog-components/edit-user-exist-document/edit-user-exist-document.component';
@@ -42,7 +43,13 @@ export class UserComponent implements OnInit {
       this.userInfo = res;
     });
   }
-  openDialog(item: string): void {
+  openDialog(
+    item: string,
+    educationCertificate?: string,
+    educationSpecialty?: string,
+    educationAdvancedQualification?: string,
+    id?: number
+  ): void {
     switch (item) {
       case 'general': {
         const dialogRef = this.dialog.open(UserEditGeneralInfoComponent, {
@@ -54,8 +61,26 @@ export class UserComponent implements OnInit {
         });
         break;
       }
-      case 'education': {
+      case 'editEducation': {
         const dialogRef = this.dialog.open(UserEditEducationInfoComponent, {
+          height: '70%',
+          width: '70%',
+        });
+        const body = {
+          id: id,
+          certificate: educationCertificate,
+          specialty: educationSpecialty,
+          advancedQualification: educationAdvancedQualification,
+        };
+        this.userService.userEducation$$.next(body);
+
+        dialogRef.afterClosed().subscribe(() => {
+          console.log('The dialog was closed');
+        });
+        break;
+      }
+      case 'addEducation': {
+        const dialogRef = this.dialog.open(AddUserEducationInfoComponent, {
           height: '70%',
           width: '70%',
         });
@@ -115,5 +140,13 @@ export class UserComponent implements OnInit {
         break;
       }
     }
+  }
+  delete(id: number) {
+    const body = {
+      id: id,
+      userId: this.userService.data.id,
+    };
+    this.userService.deleteUserEducation(body).subscribe();
+    location.reload();
   }
 }

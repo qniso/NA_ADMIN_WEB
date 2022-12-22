@@ -46,6 +46,7 @@ export class UserEditDriverLicenseComponent implements OnInit {
     };
 
     this.userService.editUserDriverLicense(body).subscribe();
+    location.reload();
   }
 
   formatDate(value: any) {

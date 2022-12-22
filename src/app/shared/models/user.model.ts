@@ -44,13 +44,7 @@ export interface UserProfile {
   sufficient_experience_mp: string;
   registration_address: string;
   actual_address: string;
-  educationInfo: [
-    {
-      certificate: string;
-      specialty: string;
-      advanced_qualification: string;
-    }
-  ];
+  educationInfo: [UserEducation];
   driving_license: UserDriverLicense;
   available_documents: AvailableDocuments;
   internshipInfo: [UserInternship];
@@ -90,4 +84,11 @@ export interface UserUnstruction {
   doc_number: string;
   date: string;
   type?: string;
+}
+
+export interface UserEducation {
+  id: number;
+  certificate: string;
+  specialty: string;
+  advanced_qualification: string;
 }

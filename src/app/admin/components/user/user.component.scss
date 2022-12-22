@@ -35,3 +35,10 @@ mat-card {
 .mat-button-disabled {
   opacity: 0.5;
 }
+.education-info {
+  display: flex;
+  justify-content: space-between;
+}
+.delete {
+  color: #f74d4d;
+}

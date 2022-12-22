@@ -20,10 +20,14 @@ export class UsersService {
   userInfo$$ = new BehaviorSubject<User | undefined>(undefined);
   userRoles$$ = new BehaviorSubject<any | undefined>(undefined);
   userProfile$$ = new BehaviorSubject<UserProfile | undefined>(undefined);
+  userEducation$$ = new BehaviorSubject<any>(undefined);
+
   data: any;
+
   userInfo$ = this.userInfo$$.asObservable().pipe(share());
   userRoles$ = this.userRoles$$.asObservable().pipe(share());
   userProfile$ = this.userProfile$$.asObservable().pipe(share());
+  userEducation$ = this.userEducation$$.asObservable().pipe(share());
 
   userInfoWithRoles$ = forkJoin([this.userInfo$, this.userRoles$]).pipe(
     tap((data) => console.log(data))
@@ -47,6 +51,10 @@ export class UsersService {
 
   set userProfile(data: any) {
     if (data) this.userProfile$$.next(data);
+  }
+
+  set userEducation(data: any) {
+    if (data) this.userEducation$$.next(data);
   }
 
   getUserList(): Observable<any> {
@@ -95,6 +103,17 @@ export class UsersService {
       body
     );
   }
+
+  editUserEducation(body: {}): Observable<any> {
+    return this.http.post(
+      URLS.BASE_URL +
+        URLS.NA_API +
+        URLS.USER_PROFILE +
+        URLS.EDIT_INFO_EDUCATION,
+      body
+    );
+  }
+
   addUserDriverLicense(body: {}): Observable<any> {
     return this.http.post(
       URLS.BASE_URL +
@@ -132,7 +151,7 @@ export class UsersService {
         URLS.NA_API +
         URLS.USER_PROFILE +
         URLS.REMOVE_INFO_EDUCATION,
-      body
+      { body: body }
     );
   }
 }

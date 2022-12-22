@@ -14,6 +14,10 @@ import { UserEditEducationInfoComponent } from './components/dialog-components/u
 import { UserEditDriverLicenseComponent } from './components/dialog-components/user-edit-driver-license/user-edit-driver-license.component';
 import { UserAddDriverLicenseComponent } from './components/dialog-components/user-add-driver-license/user-add-driver-license.component';
 import { EditUserExistDocumentComponent } from './components/dialog-components/edit-user-exist-document/edit-user-exist-document.component';
+import { EditUserIntershipComponent } from './components/dialog-components/edit-user-intership/edit-user-intership.component';
+import { AddUserIntershipComponent } from './components/dialog-components/add-user-intership/add-user-intership.component';
+import { EditUserInstructionComponent } from './components/dialog-components/edit-user-instruction/edit-user-instruction.component';
+import { AddUserEducationInfoComponent } from './components/dialog-components/add-user-education-info/add-user-education-info.component';
 
 import { UserAccessDirective } from './directives/user-access.directive';
 
@@ -31,9 +35,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
-import { EditUserIntershipComponent } from './components/dialog-components/edit-user-intership/edit-user-intership.component';
-import { AddUserIntershipComponent } from './components/dialog-components/add-user-intership/add-user-intership.component';
-import { EditUserInstructionComponent } from './components/dialog-components/edit-user-instruction/edit-user-instruction.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,7 @@ import { EditUserInstructionComponent } from './components/dialog-components/edi
     EditUserIntershipComponent,
     AddUserIntershipComponent,
     EditUserInstructionComponent,
+    AddUserEducationInfoComponent,
   ],
   imports: [
     CommonModule,
@@ -72,6 +75,7 @@ import { EditUserInstructionComponent } from './components/dialog-components/edi
     MatDividerModule,
     MatProgressSpinnerModule,
     MatDialogModule,
+    MatMenuModule,
   ],
   exports: [
     NavbarComponent,
@@ -96,6 +100,7 @@ import { EditUserInstructionComponent } from './components/dialog-components/edi
     MatDividerModule,
     MatDialogModule,
     MatProgressSpinnerModule,
+    MatMenuModule,
   ],
 })
 export class SharedModule {}

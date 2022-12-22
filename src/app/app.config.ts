@@ -21,10 +21,11 @@ export const URLS = {
   SAVE_USER_PROFILE: '/save_user_profile',
   SAVE_NEW_TRANSPORT: '/save_new_transport',
   SAVE_INFO_EDUCATION: '/save_info_education',
+  EDIT_INFO_EDUCATION: '/edit_info_education',
   SAVE_INTERSHIP: '/save_internship',
   SAVE_INFO_DRIVING_LICENSE: '/save_info_driving_license',
   EDIT_INFO_DRIVING_LICENSE: '/edit_info_driving_license',
   EXIST_DOCUMENT: '/exist_document',
   REMOVE_INFO_EDUCATION: '/remove_info_education',
-  ///user_profile
+  ///user_profile/edit_info_education
 };

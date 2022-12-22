@@ -25,15 +25,27 @@
         <div class="card-header">
             <p>Освіта</p>
             <div class="control-panel">
-                <button mat-flat-button disabled><mat-icon>edit</mat-icon>Редагувати</button>
-                <button mat-flat-button (click)="openDialog('education')"><mat-icon>add</mat-icon>Додати</button>
+                <button mat-flat-button (click)="openDialog('addEducation')"><mat-icon>add</mat-icon>Додати</button>
             </div>
         </div>
         <mat-divider></mat-divider>
         <div class="card-content" *ngFor="let element of userInfo.educationInfo">
-                <p>Свідоцтво про освіту :  {{element.certificate}}</p>
-                <p>Спеціальність : {{element.specialty}} </p>
-                <p>Підвищення кваліфікації, свідоцтво : {{element.advanced_qualification}}</p>
+            <div class="education-info">
+                <div class="card__left">
+                    <p>Свідоцтво про освіту :  {{element.certificate}}</p>
+                    <p>Спеціальність : {{element.specialty}} </p>
+                    <p>Підвищення кваліфікації, свідоцтво : {{element.advanced_qualification}}</p>
+                </div>
+                <div class="card__right">
+                    <button mat-button [matMenuTriggerFor]="editEducation"><mat-icon>more_vert</mat-icon></button>
+                    <mat-menu #editEducation="matMenu">
+                        <button mat-menu-item (click)="openDialog('editEducation', element.certificate, element.specialty, element.advanced_qualification, element.id)">Редагувати</button>
+                        <button mat-menu-item (click)="delete(element.id)" class="delete">Видалити</button>
+                    </mat-menu>
+                </div>
+                
+            </div>
+            <mat-divider  *ngIf="userInfo.educationInfo.length > 1"></mat-divider>
         </div>
         <div class="card-content" *ngIf="!userInfo.educationInfo.length">
                 <p>Результатів не знайдено</p>
@@ -43,8 +55,8 @@
         <div class="card-header">
             <p>Посвідчення водія</p>
             <div class="control-panel">
-                <button mat-flat-button (click)="openDialog('addDriverLicense')"><mat-icon>edit</mat-icon>Редагувати</button>
-                <button mat-flat-button (click)="openDialog('editDriverLicense')"><mat-icon>add</mat-icon>Додати</button>
+                <button mat-flat-button (click)="openDialog('editDriverLicense')"><mat-icon>edit</mat-icon>Редагувати</button>
+                <button mat-flat-button (click)="openDialog('addDriverLicense')"><mat-icon>add</mat-icon>Додати</button>
             </div>
         </div>
         <mat-divider></mat-divider>

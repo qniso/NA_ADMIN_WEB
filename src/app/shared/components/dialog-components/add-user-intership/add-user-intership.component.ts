@@ -50,5 +50,6 @@ export class AddUserIntershipComponent implements OnInit {
     };
 
     this.userService.editUserInternship(body).subscribe();
+    location.reload();
   }
 }

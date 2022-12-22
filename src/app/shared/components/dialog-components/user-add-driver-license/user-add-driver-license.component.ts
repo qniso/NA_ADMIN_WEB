@@ -50,6 +50,7 @@ export class UserAddDriverLicenseComponent implements OnInit {
     };
 
     this.userService.addUserDriverLicense(body).subscribe();
+    location.reload();
   }
 
   formatDate(value: any) {
