@@ -19,6 +19,7 @@ export const URLS = {
   GET_ALLOWED: '/get_allowed',
   NEW_USER: '/save_new_user',
   SAVE_USER_PROFILE: '/save_user_profile',
+  SAVE_USER_INFO: '/save_info',
   SAVE_NEW_TRANSPORT: '/save_new_transport',
   SAVE_INFO_EDUCATION: '/save_info_education',
   EDIT_INFO_EDUCATION: '/edit_info_education',
@@ -27,5 +28,6 @@ export const URLS = {
   EDIT_INFO_DRIVING_LICENSE: '/edit_info_driving_license',
   EXIST_DOCUMENT: '/exist_document',
   REMOVE_INFO_EDUCATION: '/remove_info_education',
-  ///user_profile/edit_info_education
+  REMOVE_INFO_INTERNSHIP: '/remove_internship',
+  //user_profile/remove_internship
 };

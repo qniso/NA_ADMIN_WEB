@@ -1,3 +1,4 @@
+import { UpperCasePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
@@ -6,6 +7,7 @@ import { AddUserEducationInfoComponent } from 'src/app/shared/components/dialog-
 import { AddUserIntershipComponent } from 'src/app/shared/components/dialog-components/add-user-intership/add-user-intership.component';
 import { EditUserExistDocumentComponent } from 'src/app/shared/components/dialog-components/edit-user-exist-document/edit-user-exist-document.component';
 import { EditUserInstructionComponent } from 'src/app/shared/components/dialog-components/edit-user-instruction/edit-user-instruction.component';
+import { EditUserIntershipComponent } from 'src/app/shared/components/dialog-components/edit-user-intership/edit-user-intership.component';
 import { UserAddDriverLicenseComponent } from 'src/app/shared/components/dialog-components/user-add-driver-license/user-add-driver-license.component';
 import { UserEditDriverLicenseComponent } from 'src/app/shared/components/dialog-components/user-edit-driver-license/user-edit-driver-license.component';
 import { UserEditEducationInfoComponent } from 'src/app/shared/components/dialog-components/user-edit-education-info/user-edit-education-info.component';
@@ -47,106 +49,139 @@ export class UserComponent implements OnInit {
     item: string,
     educationCertificate?: string,
     educationSpecialty?: string,
-    educationAdvancedQualification?: string,
-    id?: number
-  ): void {
-    switch (item) {
-      case 'general': {
-        const dialogRef = this.dialog.open(UserEditGeneralInfoComponent, {
-          height: '70%',
-          width: '70%',
-        });
-        dialogRef.afterClosed().subscribe(() => {
-          location.reload();
-        });
-        break;
-      }
-      case 'editEducation': {
-        const dialogRef = this.dialog.open(UserEditEducationInfoComponent, {
-          height: '70%',
-          width: '70%',
-        });
-        const body = {
-          id: id,
-          certificate: educationCertificate,
-          specialty: educationSpecialty,
-          advancedQualification: educationAdvancedQualification,
-        };
-        this.userService.userEducation$$.next(body);
+    educationAdvancedQualification?: string
+  ): void {}
 
-        dialogRef.afterClosed().subscribe(() => {
-          location.reload();
-        });
-        break;
-      }
-      case 'addEducation': {
-        const dialogRef = this.dialog.open(AddUserEducationInfoComponent, {
-          height: '70%',
-          width: '70%',
-        });
-        dialogRef.afterClosed().subscribe(() => {
-          location.reload();
-        });
-        break;
-      }
-      case 'addDriverLicense': {
-        const dialogRef = this.dialog.open(UserAddDriverLicenseComponent, {
-          height: '70%',
-          width: '70%',
-        });
-        dialogRef.afterClosed().subscribe(() => {
-          location.reload();
-        });
-        break;
-      }
-      case 'editDriverLicense': {
-        const dialogRef = this.dialog.open(UserEditDriverLicenseComponent, {
-          height: '70%',
-          width: '70%',
-        });
-        dialogRef.afterClosed().subscribe(() => {
-          location.reload();
-        });
-        break;
-      }
-      case 'editExistDocument': {
-        const dialogRef = this.dialog.open(EditUserExistDocumentComponent, {
-          height: '70%',
-          width: '70%',
-        });
-        dialogRef.afterClosed().subscribe(() => {
-          location.reload();
-        });
-        break;
-      }
-      case 'addUserInternship': {
-        const dialogRef = this.dialog.open(AddUserIntershipComponent, {
-          height: '70%',
-          width: '70%',
-        });
-        dialogRef.afterClosed().subscribe(() => {
-          location.reload();
-        });
-        break;
-      }
-      case 'editUserInternship': {
-        const dialogRef = this.dialog.open(EditUserInstructionComponent, {
-          height: '70%',
-          width: '70%',
-        });
-        dialogRef.afterClosed().subscribe(() => {
-          location.reload();
-        });
-        break;
-      }
-    }
+  editGeneralInfo(): void {
+    const dialogRef = this.dialog.open(UserEditGeneralInfoComponent, {
+      height: '70%',
+      width: '70%',
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      location.reload();
+    });
   }
-  delete(id: number) {
+
+  editUserEducationInfo(
+    id: number,
+    educationCertificate: string,
+    educationSpecialty: string,
+    educationAdvancedQualification: string
+  ): void {
+    const dialogRef = this.dialog.open(UserEditEducationInfoComponent, {
+      height: '70%',
+      width: '70%',
+    });
+    const body = {
+      id: id,
+      certificate: educationCertificate,
+      specialty: educationSpecialty,
+      advancedQualification: educationAdvancedQualification,
+    };
+    this.userService.userEducation$$.next(body);
+
+    dialogRef.afterClosed().subscribe(() => {
+      location.reload();
+    });
+  }
+
+  addUserEducationInfo(): void {
+    const dialogRef = this.dialog.open(AddUserEducationInfoComponent, {
+      height: '70%',
+      width: '70%',
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      location.reload();
+    });
+  }
+
+  addDriverLicense(): void {
+    const dialogRef = this.dialog.open(UserAddDriverLicenseComponent, {
+      height: '70%',
+      width: '70%',
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      location.reload();
+    });
+  }
+
+  editDriverLicense(): void {
+    const dialogRef = this.dialog.open(UserEditDriverLicenseComponent, {
+      height: '70%',
+      width: '70%',
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      location.reload();
+    });
+  }
+
+  editExistDocument(): void {
+    const dialogRef = this.dialog.open(EditUserExistDocumentComponent, {
+      height: '70%',
+      width: '70%',
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      location.reload();
+    });
+  }
+
+  addUserInternship(): void {
+    const dialogRef = this.dialog.open(AddUserIntershipComponent, {
+      height: '70%',
+      width: '70%',
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      location.reload();
+    });
+  }
+
+  editUserInternship(id: number, docNumber: string, date: string): void {
+    const dialogRef = this.dialog.open(EditUserIntershipComponent, {
+      height: '70%',
+      width: '70%',
+    });
+
+    const body = {
+      id: id,
+      doc_number: docNumber,
+      date: date,
+    };
+    this.userService.userInternship$$.next(body);
+    dialogRef.afterClosed().subscribe(() => {
+      location.reload();
+    });
+  }
+
+  addUserInstruction(): void {
+    const dialogRef = this.dialog.open(EditUserInstructionComponent, {
+      height: '70%',
+      width: '70%',
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
+      location.reload();
+    });
+  }
+
+  delete(id: number, value: string, type?: string) {
     const body = {
       id: id,
       userId: this.userService.data.id,
     };
-    this.userService.deleteUserEducation(body).subscribe();
-    location.reload();
+
+    switch (value) {
+      case 'education':
+        this.userService.deleteUserEducation(body).subscribe();
+        location.reload();
+        break;
+      case 'internship':
+        this.userService.deleteUserInternship(body).subscribe();
+        location.reload();
+        break;
+      case 'instruction':
+        this.userService.deleteUserInternship(body).subscribe();
+        location.reload();
+        break;
+    }
   }
 }

@@ -74,6 +74,7 @@ export interface AvailableDocuments {
 }
 
 export interface UserInternship {
+  id?: number;
   userId?: number;
   doc_number: string;
   date: string;
@@ -81,6 +82,7 @@ export interface UserInternship {
 }
 
 export interface UserUnstruction {
+  id?: number;
   userId?: number;
   doc_number: string;
   date: string;

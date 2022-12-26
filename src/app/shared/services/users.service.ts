@@ -21,6 +21,10 @@ export class UsersService {
   userRoles$$ = new BehaviorSubject<any | undefined>(undefined);
   userProfile$$ = new BehaviorSubject<UserProfile | undefined>(undefined);
   userEducation$$ = new BehaviorSubject<any>(undefined);
+  userInternship$$ = new BehaviorSubject<any>(undefined);
+  userInternShip$$ = new BehaviorSubject<any>(undefined);
+  userInstruction$$ = new BehaviorSubject<any>(undefined);
+  // Проставить с моделей сюда типы
 
   data: any;
 
@@ -28,6 +32,8 @@ export class UsersService {
   userRoles$ = this.userRoles$$.asObservable().pipe(share());
   userProfile$ = this.userProfile$$.asObservable().pipe(share());
   userEducation$ = this.userEducation$$.asObservable().pipe(share());
+  userInternship$ = this.userInternship$$.asObservable().pipe(share());
+  userInstruction$ = this.userInstruction$$.asObservable().pipe(share());
 
   userInfoWithRoles$ = forkJoin([this.userInfo$, this.userRoles$]).pipe(
     tap((data) => console.log(data))
@@ -57,6 +63,14 @@ export class UsersService {
     if (data) this.userEducation$$.next(data);
   }
 
+  set userInternship(data: any) {
+    if (data) this.userInternship$$.next(data);
+  }
+
+  set userInstruction(data: any) {
+    if (data) this.userInstruction$$.next(data);
+  }
+
   getUserList(): Observable<any> {
     return this.http.get<any>(
       URLS.BASE_URL + URLS.NA_API + URLS.USERS + URLS.GET_EMPLOYEE_LIST
@@ -78,7 +92,7 @@ export class UsersService {
 
   saveUserProfile(value: Object): Observable<any> {
     return this.http.post<any>(
-      URLS.BASE_URL + URLS.NA_API + URLS.USERS + URLS.SAVE_USER_PROFILE,
+      URLS.BASE_URL + URLS.NA_API + URLS.USER_PROFILE + URLS.SAVE_USER_INFO,
       value
     );
   }
@@ -151,6 +165,16 @@ export class UsersService {
         URLS.NA_API +
         URLS.USER_PROFILE +
         URLS.REMOVE_INFO_EDUCATION,
+      { body: body }
+    );
+  }
+
+  deleteUserInternship(body: {}): Observable<any> {
+    return this.http.delete(
+      URLS.BASE_URL +
+        URLS.NA_API +
+        URLS.USER_PROFILE +
+        URLS.REMOVE_INFO_INTERNSHIP,
       { body: body }
     );
   }

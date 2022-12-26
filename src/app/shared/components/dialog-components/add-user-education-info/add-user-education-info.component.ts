@@ -33,6 +33,5 @@ export class AddUserEducationInfoComponent implements OnInit {
         this.userEducation.controls['advancedQualification'].value,
     };
     this.userService.saveUserEducation(education).subscribe();
-    location.reload();
   }
 }

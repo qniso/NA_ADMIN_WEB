@@ -45,6 +45,7 @@ export class UserProfileComponent implements OnInit {
       id: this.userId,
       email: this.userEditForm.controls['email'].value,
       fio: this.userEditForm.controls['fio'].value,
+      phone: this.userEditForm.controls['phone'].value,
       acc_order_number: this.userEditForm.controls['accOrderNumber'].value,
       acc_order_date: this.userEditForm.controls['accOrderDate'].value,
       salary: this.userEditForm.controls['salary'].value,
@@ -62,5 +63,6 @@ export class UserProfileComponent implements OnInit {
       .saveUserProfile(userProfile)
       .subscribe((res) => console.log(res));
     this.router.navigate(['/main/admin/admin-dashboard/user-list']);
+    // Сделать проверку на респонс, если приходит ошибка, то не роутить
   }
 }

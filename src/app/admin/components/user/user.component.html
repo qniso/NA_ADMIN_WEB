@@ -2,7 +2,7 @@
     <mat-card>
         <div class="card-header">
             <p>Відомості про користувача</p>
-            <button mat-flat-button (click)="openDialog('general')"><mat-icon>edit</mat-icon>Редагувати</button>
+            <button mat-flat-button (click)="editGeneralInfo()"><mat-icon>edit</mat-icon>Редагувати</button>
         </div>
         <mat-divider></mat-divider>
         <div class="card-content">
@@ -12,6 +12,7 @@
             <p>Дата наказу : {{userInfo.acc_order_date || "-"}}</p>
             <p>Оклад  : {{userInfo.salary || "-"}}</p>
             <p>Дата народження : {{userInfo.birthday || "-"}}</p>
+            <p>Номер телефону : {{userInfo.phone || "-"}}</p>
             <p>Email : {{userInfo.email || "-"}}</p>
             <p>Стаж роботи на попередньому місці : {{userInfo.previous_work_exp || "-"}}</p>
             <p>Відомості щодо попередньої роботи для МП : {{userInfo.previous_info_work_mp || "-"}}</p>
@@ -25,7 +26,7 @@
         <div class="card-header">
             <p>Освіта</p>
             <div class="control-panel">
-                <button mat-flat-button (click)="openDialog('addEducation')"><mat-icon>add</mat-icon>Додати</button>
+                <button mat-flat-button (click)="addUserEducationInfo()"><mat-icon>add</mat-icon>Додати</button>
             </div>
         </div>
         <mat-divider></mat-divider>
@@ -39,8 +40,8 @@
                 <div class="card__right">
                     <button mat-button [matMenuTriggerFor]="editEducation"><mat-icon>more_vert</mat-icon></button>
                     <mat-menu #editEducation="matMenu">
-                        <button mat-menu-item (click)="openDialog('editEducation', element.certificate, element.specialty, element.advanced_qualification, element.id)">Редагувати</button>
-                        <button mat-menu-item (click)="delete(element.id)" class="delete">Видалити</button>
+                        <button mat-menu-item (click)="editUserEducationInfo(element.id, element.certificate, element.specialty, element.advanced_qualification)">Редагувати</button>
+                        <button mat-menu-item (click)="delete(element.id, 'education')" class="delete">Видалити</button>
                     </mat-menu>
                 </div>
                 
@@ -55,8 +56,8 @@
         <div class="card-header">
             <p>Посвідчення водія</p>
             <div class="control-panel">
-                <button mat-flat-button (click)="openDialog('editDriverLicense')"><mat-icon>edit</mat-icon>Редагувати</button>
-                <button mat-flat-button (click)="openDialog('addDriverLicense')"><mat-icon>add</mat-icon>Додати</button>
+                <button mat-flat-button (click)="addDriverLicense()"><mat-icon>edit</mat-icon>Редагувати</button>
+                <button mat-flat-button (click)="editDriverLicense()"><mat-icon>add</mat-icon>Додати</button>
             </div>
         </div>
         <mat-divider></mat-divider>
@@ -72,7 +73,7 @@
     <mat-card>
         <div class="card-header">
             <p>Наявні документи</p>
-            <button mat-flat-button (click)="openDialog('editExistDocument')"><mat-icon>edit</mat-icon>Редагувати</button>
+            <button mat-flat-button (click)="editExistDocument()"><mat-icon>edit</mat-icon>Редагувати</button>
         </div>
         <mat-divider></mat-divider>
         <div class="card-content" *ngIf="userInfo.available_documents.passport !== null">
@@ -99,14 +100,26 @@
         <div class="card-header">
             <p>Стажування</p>
             <div class="control-panel">
-                <button mat-flat-button disabled><mat-icon>edit</mat-icon>Редагувати</button>
-                <button mat-flat-button (click)="openDialog('addUserInternship')"><mat-icon>add</mat-icon>Додати</button>
+                <button mat-flat-button (click)="addUserInternship()"><mat-icon>add</mat-icon>Додати</button>
             </div>
         </div>
         <mat-divider></mat-divider>
         <div class="card-content" *ngFor="let element of userInfo.internshipInfo">
-            <p>Номер докмуента :  {{element.doc_number}}</p>
-            <p>Дата : {{element.date}}</p>
+            <div class="card-info">
+                <div class="internship-info">
+                    <div class="card__left">
+                        <p>Номер докмуента :  {{element.doc_number}}</p>
+                        <p>Дата : {{element.date}}</p>
+                    </div>
+                    <div class="card__right">
+                        <button mat-button [matMenuTriggerFor]="editEducation"><mat-icon>more_vert</mat-icon></button>
+                        <mat-menu #editEducation="matMenu">
+                            <button mat-menu-item (click)="editUserInternship(element.id!, element.doc_number, element.date)">Редагувати</button>
+                            <button mat-menu-item (click)="delete(element.id!, 'internship')" class="delete">Видалити</button>
+                        </mat-menu>
+                    </div>
+                </div>
+            </div>
             <mat-divider *ngIf="userInfo.internshipInfo.length > 1"></mat-divider>
         </div>
         <div class="card-content" *ngIf="!userInfo.internshipInfo.length">
@@ -117,20 +130,29 @@
         <div class="card-header">
             <p>Інстркутаж</p>
             <div class="control-panel">
-                <button mat-flat-button (click)="openDialog('editUserInternship')"><mat-icon>edit</mat-icon>Редагувати</button>
-                <button mat-flat-button><mat-icon>add</mat-icon>Додати</button>
+                <button mat-flat-button (click)="addUserInstruction()"><mat-icon>add</mat-icon>Додати</button>
             </div>
         </div>
         <mat-divider></mat-divider>
-        <div class="card-content"  >
-            <p class="card-content-header">Вступний</p>
-            <div *ngFor="let element of userInfo.instructionInfo">
-            <p *ngIf="userInfo.instructionInfo.length > 1">Повторний</p>
-            <p>Номер докмуента :  {{element.doc_number}}</p>
-            <p>Дата : {{element.date}}</p>
-
+        <div class="card-content" *ngFor="let element of userInfo.instructionInfo">
+                <div class="instruction-info">
+                    <div class="card__left">
+                        <!-- <p class="card-content-header">Вступний</p>
+                        <p class="card-content-header" >Повторний</p> -->
+                        <p>Номер докмуента :  {{element.doc_number}}</p>
+                        <p>Дата : {{element.date}}</p>
+                    </div>
+                    <div class="card__right">
+                        <button mat-button [matMenuTriggerFor]="editEducation"><mat-icon>more_vert</mat-icon></button>
+                        <mat-menu #editEducation="matMenu">
+                            <button mat-menu-item (click)="editUserInternship(element.id!, element.doc_number, element.date)">Редагувати</button>
+                            <button mat-menu-item (click)="delete(element.id!, 'internship')" class="delete">Видалити</button>
+                        </mat-menu>
+                    </div>
+                </div>
+                
+                <mat-divider *ngIf="userInfo.instructionInfo.length > 1"></mat-divider>
             </div>
-        </div>
         <div class="card-content" *ngIf="!userInfo.instructionInfo.length">
             <p>Результатів не знайдено</p>
         </div>
