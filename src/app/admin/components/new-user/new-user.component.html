@@ -1,37 +1,41 @@
 <div class="container">
     <div class="add-user" *ngIf="switchPage">
-        <p>Додавання нового користувача</p>
-        <div class="user-profile">
-            <form [formGroup]="userForm" (ngSubmit)="submit()">
-                <div class="login">
-                    <mat-form-field appearance="outline">
-                        <!-- <mat-icon matPrefix *ngIf="authForm.get('login')?.invalid && authForm.get('login')?.touched" style="color: red;">login</mat-icon>
-                        <mat-icon matPrefix *ngIf="authForm.get('login')?.untouched || authForm.get('login')?.valid">login</mat-icon> -->
-                        <input matInput placeholder="Enter your login" formControlName="login" >
-                    </mat-form-field>
-                </div>
-                <div class="pass">
-                    <mat-form-field appearance="outline">
-                        <!-- <mat-icon matPrefix *ngIf="authForm.get('pass')?.invalid && authForm.get('pass')?.touched" style="color: red;">lock</mat-icon>
-                        <mat-icon matPrefix *ngIf="authForm.get('pass')?.untouched || authForm.get('pass')?.valid">lock</mat-icon> -->
-                        <input matInput placeholder="Enter your password" type="password" formControlName="pass">
-                    </mat-form-field>
-                    <!-- <span *ngIf="errorHint">wrong login or pass</span> -->
-                </div>
-                <div class="role-select">
-                    <mat-form-field appearance="outline">
-                        <mat-label>Оберіть роль</mat-label>
-                        <mat-select formControlName="roleSelect">
-                            <mat-option *ngFor="let role of roleList" [value]="role">
-                              {{role.description}}
-                            </mat-option>
-                          </mat-select>
-                    </mat-form-field>
-                </div>
-                <a mat-flat-button class="cancel" (click)="cancel()">Скасувати</a>
-                <button mat-flat-button >Продовжити</button>
-            </form>
-        </div>
+        <mat-card>
+            <div class="card-header">
+                    <p>Додавання нового користувача</p>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="user-profile">
+                <form [formGroup]="userForm" (ngSubmit)="submit()">
+                    <div class="login">
+                        <p>Логін</p>
+                        <mat-form-field appearance="outline">
+                            <input matInput placeholder="Логін" formControlName="login" >
+                        </mat-form-field>
+                    </div>
+                    <div class="pass">
+                        <p>Пароль</p>
+                        <mat-form-field appearance="outline">
+                            <input matInput placeholder="Пароль" type="password" formControlName="pass">
+                        </mat-form-field>
+                        <!-- <span *ngIf="errorHint">wrong login or pass</span> -->
+                    </div>
+                    <div class="role-select">
+                        <p>Роль користувача</p>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Оберіть роль</mat-label>
+                            <mat-select formControlName="roleSelect">
+                                <mat-option *ngFor="let role of roleList" [value]="role">
+                                {{role.description}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <a mat-flat-button class="cancel" (click)="cancel()">Скасувати</a>
+                    <button mat-flat-button >Продовжити</button>
+                </form>
+            </div>
+        </mat-card>
     </div>
     <div class="user-profile" *ngIf="switchPage == false">
         <user-profile [userId]="userId"></user-profile>

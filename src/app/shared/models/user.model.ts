@@ -35,6 +35,7 @@ export interface UserProfile {
   id?: number;
   email: string;
   fio: string;
+  phone: string;
   acc_order_number: string;
   acc_order_date: string;
   salary: number;

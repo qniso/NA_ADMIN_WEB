@@ -1,110 +1,118 @@
 <div class="container">
     <div class="user-profile">
-        <form [formGroup]="userEditForm" (submit)="submit()">
-            <div class="section">
-                <div class="card-row">
-                    <p>ПІБ праціника</p>
-                    <div class="edit-input">
-                        <mat-form-field appearance="outline">
-                            <input matInput placeholder="ПІБ праціника" formControlName="fio">
-                        </mat-form-field>
-                    </div>
-                </div>
-                <div class="card-row">
-                    <p>Дата народження</p>
-                    <div class="edit-input">
-                        <mat-form-field appearance="outline">
-                            <input matInput placeholder="Дата народження" formControlName="birthday">
-                        </mat-form-field>
-                    </div>
-                </div>
-                <div class="card-row">
-                    <p>Email</p>
-                    <div class="edit-input">
-                        <mat-form-field appearance="outline">
-                            <input matInput placeholder="Email" formControlName="email">
-                        </mat-form-field>
-                    </div>
-                </div>
-                <!-- <div class="card-row">
-                    <p style="color: gray;">Телефон</p>
-                    <div class="edit-input">
-                        <mat-form-field appearance="outline" >
-                            <input  matInput placeholder="Телефон" formControlName="phone" [disabled]="true">
-                        </mat-form-field>
-                    </div>
-                </div> -->
-                <div class="card-row">
-                    <p>Адреса реєстрації</p>
-                    <div class="edit-input">
-                        <mat-form-field appearance="outline" >
-                            <input  matInput placeholder="Адреса реєстрації" formControlName="registrationAddress">
-                        </mat-form-field>
-                    </div>
-                </div>
-                <div class="card-row">
-                    <p>Адреса фактичного мешкання</p>
-                    <div class="edit-input">
-                        <mat-form-field appearance="outline">
-                            <input matInput placeholder="Адреса фактичного мешкання" formControlName="actualAddress">
-                        </mat-form-field>
-                    </div>
-                </div>
+        <mat-card>
+            <div class="card-header">
+                <p>Загальні відомості</p>
             </div>
             <mat-divider></mat-divider>
-            <div class="section">
-                <div class="card-row">
-                    <p>Номер наказу</p>
-                    <div class="edit-input">
-                        <mat-form-field appearance="outline">
-                            <input matInput placeholder="Номер наказу" formControlName="accOrderNumber">
-                        </mat-form-field>
+            <div class="card-body">
+                <form [formGroup]="userEditForm" (submit)="submit()">
+                    <div class="section">
+                        <div class="card-row">
+                            <p>ПІБ праціника</p>
+                            <div class="edit-input">
+                                <mat-form-field appearance="outline">
+                                    <input matInput placeholder="ПІБ праціника" formControlName="fio">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="card-row">
+                            <p>Дата народження</p>
+                            <div class="edit-input">
+                                <mat-form-field appearance="outline">
+                                    <input matInput placeholder="Дата народження" formControlName="birthday">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="card-row">
+                            <p>Email</p>
+                            <div class="edit-input">
+                                <mat-form-field appearance="outline">
+                                    <input matInput placeholder="Email" formControlName="email">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="card-row">
+                            <p style="color: gray;">Телефон</p>
+                            <div class="edit-input">
+                                <mat-form-field appearance="outline" >
+                                    <input  matInput placeholder="Телефон" formControlName="phone" [disabled]="true">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="card-row">
+                            <p>Адреса реєстрації</p>
+                            <div class="edit-input">
+                                <mat-form-field appearance="outline" >
+                                    <input  matInput placeholder="Адреса реєстрації" formControlName="registrationAddress">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="card-row">
+                            <p>Адреса фактичного мешкання</p>
+                            <div class="edit-input">
+                                <mat-form-field appearance="outline">
+                                    <input matInput placeholder="Адреса фактичного мешкання" formControlName="actualAddress">
+                                </mat-form-field>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="card-row">
-                    <p>Дата наказу</p>
-                    <div class="edit-input">
-                        <mat-form-field appearance="outline">
-                            <input matInput placeholder="Дата наказу" formControlName="accOrderDate">
-                        </mat-form-field>
+                    <mat-divider></mat-divider>
+                    <div class="section">
+                        <div class="card-row">
+                            <p>Номер наказу</p>
+                            <div class="edit-input">
+                                <mat-form-field appearance="outline">
+                                    <input matInput placeholder="Номер наказу" formControlName="accOrderNumber">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="card-row">
+                            <p>Дата наказу</p>
+                            <div class="edit-input">
+                                <mat-form-field appearance="outline">
+                                    <input matInput placeholder="Дата наказу" formControlName="accOrderDate">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="card-row">
+                            <p>Оклад</p>
+                            <div class="edit-input">
+                                <mat-form-field appearance="outline">
+                                    <input matInput placeholder="Оклад" formControlName="salary">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="card-row">
+                            <p>Стаж роботи на попередньому місці</p>
+                            <div class="edit-input">
+                                <mat-form-field appearance="outline">
+                                    <input matInput placeholder="Стаж роботи на попередньому місці" formControlName="previousWorkExp">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="card-row">
+                            <p>Відомості щодо попередньої роботи для МП</p>
+                            <div class="edit-input">
+                                <mat-form-field appearance="outline">
+                                    <input matInput placeholder="Відомості щодо попередньої роботи для МП" formControlName="previousInfoWorkMp">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="card-row">
+                            <p>Достатній стаж роботи для МП</p>
+                            <div class="edit-input">
+                                <mat-form-field appearance="outline">
+                                    <input matInput placeholder="Достатній стаж роботи для МП" formControlName="sufficientExperienceMp">
+                                </mat-form-field>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="card-row">
-                    <p>Оклад</p>
-                    <div class="edit-input">
-                        <mat-form-field appearance="outline">
-                            <input matInput placeholder="Оклад" formControlName="salary">
-                        </mat-form-field>
+                    <div class="control-panel">
+                        <button mat-flat-button >Зберегти</button>
                     </div>
-                </div>
-                <div class="card-row">
-                    <p>Стаж роботи на попередньому місці</p>
-                    <div class="edit-input">
-                        <mat-form-field appearance="outline">
-                            <input matInput placeholder="Стаж роботи на попередньому місці" formControlName="previousWorkExp">
-                        </mat-form-field>
-                    </div>
-                </div>
-                <div class="card-row">
-                    <p>Відомості щодо попередньої роботи для МП</p>
-                    <div class="edit-input">
-                        <mat-form-field appearance="outline">
-                            <input matInput placeholder="Відомості щодо попередньої роботи для МП" formControlName="previousInfoWorkMp">
-                        </mat-form-field>
-                    </div>
-                </div>
-                <div class="card-row">
-                    <p>Достатній стаж роботи для МП</p>
-                    <div class="edit-input">
-                        <mat-form-field appearance="outline">
-                            <input matInput placeholder="Достатній стаж роботи для МП" formControlName="sufficientExperienceMp">
-                        </mat-form-field>
-                    </div>
-                </div>
+                </form>
             </div>
-            <div class="control-panel">
-                <button mat-flat-button >Зберегти</button>
-            </div>
-        </form>
+        </mat-card>
     </div>
 </div>

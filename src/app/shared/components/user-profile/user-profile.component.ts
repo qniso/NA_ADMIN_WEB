@@ -25,18 +25,18 @@ export class UserProfileComponent implements OnInit {
 
   private initializeForm(): void {
     this.userEditForm = this.fb.group({
-      fio: ['Test Test', [Validators.required]],
-      birthday: ['12.12.2022', [Validators.required]],
-      // phone: [null, [Validators.required]],
-      registrationAddress: ['Test test', [Validators.required]],
-      email: ['kaneki@gmail.com', [Validators.required]],
-      actualAddress: ['Test test', [Validators.required]],
-      accOrderNumber: ['Test test', [Validators.required]],
-      accOrderDate: ['12.12.2022', [Validators.required]],
-      salary: [228, [Validators.required, Validators.pattern(/^[0-9]/)]],
-      previousWorkExp: ['Test test', [Validators.required]],
-      previousInfoWorkMp: ['Test test', [Validators.required]],
-      sufficientExperienceMp: ['Test test', [Validators.required]],
+      fio: ['', [Validators.required]],
+      birthday: ['', [Validators.required]],
+      phone: ['', [Validators.required]],
+      registrationAddress: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      actualAddress: ['', [Validators.required]],
+      accOrderNumber: ['', [Validators.required]],
+      accOrderDate: ['', [Validators.required]],
+      salary: ['', [Validators.required, Validators.pattern(/^[0-9]/)]],
+      previousWorkExp: ['', [Validators.required]],
+      previousInfoWorkMp: ['', [Validators.required]],
+      sufficientExperienceMp: ['', [Validators.required]],
     });
   }
 

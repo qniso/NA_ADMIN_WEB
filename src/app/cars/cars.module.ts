@@ -5,13 +5,15 @@ import { CarsRoutingModule } from './cars-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { CarRegistrationComponent } from './components/car-registration/car-registration.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CarInfoComponent } from './components/car-info/car-info.component';
 
 
 
 @NgModule({
   declarations: [
     CarTableComponent,
-    CarRegistrationComponent
+    CarRegistrationComponent,
+    CarInfoComponent
   ],
   imports: [
     CommonModule,
