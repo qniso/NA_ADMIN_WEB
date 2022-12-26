@@ -29,5 +29,6 @@ export const URLS = {
   EXIST_DOCUMENT: '/exist_document',
   REMOVE_INFO_EDUCATION: '/remove_info_education',
   REMOVE_INFO_INTERNSHIP: '/remove_internship',
-  //user_profile/remove_internship
+  REMOVE_INFO_DRIVING_LICENSE: '/remove_info_driving_license',
+  //user_profile/remove_info_driving_license
 };

@@ -17,7 +17,6 @@
             <p>Стаж роботи на попередньому місці : {{userInfo.previous_work_exp || "-"}}</p>
             <p>Відомості щодо попередньої роботи для МП : {{userInfo.previous_info_work_mp || "-"}}</p>
             <p>Достатній стаж роботи для МП : {{userInfo.sufficient_experience_mp || "-"}}</p>
-            <p>Телефон : -</p>
             <p>Адреса реєстрації : {{userInfo.registration_address || "-"}}</p>
             <p>Адреса фактичного мешкання : {{userInfo.actual_address || "-"}}</p>
         </div>
@@ -56,15 +55,25 @@
         <div class="card-header">
             <p>Посвідчення водія</p>
             <div class="control-panel">
-                <button mat-flat-button (click)="addDriverLicense()"><mat-icon>edit</mat-icon>Редагувати</button>
+                <button mat-flat-button [disabled]="userInfo.driving_license.categories == null" (click)="addDriverLicense()"><mat-icon>edit</mat-icon>Редагувати</button>
                 <button mat-flat-button (click)="editDriverLicense()"><mat-icon>add</mat-icon>Додати</button>
             </div>
         </div>
         <mat-divider></mat-divider>
         <div class="card-content" *ngIf="userInfo.driving_license.categories !== null">
-            <p>Категорії :  <span *ngFor="let element of userInfo.driving_license.categories">{{element}}, </span></p>
-            <p>Дата видачі : {{userInfo.driving_license.date_issue}}</p>
-            <p>Дата закінчення : {{userInfo.driving_license.date_end}}</p>
+            <div class="driving-license">
+                <div class="card__left">
+                    <p>Категорії :  <span *ngFor="let element of userInfo.driving_license.categories">{{element}}, </span></p>
+                    <p>Дата видачі : {{userInfo.driving_license.date_issue}}</p>
+                    <p>Дата закінчення : {{userInfo.driving_license.date_end}}</p>
+                </div>
+                <div class="card__right">
+                    <button mat-button [matMenuTriggerFor]="editEducation"><mat-icon>more_vert</mat-icon></button>
+                    <mat-menu #editEducation="matMenu">
+                        <button mat-menu-item (click)="delete(userInfo.id!, 'drivingLicense')" class="delete">Видалити</button>
+                    </mat-menu>
+                </div>
+            </div>
         </div>
         <div class="card-content" *ngIf="userInfo.driving_license.categories == null">
             <p>Результатів не знайдено</p>

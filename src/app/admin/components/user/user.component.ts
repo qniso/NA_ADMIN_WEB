@@ -169,7 +169,15 @@ export class UserComponent implements OnInit {
       userId: this.userService.data.id,
     };
 
+    const driverBody = {
+      userId: id,
+    };
+
     switch (value) {
+      case 'drivingLicense':
+        this.userService.deleteUserDrivingLicense(driverBody).subscribe();
+        location.reload();
+        break;
       case 'education':
         this.userService.deleteUserEducation(body).subscribe();
         location.reload();

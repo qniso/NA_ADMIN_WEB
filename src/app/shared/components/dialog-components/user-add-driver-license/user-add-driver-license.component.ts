@@ -11,11 +11,15 @@ import { UsersService } from 'src/app/shared/services/users.service';
 export class UserAddDriverLicenseComponent implements OnInit {
   userDriverLicense!: FormGroup;
   userObject = this.userService.userProfile$$;
+  driverCategories: string[] = this.userService.data.driving_license.categories;
 
   constructor(private fb: FormBuilder, private userService: UsersService) {}
 
   ngOnInit(): void {
+    console.log(true);
+
     this.initializeForm();
+    console.log(this.initializeForm());
   }
 
   private initializeForm(): void {
@@ -42,11 +46,13 @@ export class UserAddDriverLicenseComponent implements OnInit {
     let dateEnd = this.formatDate(_dateEnd);
     const body: UserDriverLicense = {
       userId: this.userService.data.id,
-      categories: [this.userDriverLicense.controls['categories'].value],
+      categories: this.driverCategories.concat(
+        this.userDriverLicense.controls['categories'].value
+      ),
       date_issue: dateIssue,
       date_end: dateEnd,
     };
-    this.userService.addUserDriverLicense(body).subscribe();
+    this.userService.editUserDriverLicense(body).subscribe();
   }
 
   formatDate(value: any) {
