@@ -37,7 +37,13 @@ export class EditUserInstructionComponent implements OnInit {
 
     return dd + '.' + mm + '.' + yy;
   }
-
+  convertToDate(value: any) {
+    const date = value;
+    let dd: any = date.split('.')[0];
+    let mm: any = date.split('.')[1];
+    let yy: any = date.split('.')[2];
+    return new Date(yy, mm - 1, dd);
+  }
   submit() {
     const _date = this.userInstruction.controls['date'].value;
     let date = this.formatDate(_date);

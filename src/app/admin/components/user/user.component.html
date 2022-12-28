@@ -1,4 +1,5 @@
 <div *ngIf="userInfo">
+    <!-- <button >clicl</button> -->
     <mat-card>
         <div class="card-header">
             <p>Відомості про користувача</p>
@@ -40,7 +41,7 @@
                     <button mat-button [matMenuTriggerFor]="editEducation"><mat-icon>more_vert</mat-icon></button>
                     <mat-menu #editEducation="matMenu">
                         <button mat-menu-item (click)="editUserEducationInfo(element.id, element.certificate, element.specialty, element.advanced_qualification)">Редагувати</button>
-                        <button mat-menu-item (click)="delete(element.id, 'education')" class="delete">Видалити</button>
+                        <button mat-menu-item  (click)="deleteEducation(element.id)"class="delete">Видалити</button>
                     </mat-menu>
                 </div>
                 
@@ -70,7 +71,7 @@
                 <div class="card__right">
                     <button mat-button [matMenuTriggerFor]="editEducation"><mat-icon>more_vert</mat-icon></button>
                     <mat-menu #editEducation="matMenu">
-                        <button mat-menu-item (click)="delete(userInfo.id!, 'drivingLicense')" class="delete">Видалити</button>
+                        <button mat-menu-item (click)="deleteDrivingLicense(userInfo.id!)" class="delete">Видалити</button>
                     </mat-menu>
                 </div>
             </div>
@@ -124,7 +125,7 @@
                         <button mat-button [matMenuTriggerFor]="editEducation"><mat-icon>more_vert</mat-icon></button>
                         <mat-menu #editEducation="matMenu">
                             <button mat-menu-item (click)="editUserInternship(element.id!, element.doc_number, element.date)">Редагувати</button>
-                            <button mat-menu-item (click)="delete(element.id!, 'internship')" class="delete">Видалити</button>
+                            <button mat-menu-item (click)="deleteInternsip(element.id!)" class="delete">Видалити</button>
                         </mat-menu>
                     </div>
                 </div>
@@ -155,7 +156,7 @@
                         <button mat-button [matMenuTriggerFor]="editEducation"><mat-icon>more_vert</mat-icon></button>
                         <mat-menu #editEducation="matMenu">
                             <button mat-menu-item (click)="editUserInternship(element.id!, element.doc_number, element.date)">Редагувати</button>
-                            <button mat-menu-item (click)="delete(element.id!, 'internship')" class="delete">Видалити</button>
+                            <button mat-menu-item (click)="deleteInstruction(element.id!)" class="delete">Видалити</button>
                         </mat-menu>
                     </div>
                 </div>

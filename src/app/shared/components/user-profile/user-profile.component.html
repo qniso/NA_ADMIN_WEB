@@ -19,9 +19,18 @@
                         <div class="card-row">
                             <p>Дата народження</p>
                             <div class="edit-input">
-                                <mat-form-field appearance="outline">
-                                    <input matInput placeholder="Дата народження" formControlName="birthday">
-                                </mat-form-field>
+                                <div class="date">
+                                    <mat-form-field appearance="outline">
+                                        <input matInput [matDatepicker]="birthday" placeholder="Дата народження" formControlName="birthday">
+                                        <mat-datepicker-toggle matIconSuffix [for]="birthday"></mat-datepicker-toggle>
+                                        <mat-datepicker #birthday>
+                                          <mat-datepicker-actions>
+                                            <a mat-button matDatepickerCancel>Cancel</a>
+                                            <a mat-raised-button color="primary" matDatepickerApply>Apply</a>
+                                          </mat-datepicker-actions>
+                                        </mat-datepicker>
+                                    </mat-form-field>
+                                </div>
                             </div>
                         </div>
                         <div class="card-row">
@@ -70,9 +79,18 @@
                         <div class="card-row">
                             <p>Дата наказу</p>
                             <div class="edit-input">
-                                <mat-form-field appearance="outline">
-                                    <input matInput placeholder="Дата наказу" formControlName="accOrderDate">
-                                </mat-form-field>
+                                <div class="date">
+                                    <mat-form-field appearance="outline">
+                                        <input matInput [matDatepicker]="accOrderDate" placeholder="Дата наказу" formControlName="accOrderDate">
+                                        <mat-datepicker-toggle matIconSuffix [for]="accOrderDate"></mat-datepicker-toggle>
+                                        <mat-datepicker #accOrderDate>
+                                          <mat-datepicker-actions>
+                                            <a mat-button matDatepickerCancel>Cancel</a>
+                                            <a mat-raised-button color="primary" matDatepickerApply>Apply</a>
+                                          </mat-datepicker-actions>
+                                        </mat-datepicker>
+                                    </mat-form-field>
+                                </div>
                             </div>
                         </div>
                         <div class="card-row">

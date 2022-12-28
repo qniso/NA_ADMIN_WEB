@@ -1,28 +1,37 @@
-
-button{ 
-    text-align: end;
-    color: #FFFF;
-    background-color: #159A9C;
+button {
+  text-align: end;
+  color: #ffff;
+  background-color: #159a9c;
 }
 
-.user-profile{
-    .section{
-    mat-form-field{
-        width: 50%;
+.user-profile {
+  .section {
+    mat-form-field {
+      width: 50%;
     }
-}
+  }
 
-mat-divider{
+  mat-divider {
     margin: auto auto 12px auto;
+  }
 }
+mat-card {
+  border-radius: 14px;
 }
-mat-card{
-    border-radius: 14px;
+.card-header {
+  font-weight: 500;
+  margin-bottom: 12px;
 }
-.card-header{
-    font-weight: 500;
-    margin-bottom: 12px;
+.card-body {
+  margin-top: 24px;
 }
-.card-body{
-    margin-top: 24px
+.date {
+  ::ng-deep {
+    .mat-form-field-infix {
+      display: flex;
+    }
+    .mat-form-field-appearance-outline .mat-form-field-infix {
+      padding: 0;
+    }
+  }
 }

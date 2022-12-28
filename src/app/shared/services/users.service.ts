@@ -103,10 +103,7 @@ export class UsersService {
         URLS.BASE_URL + URLS.NA_API + URLS.USER_PROFILE + URLS.GET_USER_PROFILE,
         { userId: id }
       )
-      .pipe(
-        tap(() => console.log(id)),
-        map((res) => (this.data = res))
-      );
+      .pipe(map((res) => (this.data = res)));
   }
   saveUserEducation(body: {}): Observable<any> {
     return this.http.post(

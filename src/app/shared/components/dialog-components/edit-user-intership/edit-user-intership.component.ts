@@ -25,7 +25,7 @@ export class EditUserIntershipComponent implements OnInit {
   private initializeForm(): void {
     this.userInternship = this.fb.group({
       docNumber: [this.data.doc_number, [Validators.required]],
-      date: [this.data.date, [Validators.required]],
+      date: [this.convertToDate(this.data.date), [Validators.required]],
     });
   }
 
@@ -41,6 +41,14 @@ export class EditUserIntershipComponent implements OnInit {
     let yy: any = date.getFullYear();
 
     return dd + '.' + mm + '.' + yy;
+  }
+
+  convertToDate(value: any) {
+    const date = value;
+    let dd: any = date.split('.')[0];
+    let mm: any = date.split('.')[1];
+    let yy: any = date.split('.')[2];
+    return new Date(yy, mm - 1, dd);
   }
 
   submit() {

@@ -2,6 +2,7 @@ import { UpperCasePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { map } from 'rxjs';
 import { AddUserEducationInfoComponent } from 'src/app/shared/components/dialog-components/add-user-education-info/add-user-education-info.component';
 
 import { AddUserIntershipComponent } from 'src/app/shared/components/dialog-components/add-user-intership/add-user-intership.component';
@@ -25,7 +26,8 @@ import { UsersService } from 'src/app/shared/services/users.service';
   styleUrls: ['./user.component.scss'],
 })
 export class UserComponent implements OnInit {
-  userInfo!: UserProfile | undefined;
+  userInfo!: UserProfile;
+  result: any;
   userDriverLicense!: UserDriverLicense | undefined;
   userId!: number | null;
 
@@ -40,17 +42,12 @@ export class UserComponent implements OnInit {
     this.userId = id;
     this.getProfile(id);
   }
+
   getProfile(id: number): void {
-    this.userService.getUserProfile(id).subscribe((res) => {
-      this.userInfo = res;
-    });
+    this.userService
+      .getUserProfile(id)
+      .subscribe((res) => (this.userInfo = res));
   }
-  openDialog(
-    item: string,
-    educationCertificate?: string,
-    educationSpecialty?: string,
-    educationAdvancedQualification?: string
-  ): void {}
 
   editGeneralInfo(): void {
     const dialogRef = this.dialog.open(UserEditGeneralInfoComponent, {
@@ -163,43 +160,43 @@ export class UserComponent implements OnInit {
     });
   }
 
-  delete(id: number, value: string) {
-    switch (value) {
-      case 'drivingLicense':
-        this.userService
-          .deleteUserDrivingLicense({
-            userId: id,
-          })
-          .subscribe();
-        location.reload();
-        break;
-      case 'education':
-        this.userService
-          .deleteUserEducation({
-            id: id,
-            userId: this.userService.data.id,
-          })
-          .subscribe();
-        location.reload();
-        break;
-      case 'internship':
-        this.userService
-          .deleteUserInternship({
-            id: id,
-            userId: this.userService.data.id,
-          })
-          .subscribe();
-        location.reload();
-        break;
-      case 'instruction':
-        this.userService
-          .deleteUserInternship({
-            id: id,
-            userId: this.userService.data.id,
-          })
-          .subscribe();
-        location.reload();
-        break;
-    }
+  deleteEducation(id: number): void {
+    this.userService
+      .deleteUserEducation({
+        id: id,
+        userId: this.userService.data.id,
+      })
+      .subscribe();
+    location.reload();
+  }
+
+  deleteInternsip(id: number): void {
+    this.userService
+      .deleteUserInternship({
+        id: id,
+        userId: this.userService.data.id,
+      })
+      .subscribe();
+    location.reload();
+  }
+
+  deleteDrivingLicense(id: number): void {
+    const body = {
+      userId: id,
+    };
+    console.log(body);
+
+    this.userService.deleteUserDrivingLicense(body).subscribe();
+    location.reload();
+  }
+
+  deleteInstruction(id: number): void {
+    this.userService
+      .deleteUserInternship({
+        id: id,
+        userId: this.userService.data.id,
+      })
+      .subscribe();
+    location.reload();
   }
 }

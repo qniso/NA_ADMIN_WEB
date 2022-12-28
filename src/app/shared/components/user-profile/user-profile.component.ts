@@ -40,6 +40,20 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
+  formatDate(value: any) {
+    const date = new Date(value);
+
+    let dd: any = date.getDate();
+    if (dd < 10) dd = '0' + dd;
+
+    let mm: any = date.getMonth() + 1;
+    if (mm < 10) mm = '0' + mm;
+
+    let yy: any = date.getFullYear();
+
+    return dd + '.' + mm + '.' + yy;
+  }
+
   submit(): void {
     const userProfile = {
       id: this.userId,
@@ -47,9 +61,11 @@ export class UserProfileComponent implements OnInit {
       fio: this.userEditForm.controls['fio'].value,
       phone: this.userEditForm.controls['phone'].value,
       acc_order_number: this.userEditForm.controls['accOrderNumber'].value,
-      acc_order_date: this.userEditForm.controls['accOrderDate'].value,
+      acc_order_date: this.formatDate(
+        this.userEditForm.controls['accOrderDate'].value
+      ),
       salary: this.userEditForm.controls['salary'].value,
-      birthday: this.userEditForm.controls['birthday'].value,
+      birthday: this.formatDate(this.userEditForm.controls['birthday'].value),
       previous_work_exp: this.userEditForm.controls['previousWorkExp'].value,
       previous_info_work_mp:
         this.userEditForm.controls['previousInfoWorkMp'].value,

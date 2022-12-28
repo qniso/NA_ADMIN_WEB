@@ -29,11 +29,11 @@ export class UserAddDriverLicenseComponent implements OnInit {
         [Validators.required],
       ],
       dateIssue: [
-        this.userService.data.driving_license.date_issue,
+        this.convertToDate(this.userService.data.driving_license.date_issue),
         [Validators.required],
       ],
       dateEnd: [
-        this.userService.data.driving_license.date_end,
+        this.convertToDate(this.userService.data.driving_license.date_end),
         [Validators.required],
       ],
     });
@@ -67,5 +67,13 @@ export class UserAddDriverLicenseComponent implements OnInit {
     let yy: any = date.getFullYear();
 
     return dd + '.' + mm + '.' + yy;
+  }
+
+  convertToDate(value: any) {
+    const date = value;
+    let dd: any = date.split('.')[0];
+    let mm: any = date.split('.')[1];
+    let yy: any = date.split('.')[2];
+    return new Date(yy, mm - 1, dd);
   }
 }
