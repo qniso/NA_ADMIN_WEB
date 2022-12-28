@@ -163,31 +163,41 @@ export class UserComponent implements OnInit {
     });
   }
 
-  delete(id: number, value: string, type?: string) {
-    const body = {
-      id: id,
-      userId: this.userService.data.id,
-    };
-
-    const driverBody = {
-      userId: id,
-    };
-
+  delete(id: number, value: string) {
     switch (value) {
       case 'drivingLicense':
-        this.userService.deleteUserDrivingLicense(driverBody).subscribe();
+        this.userService
+          .deleteUserDrivingLicense({
+            userId: id,
+          })
+          .subscribe();
         location.reload();
         break;
       case 'education':
-        this.userService.deleteUserEducation(body).subscribe();
+        this.userService
+          .deleteUserEducation({
+            id: id,
+            userId: this.userService.data.id,
+          })
+          .subscribe();
         location.reload();
         break;
       case 'internship':
-        this.userService.deleteUserInternship(body).subscribe();
+        this.userService
+          .deleteUserInternship({
+            id: id,
+            userId: this.userService.data.id,
+          })
+          .subscribe();
         location.reload();
         break;
       case 'instruction':
-        this.userService.deleteUserInternship(body).subscribe();
+        this.userService
+          .deleteUserInternship({
+            id: id,
+            userId: this.userService.data.id,
+          })
+          .subscribe();
         location.reload();
         break;
     }
