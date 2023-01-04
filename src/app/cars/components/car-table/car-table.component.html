@@ -1,11 +1,13 @@
 <div class="container">
-    <div class="content">
-        <div class="control-panel">
-            <button mat-flat-button [routerLink]="['/main/cars/car-registration']">Додати транспорт</button>
+    <mat-card>
+        <div class="content">
+            <div class="control-panel">
+                <button mat-flat-button [routerLink]="['/main/cars/car-registration']">Додати транспорт</button>
+            </div>
+            <div class="company-list">
+                <car-list></car-list>
+            </div>
         </div>
-        <div class="company-list">
-            <car-list></car-list>
-        </div>
-    </div>
+    </mat-card>
 </div>
 

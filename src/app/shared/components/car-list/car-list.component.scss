@@ -1,17 +1,23 @@
-table{
-    margin-top: 12px;
-    width: 100%;
-    text-align: center;
+table {
+  margin-top: 12px;
+  width: 100%;
+  text-align: center;
+  td.mat-cell:last-of-type {
+    cursor: pointer;
+    text-align: end;
+  }
+  th.mat-header-cell:last-of-type {
+    text-align: end;
+  }
 }
-.mat-header-row{
-    height: 32px;
-    border-radius: 5px 5px 0 0;
+.mat-header-row {
+  height: 32px;
+  border-radius: 5px 5px 0 0;
+  color: #ffff;
+  background-color: #159a9c; //#002333
+
+  th {
+    text-align: center;
     color: #ffff;
-    background-color: #159a9c  ;//#002333
-
-    th{ 
-        text-align: center;
-        color: #ffff;
-    }
-
+  }
 }
