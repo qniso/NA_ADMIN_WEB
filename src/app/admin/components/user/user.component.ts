@@ -166,8 +166,7 @@ export class UserComponent implements OnInit {
         id: id,
         userId: this.userService.data.id,
       })
-      .subscribe();
-    location.reload();
+      .subscribe(() => location.reload());
   }
 
   deleteInternsip(id: number): void {
@@ -176,8 +175,7 @@ export class UserComponent implements OnInit {
         id: id,
         userId: this.userService.data.id,
       })
-      .subscribe();
-    location.reload();
+      .subscribe(() => location.reload());
   }
 
   deleteDrivingLicense(id: number): void {
@@ -186,8 +184,9 @@ export class UserComponent implements OnInit {
     };
     console.log(body);
 
-    this.userService.deleteUserDrivingLicense(body).subscribe();
-    location.reload();
+    this.userService.deleteUserDrivingLicense(body).subscribe(() => {
+      location.reload();
+    });
   }
 
   deleteInstruction(id: number): void {
@@ -196,7 +195,8 @@ export class UserComponent implements OnInit {
         id: id,
         userId: this.userService.data.id,
       })
-      .subscribe();
-    location.reload();
+      .subscribe(() => {
+        location.reload();
+      });
   }
 }
