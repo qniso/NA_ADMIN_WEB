@@ -18,6 +18,7 @@ import {
   UserDriverLicense,
   UserProfile,
 } from 'src/app/shared/models/user.model';
+import { ContentService } from 'src/app/shared/services/content.service';
 import { UsersService } from 'src/app/shared/services/users.service';
 
 @Component({
@@ -34,7 +35,8 @@ export class UserComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private userService: UsersService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private contentService: ContentService
   ) {}
 
   ngOnInit(): void {

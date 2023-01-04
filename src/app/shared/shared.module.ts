@@ -5,7 +5,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { TableComponent } from './components/table/table.component';
-import { AdminNavComponent } from './components/admin-nav/admin-nav.component';
 import { UserTableComponent } from './components/user-table/user-table.component';
 import { CarListComponent } from './components/car-list/car-list.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
@@ -41,7 +40,6 @@ import { MatMenuModule } from '@angular/material/menu';
   declarations: [
     NavbarComponent,
     TableComponent,
-    AdminNavComponent,
     UserTableComponent,
     CarListComponent,
     UserProfileComponent,
@@ -81,7 +79,6 @@ import { MatMenuModule } from '@angular/material/menu';
     NavbarComponent,
     TableComponent,
     UserTableComponent,
-    AdminNavComponent,
     CarListComponent,
     UserProfileComponent,
     RouterModule,

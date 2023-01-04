@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { map, Observable, tap } from 'rxjs';
+import { BehaviorSubject, map, Observable, share, tap } from 'rxjs';
 import { URLS } from 'src/app/app.config';
 
 @Injectable({

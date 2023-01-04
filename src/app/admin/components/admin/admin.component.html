@@ -3,8 +3,18 @@
     <div class="dashboard-content">
         <div class="content">
             <router-outlet></router-outlet>
-
         </div>
-        <admin-nav></admin-nav>
+        <div class="admin-nav">
+            <div class="nav-col">
+                <a 
+                routerLink="/main/admin/admin-dashboard/user-list"
+                [routerLinkActive]="'active'" 
+                >Список користувачів</a>
+                <a 
+                routerLink="/main/admin/admin-dashboard/roles"
+                [routerLinkActive]="'active'" 
+                >Налаштування ролей</a>
+            </div>
+        </div>
     </div>
 </div>
