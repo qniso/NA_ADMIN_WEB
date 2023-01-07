@@ -30,5 +30,6 @@ export const URLS = {
   REMOVE_INFO_EDUCATION: '/remove_info_education',
   REMOVE_INFO_INTERNSHIP: '/remove_internship',
   REMOVE_INFO_DRIVING_LICENSE: '/remove_info_driving_license',
-  //user_profile/remove_info_driving_license
+  GET_TRANSPORT_INFO: '/get_transport_info',
+  //transport/get_transport_info
 };

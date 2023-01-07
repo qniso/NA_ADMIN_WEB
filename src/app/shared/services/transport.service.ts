@@ -23,4 +23,11 @@ export class TransportService {
       URLS.BASE_URL + URLS.NA_API + URLS.TRANSPORT + URLS.GET_ALL_TRANSPORT
     );
   }
+
+  getTransportInfo(body: {}): Observable<any> {
+    return this.http.post<any>(
+      URLS.BASE_URL + URLS.NA_API + URLS.TRANSPORT + URLS.GET_TRANSPORT_INFO,
+      body
+    );
+  }
 }
