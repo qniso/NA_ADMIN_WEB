@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CurrentCarProfile } from 'src/app/shared/models/transport.model';
 import { TransportService } from 'src/app/shared/services/transport.service';
 
 @Component({
@@ -8,6 +9,8 @@ import { TransportService } from 'src/app/shared/services/transport.service';
   styleUrls: ['./car-info.component.scss'],
 })
 export class CarInfoComponent implements OnInit {
+
+  carInfo!: CurrentCarProfile;
   userId!: number | null;
 
   constructor(
@@ -25,6 +28,6 @@ export class CarInfoComponent implements OnInit {
     const body = {
       id: id,
     };
-    this.transportService.getTransportInfo(body).subscribe();
+    this.transportService.getTransportInfo(body).subscribe(res => this.carInfo = res);
   }
 }

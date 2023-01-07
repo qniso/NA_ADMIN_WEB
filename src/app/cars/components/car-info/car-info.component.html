@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="carInfo" class="container">
     <mat-card>
         <div class="card-header">
             <p>Відомості про транспортний засіб</p>
@@ -6,7 +6,50 @@
         </div>
         <mat-divider></mat-divider>
         <div class="card-content">
-            
+            <p>Номенклатурна назва: {{carInfo.nomenclature_name || "-"}}</p>
+            <mat-divider></mat-divider>
+            <p class="card-content-header">Відомості техпаспорту</p>
+            <p>Номер та серія техпаспорту: {{carInfo.technical_certificate.num_and_series || "-"}}</p>
+            <p>Техпаспорт виданий органом: {{carInfo.technical_certificate.issued_by || "-"}}</p>
+            <p>Техпаспорт дійсний до : {{carInfo.technical_certificate.date_end || "-"}}</p>
+            <p>Взятий на облік (дата видачі техпаспорту): {{carInfo.technical_certificate.date_issue || "-"}}</p>
+        </div>
+    </mat-card>
+    <mat-card>
+        <div class="card-header">
+            <p>Відомості про транспортний засіб згідно з техпаспортом</p>
+            <button mat-flat-button><mat-icon>edit</mat-icon>Редагувати</button>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="card-content">
+            <p>Марка: {{carInfo.technical_certificate.technical_certificate_dop_info.brand || "-"}}</p>
+            <p>Держ номер. : {{carInfo.technical_certificate.technical_certificate_dop_info.state_number || "-"}}</p>
+            <p>VIN-код : {{carInfo.technical_certificate.technical_certificate_dop_info.VIN_code || "-"}}</p>
+            <p>Колір: {{carInfo.technical_certificate.technical_certificate_dop_info.colour || "-"}}</p>
+            <p>Рік випуску: {{carInfo.technical_certificate.technical_certificate_dop_info.date_issue || "-"}}</p>
+            <p>Кількість місць для сидіння: {{carInfo.technical_certificate.technical_certificate_dop_info.seats || "-"}}</p>
+            <p>Повна маса: {{carInfo.technical_certificate.technical_certificate_dop_info.full_weight || "-"}}</p>
+            <p>Маса без навантаження: {{carInfo.technical_certificate.technical_certificate_dop_info.empty_weight || "-"}}</p>
+            <p>Категорія: {{carInfo.technical_certificate.technical_certificate_dop_info.category || "-"}}</p>
+            <p>Вид палива: {{carInfo.technical_certificate.technical_certificate_dop_info.fuel || "-"}}</p>
+            <p>Тип кузова: {{carInfo.technical_certificate.technical_certificate_dop_info.body_type || "-"}}</p>
+            <p>Обʼєм двигуна, см.куб.: {{carInfo.technical_certificate.technical_certificate_dop_info.empty_weight || "-"}}</p>
+            <p>Потужність кВт: {{carInfo.technical_certificate.technical_certificate_dop_info.engine_power || "-"}}</p>
+            <p>Екологічний стандарт: {{carInfo.technical_certificate.technical_certificate_dop_info.environmental_standard}}</p>
+        </div>
+    </mat-card>
+    <mat-card>
+        <div class="card-header">
+            <p>Відомості про підставу користування</p>
+            <button mat-flat-button><mat-icon>edit</mat-icon>Редагувати</button>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="card-content">
+            <p>Підстава для використання (назва договору та номер ): {{carInfo.using_reason_info.num_and_name_contract || "-"}}</p>
+            <p>Дата договору: {{carInfo.using_reason_info.date_start}}</p>
+            <p>Договір строковий (так, ні): {{carInfo.using_reason_info.is_contract_fixed_term || "-"}}</p>
+            <p>Дата закінчення строку користування: {{carInfo.using_reason_info.date_end || "-"}}</p>
+            <p>Додальші плани використання: {{carInfo.using_reason_info.date_next_start || "-"}}</p>
         </div>
     </mat-card>
 </div>

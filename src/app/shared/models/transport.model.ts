@@ -7,6 +7,13 @@ export interface Transport {
   };
 }
 
+export interface CurrentCarProfile{
+  nomenclature_name: string;
+  technical_certificate: TechnicalCertificate;
+  using_reason_info: UsingReasonInfo;
+  general_info: GeneralInfo;
+}
+
 export interface GeneralInfo {
   mileage: number;
   fuel_tank_volume: number;

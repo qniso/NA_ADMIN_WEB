@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Observable, tap } from 'rxjs';
+import { map, Observable, tap } from 'rxjs';
 import { URLS } from 'src/app/app.config';
 import { Transport } from '../models/transport.model';
 
@@ -9,6 +9,9 @@ import { Transport } from '../models/transport.model';
   providedIn: 'root',
 })
 export class TransportService {
+
+  data!: {}
+  
   constructor(private http: HttpClient, private router: Router) {}
 
   saveNewTransport(value: object): Observable<Transport> {
@@ -28,6 +31,6 @@ export class TransportService {
     return this.http.post<any>(
       URLS.BASE_URL + URLS.NA_API + URLS.TRANSPORT + URLS.GET_TRANSPORT_INFO,
       body
-    );
+    ).pipe(map((res) => (this.data = res)));;
   }
 }
