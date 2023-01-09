@@ -3,15 +3,15 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { map, Observable, tap } from 'rxjs';
 import { URLS } from 'src/app/app.config';
-import { Transport } from '../models/transport.model';
+import { CurrentCarProfile, Transport } from '../models/transport.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TransportService {
+  data!: CurrentCarProfile;
+  currentCarId!: number;
 
-  data!: {}
-  
   constructor(private http: HttpClient, private router: Router) {}
 
   saveNewTransport(value: object): Observable<Transport> {
@@ -28,9 +28,28 @@ export class TransportService {
   }
 
   getTransportInfo(body: {}): Observable<any> {
+    return this.http
+      .post<any>(
+        URLS.BASE_URL + URLS.NA_API + URLS.TRANSPORT + URLS.GET_TRANSPORT_INFO,
+        body
+      )
+      .pipe(map((res) => (this.data = res)));
+  }
+
+  editUsingReasonInfo(body: {}): Observable<any> {
     return this.http.post<any>(
-      URLS.BASE_URL + URLS.NA_API + URLS.TRANSPORT + URLS.GET_TRANSPORT_INFO,
+      URLS.BASE_URL +
+        URLS.NA_API +
+        URLS.TRANSPORT +
+        URLS.EDIT_USING_REASON_INFO,
       body
-    ).pipe(map((res) => (this.data = res)));;
+    );
+  }
+
+  editGeneralInfo(body: {}): Observable<any> {
+    return this.http.post<any>(
+      URLS.BASE_URL + URLS.NA_API + URLS.TRANSPORT + URLS.EDIT_GENERAL_INFO,
+      body
+    );
   }
 }

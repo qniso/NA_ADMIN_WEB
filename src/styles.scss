@@ -1,11 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
-*{
-    font-family:'Montserrat', sans-serif;
+* {
+  font-family: "Montserrat", sans-serif;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: 'Montserrat', sans-serif !important; background-color: #DEEFE7;}
-
-.mat-typography{
-    font-family: 'Montserrat', sans-serif !important;
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Montserrat", sans-serif !important;
+  background-color: #deefe7;
 }
 
+.mat-typography {
+  font-family: "Montserrat", sans-serif !important;
+}
+
+.mat-dialog-container {
+  padding: 0 !important;
+}

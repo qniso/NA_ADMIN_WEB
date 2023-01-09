@@ -31,5 +31,7 @@ export const URLS = {
   REMOVE_INFO_INTERNSHIP: '/remove_internship',
   REMOVE_INFO_DRIVING_LICENSE: '/remove_info_driving_license',
   GET_TRANSPORT_INFO: '/get_transport_info',
-  //transport/get_transport_info
+  EDIT_USING_REASON_INFO: '/edit/using_reason_info',
+  EDIT_GENERAL_INFO: '/edit/general_info',
+  //transport/transport/edit/general_info
 };

@@ -8,15 +8,17 @@ import { TableComponent } from './components/table/table.component';
 import { UserTableComponent } from './components/user-table/user-table.component';
 import { CarListComponent } from './components/car-list/car-list.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
-import { UserEditGeneralInfoComponent } from './components/dialog-components/user-edit-general-info/user-edit-general-info.component';
-import { UserEditEducationInfoComponent } from './components/dialog-components/user-edit-education-info/user-edit-education-info.component';
-import { UserEditDriverLicenseComponent } from './components/dialog-components/user-edit-driver-license/user-edit-driver-license.component';
-import { UserAddDriverLicenseComponent } from './components/dialog-components/user-add-driver-license/user-add-driver-license.component';
-import { EditUserExistDocumentComponent } from './components/dialog-components/edit-user-exist-document/edit-user-exist-document.component';
-import { EditUserIntershipComponent } from './components/dialog-components/edit-user-intership/edit-user-intership.component';
-import { AddUserIntershipComponent } from './components/dialog-components/add-user-intership/add-user-intership.component';
-import { EditUserInstructionComponent } from './components/dialog-components/edit-user-instruction/edit-user-instruction.component';
-import { AddUserEducationInfoComponent } from './components/dialog-components/add-user-education-info/add-user-education-info.component';
+
+import { AddUserEducationInfoComponent } from './components/dialog-components/user-edit-profile/add-user-education-info/add-user-education-info.component';
+import { AddUserIntershipComponent } from './components/dialog-components/user-edit-profile/add-user-intership/add-user-intership.component';
+import { EditUserExistDocumentComponent } from './components/dialog-components/user-edit-profile/edit-user-exist-document/edit-user-exist-document.component';
+import { EditUserInstructionComponent } from './components/dialog-components/user-edit-profile/edit-user-instruction/edit-user-instruction.component';
+import { EditUserIntershipComponent } from './components/dialog-components/user-edit-profile/edit-user-intership/edit-user-intership.component';
+import { UserAddDriverLicenseComponent } from './components/dialog-components/user-edit-profile/user-add-driver-license/user-add-driver-license.component';
+import { UserEditDriverLicenseComponent } from './components/dialog-components/user-edit-profile/user-edit-driver-license/user-edit-driver-license.component';
+import { UserEditEducationInfoComponent } from './components/dialog-components/user-edit-profile/user-edit-education-info/user-edit-education-info.component';
+import { UserEditGeneralInfoComponent } from './components/dialog-components/user-edit-profile/user-edit-general-info/user-edit-general-info.component';
+import { EditUsingReasonComponent } from './components/dialog-components/car-edit-profile/edit-using-reason/edit-using-reason.component';
 
 import { UserAccessDirective } from './directives/user-access.directive';
 
@@ -35,6 +37,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatRadioModule } from '@angular/material/radio';
+import { EditGeneralInfoComponent } from './components/dialog-components/car-edit-profile/edit-general-info/edit-general-info.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +57,8 @@ import { MatMenuModule } from '@angular/material/menu';
     AddUserIntershipComponent,
     EditUserInstructionComponent,
     AddUserEducationInfoComponent,
+    EditUsingReasonComponent,
+    EditGeneralInfoComponent,
   ],
   imports: [
     CommonModule,
@@ -74,6 +80,7 @@ import { MatMenuModule } from '@angular/material/menu';
     MatProgressSpinnerModule,
     MatDialogModule,
     MatMenuModule,
+    MatRadioModule,
   ],
   exports: [
     NavbarComponent,
@@ -98,6 +105,7 @@ import { MatMenuModule } from '@angular/material/menu';
     MatDialogModule,
     MatProgressSpinnerModule,
     MatMenuModule,
+    MatRadioModule,
   ],
 })
 export class SharedModule {}
