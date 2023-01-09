@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { map, Observable, tap } from 'rxjs';
+import { BehaviorSubject, map, Observable, share, tap } from 'rxjs';
 import { URLS } from 'src/app/app.config';
 import { CurrentCarProfile, Transport } from '../models/transport.model';
 
@@ -9,10 +9,17 @@ import { CurrentCarProfile, Transport } from '../models/transport.model';
   providedIn: 'root',
 })
 export class TransportService {
+  editKey$$ = new BehaviorSubject<any>(undefined);
+  editKey$ = this.editKey$$.asObservable().pipe(share());
+
   data!: CurrentCarProfile;
   currentCarId!: number;
 
   constructor(private http: HttpClient, private router: Router) {}
+
+  set editKey(data: any) {
+    if (data) this.editKey$$.next(data);
+  }
 
   saveNewTransport(value: object): Observable<Transport> {
     return this.http.post<Transport>(

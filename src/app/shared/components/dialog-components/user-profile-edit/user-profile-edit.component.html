@@ -1,0 +1,205 @@
+<div class="general-info" *ngIf="editModalKey == 'userProfile'">
+    <div class="container">
+        <div class="user-profile">
+            <form [formGroup]="userEditForm" (submit)="submit()">
+                <div class="section">
+                    <div class="card-row">
+                        <p>ПІБ праціника</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="ПІБ праціника" formControlName="fio">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="card-row">
+                        <p>Дата народження</p>
+                        <div class="edit-input date">
+                            <mat-form-field appearance="outline">
+                                <input matInput [matDatepicker]="birthday"  formControlName="birthday">
+                                <mat-datepicker-toggle matIconSuffix [for]="birthday"></mat-datepicker-toggle>
+                                <mat-datepicker #birthday>
+                                  <mat-datepicker-actions>
+                                    <a mat-button matDatepickerCancel>Cancel</a>
+                                    <a mat-raised-button color="primary" matDatepickerApply>Apply</a>
+                                  </mat-datepicker-actions>
+                                </mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="card-row">
+                        <p>Email</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Email" formControlName="email">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="card-row">
+                        <p >Телефон</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline" >
+                                <input  matInput placeholder="Телефон" formControlName="phone" [disabled]="true">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="card-row">
+                        <p>Адреса реєстрації</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline" >
+                                <input  matInput placeholder="Адреса реєстрації" formControlName="registrationAddress">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="card-row">
+                        <p>Адреса фактичного мешкання</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Адреса фактичного мешкання" formControlName="actualAddress">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="section">
+                    <div class="card-row">
+                        <p>Номер наказу</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Номер наказу" formControlName="accOrderNumber">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="card-row">
+                        <p>Дата наказу</p>
+                        <div class="edit-input date">
+                            <mat-form-field appearance="outline">
+                                <input matInput [matDatepicker]="accOrderDate"  formControlName="accOrderDate">
+                                <mat-datepicker-toggle matIconSuffix [for]="accOrderDate"></mat-datepicker-toggle>
+                                <mat-datepicker #accOrderDate>
+                                  <mat-datepicker-actions>
+                                    <a mat-button matDatepickerCancel>Cancel</a>
+                                    <a mat-raised-button color="primary" matDatepickerApply>Apply</a>
+                                  </mat-datepicker-actions>
+                                </mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        
+                    </div>
+                    <div class="card-row">
+                        <p>Оклад</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Оклад" formControlName="salary">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="card-row">
+                        <p>Стаж роботи на попередньому місці</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Стаж роботи на попередньому місці" formControlName="previousWorkExp">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="card-row">
+                        <p>Відомості щодо попередньої роботи для МП</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Відомості щодо попередньої роботи для МП" formControlName="previousInfoWorkMp">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="card-row">
+                        <p>Достатній стаж роботи для МП</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Достатній стаж роботи для МП" formControlName="sufficientExperienceMp">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-panel">
+                    <button mat-flat-button >Зберегти</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="add-education-info" *ngIf="editModalKey == 'addEducationInfo'">
+    <div class="container">
+        <div class="add-education-indo">
+            <form [formGroup]="userEducation" (submit)="submit()">
+                <div class="section">
+                    <div class="card-row">
+                        <p>Свідоцтво про освіту</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Свідоцтво про освіту" formControlName="certificate">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="card-row">
+                        <p>Спеціальність</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Спеціальність" formControlName="specialty">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="card-row">
+                        <p>Підвищення кваліфікації, свідоцтво</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Підвищення кваліфікації, свідоцтво" formControlName="advancedQualification">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-panel">
+                    <button mat-flat-button >Зберегти</button>
+                    <!-- <a mat-flat-button (click)="delete()">Видалити</a> -->
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="edit-education-info" *ngIf="editModalKey == 'editEducation'">
+    <div class="container">
+        <div class="user-education">
+            <form [formGroup]="userEducation" (submit)="submit()">
+                <div class="section">
+                    <div class="card-row">
+                        <p>Свідоцтво про освіту</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Свідоцтво про освіту" formControlName="certificate">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="card-row">
+                        <p>Спеціальність</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Спеціальність" formControlName="specialty">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="card-row">
+                        <p>Підвищення кваліфікації, свідоцтво</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Підвищення кваліфікації, свідоцтво" formControlName="advancedQualification">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-panel">
+                    <button mat-flat-button>Зберегти</button>
+                    <!-- <a mat-flat-button (click)="delete()">Видалити</a> -->
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!--    <a mat-flat-button (click)="delete()">Видалити</a> -->
+</div>

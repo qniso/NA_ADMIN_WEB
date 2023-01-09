@@ -18,7 +18,6 @@ import { UserAddDriverLicenseComponent } from './components/dialog-components/us
 import { UserEditDriverLicenseComponent } from './components/dialog-components/user-edit-profile/user-edit-driver-license/user-edit-driver-license.component';
 import { UserEditEducationInfoComponent } from './components/dialog-components/user-edit-profile/user-edit-education-info/user-edit-education-info.component';
 import { UserEditGeneralInfoComponent } from './components/dialog-components/user-edit-profile/user-edit-general-info/user-edit-general-info.component';
-import { EditUsingReasonComponent } from './components/dialog-components/car-edit-profile/edit-using-reason/edit-using-reason.component';
 
 import { UserAccessDirective } from './directives/user-access.directive';
 
@@ -38,7 +37,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatRadioModule } from '@angular/material/radio';
-import { EditGeneralInfoComponent } from './components/dialog-components/car-edit-profile/edit-general-info/edit-general-info.component';
+import { CarProfileEditComponent } from './components/dialog-components/car-profile-edit/car-profile-edit.component';
+import { UserProfileEditComponent } from './components/dialog-components/user-profile-edit/user-profile-edit.component';
 
 @NgModule({
   declarations: [
@@ -57,8 +57,8 @@ import { EditGeneralInfoComponent } from './components/dialog-components/car-edi
     AddUserIntershipComponent,
     EditUserInstructionComponent,
     AddUserEducationInfoComponent,
-    EditUsingReasonComponent,
-    EditGeneralInfoComponent,
+    CarProfileEditComponent,
+    UserProfileEditComponent,
   ],
   imports: [
     CommonModule,

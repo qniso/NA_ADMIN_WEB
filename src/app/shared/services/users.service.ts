@@ -20,6 +20,10 @@ export class UsersService {
   userInfo$$ = new BehaviorSubject<User | undefined>(undefined);
   userRoles$$ = new BehaviorSubject<any | undefined>(undefined);
   userProfile$$ = new BehaviorSubject<UserProfile | undefined>(undefined);
+
+  editKey$$ = new BehaviorSubject<any>(undefined);
+  editKey$ = this.editKey$$.asObservable().pipe(share());
+
   userEducation$$ = new BehaviorSubject<any>(undefined);
   userInternship$$ = new BehaviorSubject<any>(undefined);
   userInternShip$$ = new BehaviorSubject<any>(undefined);
@@ -69,6 +73,9 @@ export class UsersService {
 
   set userInstruction(data: any) {
     if (data) this.userInstruction$$.next(data);
+  }
+  set editKey(data: any) {
+    if (data) this.editKey$$.next(data);
   }
 
   getUserList(): Observable<any> {

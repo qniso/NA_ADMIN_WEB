@@ -41,7 +41,7 @@
     <mat-card>
         <div class="card-header">
             <p>Відомості про підставу користування</p>
-            <button mat-flat-button (click)="editUsingReasonInfo()"><mat-icon>edit</mat-icon>Редагувати</button>
+            <button mat-flat-button (click)="openEditDialog('usingReasonInfo')"><mat-icon>edit</mat-icon>Редагувати</button>
         </div>
         <mat-divider></mat-divider>
         <div class="card-content">
@@ -55,7 +55,7 @@
     <mat-card>
         <div class="card-header">
             <p>Загальні відомості про транспортний засіб</p>
-            <button mat-flat-button (click)="editGeneralInfo()"><mat-icon>edit</mat-icon>Редагувати</button>
+            <button mat-flat-button (click)="openEditDialog('generalInfo')"><mat-icon>edit</mat-icon>Редагувати</button>
         </div>
         <mat-divider></mat-divider>
         <div class="card-content">

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { EditGeneralInfoComponent } from 'src/app/shared/components/dialog-components/car-edit-profile/edit-general-info/edit-general-info.component';
-import { EditUsingReasonComponent } from 'src/app/shared/components/dialog-components/car-edit-profile/edit-using-reason/edit-using-reason.component';
+import { CarProfileEditComponent } from 'src/app/shared/components/dialog-components/car-profile-edit/car-profile-edit.component';
 import { CurrentCarProfile } from 'src/app/shared/models/transport.model';
 import { TransportService } from 'src/app/shared/services/transport.service';
 
@@ -37,18 +36,18 @@ export class CarInfoComponent implements OnInit {
       .subscribe((res) => (this.carInfo = res));
   }
 
-  editUsingReasonInfo(): void {
-    const dialogRef = this.dialog.open(EditUsingReasonComponent, {
-      height: '70%',
-      width: '70%',
-    });
-    dialogRef.afterClosed().subscribe(() => {
-      location.reload();
-    });
-  }
-
-  editGeneralInfo(): void {
-    const dialogRef = this.dialog.open(EditGeneralInfoComponent, {
+  openEditDialog(value?: string): void {
+    switch (value) {
+      case 'usingReasonInfo':
+        this.transportService.editKey$$.next(value);
+        break;
+      case 'generalInfo':
+        this.transportService.editKey$$.next(value);
+        break;
+      default:
+        break;
+    }
+    const dialogRef = this.dialog.open(CarProfileEditComponent, {
       height: '70%',
       width: '70%',
     });

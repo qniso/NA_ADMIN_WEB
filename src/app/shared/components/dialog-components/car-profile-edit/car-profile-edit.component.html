@@ -1,0 +1,160 @@
+<div class="edit-using-reason" *ngIf="editModalKey == 'usingReasonInfo'">
+    <div class="card-header">
+        <div class="header-content">
+            <p>Відомості техпаспорту</p>
+            <div class="control-panel">
+                <button mat-flat-button (click)="submit()">Зберегти</button>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+    </div>
+    <div class="container">
+       
+        <div class="using-reason">
+            <form [formGroup]="usingReason">
+               
+                <div class="section">
+                    <div class="card-row">
+                        <p>Підстава для використання (назва договору та номер )</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Підстава для використання (назва договору та номер )" formControlName="numAndNameContract">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="card-row">
+                        <p>Дата договору</p>
+                        <div class="date">
+                            <mat-form-field appearance="outline">
+                                <input matInput [matDatepicker]="dateStart" formControlName="dateStart">
+                                <mat-datepicker-toggle matIconSuffix [for]="dateStart"></mat-datepicker-toggle>
+                                <mat-datepicker #dateStart>
+                                  <mat-datepicker-actions>
+                                    <a mat-button matDatepickerCancel>Cancel</a>
+                                    <a mat-raised-button color="primary" matDatepickerApply>Apply</a>
+                                  </mat-datepicker-actions>
+                                </mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="section radio-button">
+                    <div class="card-row">
+                        <p>Договір строковий (так, ні)</p>
+                        <div class="edit-input">
+                            <mat-radio-group aria-label="Select an option" formControlName="isContractFixedTerm">
+                                <mat-radio-button value="true">Так</mat-radio-button>
+                                <mat-radio-button value="">Ні</mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="card-row">
+                        <p>Дата закінчення строку користування</p>
+                        <div class="date">
+                            <mat-form-field appearance="outline">
+                                <input matInput [matDatepicker]="dateEnd" formControlName="dateEnd">
+                                <mat-datepicker-toggle matIconSuffix [for]="dateEnd"></mat-datepicker-toggle>
+                                <mat-datepicker #dateEnd>
+                                  <mat-datepicker-actions>
+                                    <a mat-button matDatepickerCancel>Cancel</a>
+                                    <a mat-raised-button color="primary" matDatepickerApply>Apply</a>
+                                  </mat-datepicker-actions>
+                                </mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="card-row">
+                        <p>Додальші плани використання</p>
+                        <div class="date">
+                            <mat-form-field appearance="outline">
+                                <input matInput [matDatepicker]="dateNextStart" formControlName="dateNextStart">
+                                <mat-datepicker-toggle matIconSuffix [for]="dateNextStart"></mat-datepicker-toggle>
+                                <mat-datepicker #dateNextStart>
+                                  <mat-datepicker-actions>
+                                    <a mat-button matDatepickerCancel>Cancel</a>
+                                    <a mat-raised-button color="primary" matDatepickerApply>Apply</a>
+                                  </mat-datepicker-actions>
+                                </mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+             
+            </form>
+        </div>
+    </div>
+</div>
+<div class="edit-car-general-info" *ngIf="editModalKey == 'generalInfo'">
+    <div class="card-header">
+        <div class="header-content">
+            <p>Загальні відомості про транспортний засіб</p>
+            <div class="control-panel">
+                <button mat-flat-button (click)="submit()">Зберегти</button>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+    </div>
+    <div class="container">
+        <div class="using-reason">
+            <form [formGroup]="generalInfo">
+                <div class="section">
+                    <div class="card-row">
+                        <p>Показник одонометру, км</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Показник одонометру, км" formControlName="mileage">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="card-row">
+                        <p>Обʼєм паливного баку, л</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Обʼєм паливного баку, л" formControlName="fuelTankVolume">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div> 
+                <div class="section">
+                    <div class="card-row">
+                        <p>Висота, м</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Висота, м" formControlName="height">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div> 
+                <div class="section">
+                    <div class="card-row">
+                        <p>Ширина, м</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Ширина, м" formControlName="width">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="card-row">
+                        <p>Довжина, м</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Ширина, м" formControlName="length">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

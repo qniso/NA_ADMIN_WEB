@@ -13,6 +13,7 @@ import { UserAddDriverLicenseComponent } from 'src/app/shared/components/dialog-
 import { UserEditDriverLicenseComponent } from 'src/app/shared/components/dialog-components/user-edit-profile/user-edit-driver-license/user-edit-driver-license.component';
 import { UserEditEducationInfoComponent } from 'src/app/shared/components/dialog-components/user-edit-profile/user-edit-education-info/user-edit-education-info.component';
 import { UserEditGeneralInfoComponent } from 'src/app/shared/components/dialog-components/user-edit-profile/user-edit-general-info/user-edit-general-info.component';
+import { UserProfileEditComponent } from 'src/app/shared/components/dialog-components/user-profile-edit/user-profile-edit.component';
 
 import {
   UserDriverLicense,
@@ -51,8 +52,22 @@ export class UserComponent implements OnInit {
       .subscribe((res) => (this.userInfo = res));
   }
 
-  editGeneralInfo(): void {
-    const dialogRef = this.dialog.open(UserEditGeneralInfoComponent, {
+  openEditModal(value: string): void {
+    switch (value) {
+      case 'userProfile':
+        this.userService.editKey$$.next(value);
+        break;
+      case 'addEducationInfo':
+        this.userService.editKey$$.next(value);
+        break;
+      case 'editEducation':
+        this.userService.editKey$$.next(value);
+        break;
+      default:
+        break;
+    }
+
+    const dialogRef = this.dialog.open(UserProfileEditComponent, {
       height: '70%',
       width: '70%',
     });
@@ -61,77 +76,19 @@ export class UserComponent implements OnInit {
     });
   }
 
-  editUserEducationInfo(
+  saveEducationData(
     id: number,
-    educationCertificate: string,
-    educationSpecialty: string,
-    educationAdvancedQualification: string
+    certificate: string,
+    specialty: string,
+    advancedQualification: string
   ): void {
-    const dialogRef = this.dialog.open(UserEditEducationInfoComponent, {
-      height: '70%',
-      width: '70%',
-    });
-    const body = {
+    const data = {
       id: id,
-      certificate: educationCertificate,
-      specialty: educationSpecialty,
-      advancedQualification: educationAdvancedQualification,
+      certificate: certificate,
+      specialty: specialty,
+      advanced_qualification: advancedQualification,
     };
-    this.userService.userEducation$$.next(body);
-
-    dialogRef.afterClosed().subscribe(() => {
-      location.reload();
-    });
-  }
-
-  addUserEducationInfo(): void {
-    const dialogRef = this.dialog.open(AddUserEducationInfoComponent, {
-      height: '70%',
-      width: '70%',
-    });
-    dialogRef.afterClosed().subscribe(() => {
-      location.reload();
-    });
-  }
-
-  addDriverLicense(): void {
-    const dialogRef = this.dialog.open(UserAddDriverLicenseComponent, {
-      height: '70%',
-      width: '70%',
-    });
-    dialogRef.afterClosed().subscribe(() => {
-      location.reload();
-    });
-  }
-
-  editDriverLicense(): void {
-    const dialogRef = this.dialog.open(UserEditDriverLicenseComponent, {
-      height: '70%',
-      width: '70%',
-    });
-    dialogRef.afterClosed().subscribe(() => {
-      location.reload();
-    });
-  }
-
-  editExistDocument(): void {
-    const dialogRef = this.dialog.open(EditUserExistDocumentComponent, {
-      height: '70%',
-      width: '70%',
-    });
-    dialogRef.afterClosed().subscribe(() => {
-      location.reload();
-    });
-  }
-
-  addUserInternship(): void {
-    const dialogRef = this.dialog.open(AddUserIntershipComponent, {
-      height: '70%',
-      width: '70%',
-    });
-    dialogRef.afterClosed().subscribe(() => {
-      location.reload();
-    });
+    this.userService.userEducation$$.next(data);
   }
 
   editUserInternship(id: number, docNumber: string, date: string): void {
@@ -200,5 +157,8 @@ export class UserComponent implements OnInit {
       .subscribe(() => {
         location.reload();
       });
+  }
+  test() {
+    console.log(true);
   }
 }
