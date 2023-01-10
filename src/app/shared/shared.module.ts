@@ -11,11 +11,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 
 import { AddUserEducationInfoComponent } from './components/dialog-components/user-edit-profile/add-user-education-info/add-user-education-info.component';
 import { AddUserIntershipComponent } from './components/dialog-components/user-edit-profile/add-user-intership/add-user-intership.component';
-import { EditUserExistDocumentComponent } from './components/dialog-components/user-edit-profile/edit-user-exist-document/edit-user-exist-document.component';
 import { EditUserInstructionComponent } from './components/dialog-components/user-edit-profile/edit-user-instruction/edit-user-instruction.component';
-import { EditUserIntershipComponent } from './components/dialog-components/user-edit-profile/edit-user-intership/edit-user-intership.component';
-import { UserAddDriverLicenseComponent } from './components/dialog-components/user-edit-profile/user-add-driver-license/user-add-driver-license.component';
-import { UserEditDriverLicenseComponent } from './components/dialog-components/user-edit-profile/user-edit-driver-license/user-edit-driver-license.component';
 import { UserEditEducationInfoComponent } from './components/dialog-components/user-edit-profile/user-edit-education-info/user-edit-education-info.component';
 import { UserEditGeneralInfoComponent } from './components/dialog-components/user-edit-profile/user-edit-general-info/user-edit-general-info.component';
 
@@ -50,10 +46,6 @@ import { UserProfileEditComponent } from './components/dialog-components/user-pr
     UserAccessDirective,
     UserEditGeneralInfoComponent,
     UserEditEducationInfoComponent,
-    UserEditDriverLicenseComponent,
-    UserAddDriverLicenseComponent,
-    EditUserExistDocumentComponent,
-    EditUserIntershipComponent,
     AddUserIntershipComponent,
     EditUserInstructionComponent,
     AddUserEducationInfoComponent,

@@ -26,3 +26,42 @@ button {
     }
   }
 }
+
+mat-form-field {
+  width: 50%;
+}
+.date-issue,
+.date-end {
+  ::ng-deep {
+    .mat-form-field-infix {
+      display: flex;
+    }
+    .mat-form-field-appearance-outline .mat-form-field-infix {
+      padding: 0;
+    }
+  }
+}
+.date-issue,
+.date-next {
+  ::ng-deep {
+    .mat-form-field-infix {
+      display: flex;
+    }
+    .mat-form-field-appearance-outline .mat-form-field-infix {
+      padding: 0;
+    }
+  }
+}
+.date {
+  ::ng-deep {
+    .mat-form-field-infix {
+      display: flex;
+    }
+    .mat-form-field-appearance-outline .mat-form-field-infix {
+      padding: 0;
+    }
+  }
+}
+mat-divider {
+  margin-bottom: 12px;
+}

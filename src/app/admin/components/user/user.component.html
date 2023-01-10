@@ -51,12 +51,12 @@
                 <p>Результатів не знайдено</p>
         </div>
     </mat-card>
-    <!-- <mat-card>
+    <mat-card>
         <div class="card-header">
             <p>Посвідчення водія</p>
             <div class="control-panel">
-                <button mat-flat-button [disabled]="userInfo.driving_license.categories == null" (click)="addDriverLicense()"><mat-icon>edit</mat-icon>Редагувати</button>
-                <button mat-flat-button (click)="editDriverLicense()"><mat-icon>add</mat-icon>Додати</button>
+                <button mat-flat-button [disabled]="userInfo.driving_license.categories == null" (click)="openEditModal('addDriverLicense')"><mat-icon>edit</mat-icon>Редагувати</button>
+                <button mat-flat-button (click)="openEditModal('editDriverLicense')"><mat-icon>add</mat-icon>Додати</button>
             </div>
         </div>
         <mat-divider></mat-divider>
@@ -78,11 +78,11 @@
         <div class="card-content" *ngIf="userInfo.driving_license.categories == null">
             <p>Результатів не знайдено</p>
         </div>
-    </mat-card> -->
-    <!-- <mat-card>
+    </mat-card>
+    <mat-card>
         <div class="card-header">
             <p>Наявні документи</p>
-            <button mat-flat-button (click)="editExistDocument()"><mat-icon>edit</mat-icon>Редагувати</button>
+            <button mat-flat-button (click)="openEditModal('editExistDocument')"><mat-icon>edit</mat-icon>Редагувати</button>
         </div>
         <mat-divider></mat-divider>
         <div class="card-content" *ngIf="userInfo.available_documents.passport !== null">
@@ -104,12 +104,12 @@
         <div class="card-content" *ngIf="userInfo.available_documents.passport === null">
             <p>Результатів не знайдено</p>
         </div>
-    </mat-card> -->
-    <!-- <mat-card>
+    </mat-card>
+    <mat-card>
         <div class="card-header">
             <p>Стажування</p>
             <div class="control-panel">
-                <button mat-flat-button (click)="addUserInternship()"><mat-icon>add</mat-icon>Додати</button>
+                <button mat-flat-button (click)="openEditModal('addUserInternship')"><mat-icon>add</mat-icon>Додати</button>
             </div>
         </div>
         <mat-divider></mat-divider>
@@ -123,7 +123,7 @@
                     <div class="card__right">
                         <button mat-button [matMenuTriggerFor]="editEducation"><mat-icon>more_vert</mat-icon></button>
                         <mat-menu #editEducation="matMenu">
-                            <button mat-menu-item (click)="editUserInternship(element.id!, element.doc_number, element.date)">Редагувати</button>
+                            <button mat-menu-item (click)="openEditModal('editUserInternship'); saveInternshipData(element.id!, element.doc_number, element.date)">Редагувати</button>
                             <button mat-menu-item (click)="deleteInternsip(element.id!)" class="delete">Видалити</button>
                         </mat-menu>
                     </div>
@@ -134,12 +134,12 @@
         <div class="card-content" *ngIf="!userInfo.internshipInfo.length">
             <p>Результатів не знайдено</p>
         </div>
-    </mat-card> -->
-    <!-- <mat-card>
+    </mat-card>
+    <mat-card>
         <div class="card-header">
             <p>Інстркутаж</p>
             <div class="control-panel">
-                <button mat-flat-button (click)="addUserInstruction()"><mat-icon>add</mat-icon>Додати</button>
+                <button mat-flat-button (click)="openEditModal('addUserInstruction')"><mat-icon>add</mat-icon>Додати</button>
             </div>
         </div>
         <mat-divider></mat-divider>
@@ -152,7 +152,7 @@
                     <div class="card__right">
                         <button mat-button [matMenuTriggerFor]="editEducation"><mat-icon>more_vert</mat-icon></button>
                         <mat-menu #editEducation="matMenu">
-                            <button mat-menu-item (click)="editUserInternship(element.id!, element.doc_number, element.date)">Редагувати</button>
+                            <button mat-menu-item (click)="saveInternshipData(element.id!, element.doc_number, element.date)">Редагувати</button>
                             <button mat-menu-item (click)="deleteInstruction(element.id!)" class="delete">Видалити</button>
                         </mat-menu>
                     </div>
@@ -163,5 +163,5 @@
         <div class="card-content" *ngIf="!userInfo.instructionInfo.length">
             <p>Результатів не знайдено</p>
         </div>
-    </mat-card> -->
+    </mat-card>
     </div>

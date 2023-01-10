@@ -6,11 +6,7 @@ import { map } from 'rxjs';
 
 import { AddUserEducationInfoComponent } from 'src/app/shared/components/dialog-components/user-edit-profile/add-user-education-info/add-user-education-info.component';
 import { AddUserIntershipComponent } from 'src/app/shared/components/dialog-components/user-edit-profile/add-user-intership/add-user-intership.component';
-import { EditUserExistDocumentComponent } from 'src/app/shared/components/dialog-components/user-edit-profile/edit-user-exist-document/edit-user-exist-document.component';
 import { EditUserInstructionComponent } from 'src/app/shared/components/dialog-components/user-edit-profile/edit-user-instruction/edit-user-instruction.component';
-import { EditUserIntershipComponent } from 'src/app/shared/components/dialog-components/user-edit-profile/edit-user-intership/edit-user-intership.component';
-import { UserAddDriverLicenseComponent } from 'src/app/shared/components/dialog-components/user-edit-profile/user-add-driver-license/user-add-driver-license.component';
-import { UserEditDriverLicenseComponent } from 'src/app/shared/components/dialog-components/user-edit-profile/user-edit-driver-license/user-edit-driver-license.component';
 import { UserEditEducationInfoComponent } from 'src/app/shared/components/dialog-components/user-edit-profile/user-edit-education-info/user-edit-education-info.component';
 import { UserEditGeneralInfoComponent } from 'src/app/shared/components/dialog-components/user-edit-profile/user-edit-general-info/user-edit-general-info.component';
 import { UserProfileEditComponent } from 'src/app/shared/components/dialog-components/user-profile-edit/user-profile-edit.component';
@@ -63,6 +59,24 @@ export class UserComponent implements OnInit {
       case 'editEducation':
         this.userService.editKey$$.next(value);
         break;
+      case 'addDriverLicense':
+        this.userService.editKey$$.next(value);
+        break;
+      case 'editDriverLicense':
+        this.userService.editKey$$.next(value);
+        break;
+      case 'editExistDocument':
+        this.userService.editKey$$.next(value);
+        break;
+      case 'addUserInternship':
+        this.userService.editKey$$.next(value);
+        break;
+      case 'editUserInternship':
+        this.userService.editKey$$.next(value);
+        break;
+      case 'addUserInstruction':
+        this.userService.editKey$$.next(value);
+        break;
       default:
         break;
     }
@@ -91,21 +105,13 @@ export class UserComponent implements OnInit {
     this.userService.userEducation$$.next(data);
   }
 
-  editUserInternship(id: number, docNumber: string, date: string): void {
-    const dialogRef = this.dialog.open(EditUserIntershipComponent, {
-      height: '70%',
-      width: '70%',
-    });
-
-    const body = {
+  saveInternshipData(id: number, docNumber: string, date: string): void {
+    const data = {
       id: id,
       doc_number: docNumber,
       date: date,
     };
-    this.userService.userInternship$$.next(body);
-    dialogRef.afterClosed().subscribe(() => {
-      location.reload();
-    });
+    this.userService.userInternship$$.next(data);
   }
 
   addUserInstruction(): void {
