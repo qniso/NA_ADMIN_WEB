@@ -9,11 +9,8 @@ import { UserTableComponent } from './components/user-table/user-table.component
 import { CarListComponent } from './components/car-list/car-list.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
-import { AddUserEducationInfoComponent } from './components/dialog-components/user-edit-profile/add-user-education-info/add-user-education-info.component';
 import { AddUserIntershipComponent } from './components/dialog-components/user-edit-profile/add-user-intership/add-user-intership.component';
 import { EditUserInstructionComponent } from './components/dialog-components/user-edit-profile/edit-user-instruction/edit-user-instruction.component';
-import { UserEditEducationInfoComponent } from './components/dialog-components/user-edit-profile/user-edit-education-info/user-edit-education-info.component';
-import { UserEditGeneralInfoComponent } from './components/dialog-components/user-edit-profile/user-edit-general-info/user-edit-general-info.component';
 
 import { UserAccessDirective } from './directives/user-access.directive';
 
@@ -44,11 +41,8 @@ import { UserProfileEditComponent } from './components/dialog-components/user-pr
     CarListComponent,
     UserProfileComponent,
     UserAccessDirective,
-    UserEditGeneralInfoComponent,
-    UserEditEducationInfoComponent,
     AddUserIntershipComponent,
     EditUserInstructionComponent,
-    AddUserEducationInfoComponent,
     CarProfileEditComponent,
     UserProfileEditComponent,
   ],

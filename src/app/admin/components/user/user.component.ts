@@ -4,11 +4,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
 
-import { AddUserEducationInfoComponent } from 'src/app/shared/components/dialog-components/user-edit-profile/add-user-education-info/add-user-education-info.component';
 import { AddUserIntershipComponent } from 'src/app/shared/components/dialog-components/user-edit-profile/add-user-intership/add-user-intership.component';
 import { EditUserInstructionComponent } from 'src/app/shared/components/dialog-components/user-edit-profile/edit-user-instruction/edit-user-instruction.component';
-import { UserEditEducationInfoComponent } from 'src/app/shared/components/dialog-components/user-edit-profile/user-edit-education-info/user-edit-education-info.component';
-import { UserEditGeneralInfoComponent } from 'src/app/shared/components/dialog-components/user-edit-profile/user-edit-general-info/user-edit-general-info.component';
 import { UserProfileEditComponent } from 'src/app/shared/components/dialog-components/user-profile-edit/user-profile-edit.component';
 
 import {
