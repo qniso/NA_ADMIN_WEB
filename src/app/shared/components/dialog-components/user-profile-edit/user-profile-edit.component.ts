@@ -27,6 +27,7 @@ export class UserProfileEditComponent implements OnInit {
   userInternshipId: number | undefined;
 
   editModalKey!: string | undefined;
+  cardName!: string;
 
   userObject = this.userService.userProfile$$;
   driverCategories: string[] = this.userService.data.driving_license.categories;
@@ -38,6 +39,7 @@ export class UserProfileEditComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.userService.editKey$.subscribe((res) => (this.editModalKey = res));
+    this.checkCardName();
     this.initializeForm();
   }
 
@@ -106,7 +108,7 @@ export class UserProfileEditComponent implements OnInit {
           });
         });
         break;
-      case 'editDriverLicense':
+      case 'addDriverLicense':
         this.userDriverLicense = this.fb.group({
           categories: [
             this.userService.data.driving_license.categories[0],
@@ -124,7 +126,7 @@ export class UserProfileEditComponent implements OnInit {
           ],
         });
         break;
-      case 'addDriverLicense':
+      case 'editDriverLicense':
         this.userDriverLicense = this.fb.group({
           categories: ['', [Validators.required]],
           dateIssue: ['', [Validators.required]],
@@ -163,6 +165,17 @@ export class UserProfileEditComponent implements OnInit {
           docNumber: ['', [Validators.required]],
           date: ['', [Validators.required]],
         });
+        break;
+      case 'editUserInstruction':
+        this.userService.userInternship$.subscribe((res) => {
+          this.userInternshipId = res.id;
+          this.userInstruction = this.fb.group({
+            docNumber: [res.doc_number, [Validators.required]],
+            date: [this.convertToDate(res.date), [Validators.required]],
+          });
+        });
+        break;
+      default:
         break;
     }
   }
@@ -219,7 +232,9 @@ export class UserProfileEditComponent implements OnInit {
           registration_address:
             this.userEditForm.controls['registrationAddress'].value,
         };
-        this.userService.saveUserProfile(userProfile).subscribe();
+        this.userService
+          .saveUserProfile(userProfile)
+          .subscribe(() => location.reload());
         break;
       case 'addEducationInfo':
         const addEducation = {
@@ -229,7 +244,9 @@ export class UserProfileEditComponent implements OnInit {
           advanced_qualification:
             this.userEducation.controls['advancedQualification'].value,
         };
-        this.userService.saveUserEducation(addEducation).subscribe();
+        this.userService
+          .saveUserEducation(addEducation)
+          .subscribe(() => location.reload());
         break;
       case 'editEducation':
         const editEducation = {
@@ -240,7 +257,9 @@ export class UserProfileEditComponent implements OnInit {
           advanced_qualification:
             this.userEducation.controls['advancedQualification'].value,
         };
-        this.userService.editUserEducation(editEducation).subscribe();
+        this.userService
+          .editUserEducation(editEducation)
+          .subscribe(() => location.reload());
         break;
       case 'editDriverLicense':
         const _dateIssue = this.userDriverLicense.controls['dateIssue'].value;
@@ -255,7 +274,9 @@ export class UserProfileEditComponent implements OnInit {
           date_issue: dateIssue,
           date_end: dateEnd,
         };
-        this.userService.editUserDriverLicense(editDriverLicense).subscribe();
+        this.userService
+          .editUserDriverLicense(editDriverLicense)
+          .subscribe(() => location.reload());
         break;
       case 'addDriverLicense':
         const _dateIssueDriverLicense =
@@ -277,7 +298,9 @@ export class UserProfileEditComponent implements OnInit {
         };
         console.log(addDriverLicense);
 
-        this.userService.addUserDriverLicense(addDriverLicense).subscribe();
+        this.userService
+          .addUserDriverLicense(addDriverLicense)
+          .subscribe(() => location.reload());
         break;
       case 'editExistDocument':
         const _dateIssueExistDocumen =
@@ -316,7 +339,9 @@ export class UserProfileEditComponent implements OnInit {
           date: date,
           type: 'INTERNSHIP',
         };
-        this.userService.editUserInternship(addUserInternship).subscribe();
+        this.userService
+          .editUserInternship(addUserInternship)
+          .subscribe(() => location.reload());
         break;
       case 'editUserInternship':
         const _dateUserInternship = this.userInternship.controls['date'].value;
@@ -328,7 +353,9 @@ export class UserProfileEditComponent implements OnInit {
           date: dateUserInternship,
           type: 'INTERNSHIP',
         };
-        this.userService.editUserInternship(userInternship).subscribe();
+        this.userService
+          .editUserInternship(userInternship)
+          .subscribe(() => location.reload());
         break;
       case 'addUserInstruction':
         const _dateUserInstruction =
@@ -342,9 +369,69 @@ export class UserProfileEditComponent implements OnInit {
           type: 'INSTRUCTION',
         };
 
-        this.userService.editUserInternship(userInstruction).subscribe();
+        this.userService
+          .editUserInternship(userInstruction)
+          .subscribe(() => location.reload());
+        break;
+
+      case 'editUserInstruction':
+        const _dateEditingUserInstruction =
+          this.userInstruction.controls['date'].value;
+        let dateEditingUserInstruction = this.formatDate(
+          _dateEditingUserInstruction
+        );
+
+        const EditingUserInstruction: UserUnstruction = {
+          id: this.userInternshipId,
+          userId: this.userService.data.id,
+          doc_number: this.userInstruction.controls['docNumber'].value,
+          date: dateEditingUserInstruction,
+          type: 'INSTRUCTION',
+        };
+
+        this.userService
+          .editUserInternship(EditingUserInstruction)
+          .subscribe(() => location.reload());
         break;
       default:
+        break;
+    }
+  }
+
+  checkCardName(): void {
+    switch (this.editModalKey) {
+      case 'userProfile':
+        this.cardName = 'Відомості про користувача';
+        break;
+      case 'addEducationInfo':
+        this.cardName = 'Освіта';
+        break;
+      case 'addEducationInfo':
+        this.cardName = 'Освіта';
+        break;
+      case 'editEducation':
+        this.cardName = 'Редагування освіти';
+        break;
+      case 'addDriverLicense':
+        this.cardName = 'Редагування посвідчення водія';
+        break;
+      case 'editDriverLicense':
+        this.cardName = 'Посвідчення водія';
+        break;
+      case 'editExistDocument':
+        this.cardName = 'Наявні документи';
+        break;
+      case 'addUserInternship':
+        this.cardName = 'Стажування';
+        break;
+      case 'editUserInternship':
+        this.cardName = 'Редагування cтажування';
+        break;
+      case 'addUserInstruction':
+        this.cardName = 'Інстркутаж';
+        break;
+      case 'editUserInstruction':
+        this.cardName = 'Редагування інстркутажу';
         break;
     }
   }

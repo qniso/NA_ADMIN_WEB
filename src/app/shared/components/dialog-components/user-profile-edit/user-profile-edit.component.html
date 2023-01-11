@@ -1,7 +1,16 @@
+<div class="card-header">
+    <div class="header-content">
+        <p>{{cardName}}</p>
+        <div class="control-panel">
+            <button mat-flat-button (click)="submit()">Зберегти</button>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+</div>
 <div class="general-info" *ngIf="editModalKey == 'userProfile'">
     <div class="container">
         <div class="user-profile">
-            <form [formGroup]="userEditForm" (submit)="submit()">
+            <form [formGroup]="userEditForm">
                 <div class="section">
                     <div class="card-row">
                         <p>ПІБ праціника</p>
@@ -118,9 +127,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="control-panel">
-                    <button mat-flat-button >Зберегти</button>
-                </div>
             </form>
         </div>
     </div>
@@ -128,7 +134,7 @@
 <div class="add-education-info" *ngIf="editModalKey == 'addEducationInfo'">
     <div class="container">
         <div class="add-education-indo">
-            <form [formGroup]="userEducation" (submit)="submit()">
+            <form [formGroup]="userEducation" >
                 <div class="section">
                     <div class="card-row">
                         <p>Свідоцтво про освіту</p>
@@ -155,10 +161,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="control-panel">
-                    <button mat-flat-button >Зберегти</button>
-                    <!-- <a mat-flat-button (click)="delete()">Видалити</a> -->
-                </div>
+                
             </form>
         </div>
     </div>
@@ -166,7 +169,7 @@
 <div class="edit-education-info" *ngIf="editModalKey == 'editEducation'">
     <div class="container">
         <div class="user-education">
-            <form [formGroup]="userEducation" (submit)="submit()">
+            <form [formGroup]="userEducation" >
                 <div class="section">
                     <div class="card-row">
                         <p>Свідоцтво про освіту</p>
@@ -193,20 +196,17 @@
                         </div>
                     </div>
                 </div>
-                <div class="control-panel">
-                    <button mat-flat-button>Зберегти</button>
-                    <!-- <a mat-flat-button (click)="delete()">Видалити</a> -->
-                </div>
+          
             </form>
         </div>
     </div>
     
     <!--    <a mat-flat-button (click)="delete()">Видалити</a> -->
 </div>
-<div class="addDriverLicense" *ngIf="editModalKey == 'addDriverLicense'">
+<div class="add-driverLicense" *ngIf="editModalKey == 'addDriverLicense'">
     <div class="container">
         <div class="driver-license">
-            <form [formGroup]="userDriverLicense" (submit)="submit()">
+            <form [formGroup]="userDriverLicense" >
                 <div class="section">
                     <div class="card-row">
                         <p>Категорії</p>
@@ -247,17 +247,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="control-panel">
-                    <button mat-flat-button >Зберегти</button>
-                </div>
+                
             </form>
         </div>
     </div>
 </div> 
-<div class="editDriverLicense" *ngIf="editModalKey == 'editDriverLicense'">
+<div class="edit-driverLicense" *ngIf="editModalKey == 'editDriverLicense'">
     <div class="container">
         <div class="driver-license">
-            <form [formGroup]="userDriverLicense" (submit)="submit()">
+            <form [formGroup]="userDriverLicense" >
                 <div class="section">
                     <div class="card-row">
                         <p>Категорії</p>
@@ -298,17 +296,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="control-panel">
-                    <button mat-flat-button >Зберегти</button>
-                </div>
+               
             </form>
         </div>
     </div>
 </div>
-<div class="editExistDocument" *ngIf="editModalKey == 'editExistDocument'">
+<div class="edit-existDocument" *ngIf="editModalKey == 'editExistDocument'">
     <div class="container">
         <div class="exist-document">
-            <form [formGroup]="userExistDocument" (submit)="submit()">
+            <form [formGroup]="userExistDocument" >
                 <div class="section">
                     <div class="card-row">
                         <p>Паспорт</p>
@@ -383,18 +379,16 @@
                             </mat-form-field>
                         </div>
                     </div>
-                <div class="control-panel">
-                    <button mat-flat-button >Зберегти</button>
-                </div>
+                
             </div>
             </form>
         </div>
     </div>
 </div>
-<div class="addInternship" *ngIf="editModalKey == 'addUserInternship'">
+<div class="add-internship" *ngIf="editModalKey == 'addUserInternship'">
     <div class="container">
         <div class="user-intership">
-            <form [formGroup]="userInternship" (submit)="submit()">
+            <form [formGroup]="userInternship" >
                 <div class="section">
                     <div class="card-row">
                         <p>Номер докмуента </p>
@@ -420,17 +414,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="control-panel">
-                    <button mat-flat-button >Зберегти</button>
-                </div>
+                
             </form>
         </div>
     </div>
 </div>
-<div class="editInternship" *ngIf="editModalKey == 'editUserInternship'">
+<div class="edit-internship" *ngIf="editModalKey == 'editUserInternship'">
     <div class="container">
         <div class="user-internship">
-            <form [formGroup]="userInternship" (submit)="submit()">
+            <form [formGroup]="userInternship" >
                 <div class="section">
                     <div class="card-row">
                         <p>Номер докмуента </p>
@@ -456,17 +448,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="control-panel">
-                    <button mat-flat-button >Зберегти</button>
-                </div>
+               
             </form>
         </div>
     </div>
 </div>
-<div class="Instraction">
+<div class="add-instuction" *ngIf="editModalKey == 'editUserInstruction' || editModalKey == 'addUserInstruction'">
     <div class="container">
         <div class="user-instruction">
-            <form [formGroup]="userInstruction" (submit)="submit()">
+            <form [formGroup]="userInstruction" >
                 <div class="section">
                     <div class="card-row">
                         <p>Номер докмуента </p>
@@ -492,9 +482,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="control-panel">
-                    <button mat-flat-button >Зберегти</button>
-                </div>
+                
             </form>
         </div>
     </div>

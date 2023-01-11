@@ -33,6 +33,7 @@ export interface NewUser {
 
 export interface UserProfile {
   id?: number;
+  role: string;
   email: string;
   fio: string;
   phone: string;

@@ -8,6 +8,7 @@
         <mat-divider></mat-divider>
         <div class="card-content">
             <p>ПІБ праціника :  {{userInfo.fio || "-"}} </p>
+            <p>Посада: {{userInfo.role || "-"}}</p>
             <p>Номер наказу : {{userInfo.acc_order_number || "-"}}</p>
             <p>Дата наказу : {{userInfo.acc_order_date || "-"}}</p>
             <p>Оклад  : {{userInfo.salary || "-"}}</p>
@@ -152,7 +153,7 @@
                     <div class="card__right">
                         <button mat-button [matMenuTriggerFor]="editEducation"><mat-icon>more_vert</mat-icon></button>
                         <mat-menu #editEducation="matMenu">
-                            <button mat-menu-item (click)="saveInternshipData(element.id!, element.doc_number, element.date)">Редагувати</button>
+                            <button mat-menu-item (click)="openEditModal('editUserInstruction'); saveInternshipData(element.id!, element.doc_number, element.date)">Редагувати</button>
                             <button mat-menu-item (click)="deleteInstruction(element.id!)" class="delete">Видалити</button>
                         </mat-menu>
                     </div>

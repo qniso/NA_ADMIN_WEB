@@ -1,15 +1,14 @@
-<div class="edit-using-reason" *ngIf="editModalKey == 'usingReasonInfo'">
-    <div class="card-header">
-        <div class="header-content">
-            <p>Відомості техпаспорту</p>
-            <div class="control-panel">
-                <button mat-flat-button (click)="submit()">Зберегти</button>
-            </div>
+<div class="card-header">
+    <div class="header-content">
+        <p>{{cardName}}</p>
+        <div class="control-panel">
+            <button mat-flat-button (click)="submit()">Зберегти</button>
         </div>
-        <mat-divider></mat-divider>
     </div>
+    <mat-divider></mat-divider>
+</div>
+<div class="edit-using-reason" *ngIf="editModalKey == 'usingReasonInfo'">
     <div class="container">
-       
         <div class="using-reason">
             <form [formGroup]="usingReason">
                
@@ -91,7 +90,7 @@
     </div>
 </div>
 <div class="edit-car-general-info" *ngIf="editModalKey == 'generalInfo'">
-    <div class="card-header">
+    <!-- <div class="card-header">
         <div class="header-content">
             <p>Загальні відомості про транспортний засіб</p>
             <div class="control-panel">
@@ -99,7 +98,7 @@
             </div>
         </div>
         <mat-divider></mat-divider>
-    </div>
+    </div> -->
     <div class="container">
         <div class="using-reason">
             <form [formGroup]="generalInfo">

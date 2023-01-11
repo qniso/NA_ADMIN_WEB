@@ -3,7 +3,9 @@ button {
   color: #ffff;
   background-color: #159a9c;
 }
-
+.container {
+  padding: 24px;
+}
 .user-profile {
   .section {
     mat-form-field {
@@ -64,4 +66,19 @@ mat-form-field {
 }
 mat-divider {
   margin-bottom: 12px;
+}
+.card-header {
+  position: sticky;
+  top: 0;
+  background-color: rgb(255, 255, 255);
+  z-index: 1000;
+  p {
+    margin-top: 12px;
+    font-weight: 500;
+  }
+}
+.header-content {
+  padding: 12px 24px;
+  display: flex;
+  justify-content: space-between;
 }

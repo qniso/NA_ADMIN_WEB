@@ -4,8 +4,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
 
-import { AddUserIntershipComponent } from 'src/app/shared/components/dialog-components/user-edit-profile/add-user-intership/add-user-intership.component';
-import { EditUserInstructionComponent } from 'src/app/shared/components/dialog-components/user-edit-profile/edit-user-instruction/edit-user-instruction.component';
 import { UserProfileEditComponent } from 'src/app/shared/components/dialog-components/user-profile-edit/user-profile-edit.component';
 
 import {
@@ -74,6 +72,9 @@ export class UserComponent implements OnInit {
       case 'addUserInstruction':
         this.userService.editKey$$.next(value);
         break;
+      case 'editUserInstruction':
+        this.userService.editKey$$.next(value);
+        break;
       default:
         break;
     }
@@ -109,17 +110,6 @@ export class UserComponent implements OnInit {
       date: date,
     };
     this.userService.userInternship$$.next(data);
-  }
-
-  addUserInstruction(): void {
-    const dialogRef = this.dialog.open(EditUserInstructionComponent, {
-      height: '70%',
-      width: '70%',
-    });
-
-    dialogRef.afterClosed().subscribe(() => {
-      location.reload();
-    });
   }
 
   deleteEducation(id: number): void {

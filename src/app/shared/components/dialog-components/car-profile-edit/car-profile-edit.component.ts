@@ -10,7 +10,7 @@ import { TransportService } from 'src/app/shared/services/transport.service';
 })
 export class CarProfileEditComponent implements OnInit {
   editModalKey!: string | undefined;
-
+  cardName!: string;
   data: CurrentCarProfile = this.transportService.data;
 
   generalInfo!: FormGroup;
@@ -25,6 +25,7 @@ export class CarProfileEditComponent implements OnInit {
     this.transportService.editKey$.subscribe(
       (res) => (this.editModalKey = res)
     );
+    this.checkCardName();
     this.initializeForm();
   }
 
@@ -140,6 +141,17 @@ export class CarProfileEditComponent implements OnInit {
         this.transportService.editGeneralInfo(generalInfoBody).subscribe();
         break;
       default:
+        break;
+    }
+  }
+
+  checkCardName(): void {
+    switch (this.editModalKey) {
+      case 'usingReasonInfo':
+        this.cardName = 'Відомості техпаспорту';
+        break;
+      case 'generalInfo':
+        this.cardName = 'Загальні відомості про транспортний засіб';
         break;
     }
   }

@@ -9,8 +9,8 @@ import { UserTableComponent } from './components/user-table/user-table.component
 import { CarListComponent } from './components/car-list/car-list.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
-import { AddUserIntershipComponent } from './components/dialog-components/user-edit-profile/add-user-intership/add-user-intership.component';
-import { EditUserInstructionComponent } from './components/dialog-components/user-edit-profile/edit-user-instruction/edit-user-instruction.component';
+import { CarProfileEditComponent } from './components/dialog-components/car-profile-edit/car-profile-edit.component';
+import { UserProfileEditComponent } from './components/dialog-components/user-profile-edit/user-profile-edit.component';
 
 import { UserAccessDirective } from './directives/user-access.directive';
 
@@ -30,8 +30,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatRadioModule } from '@angular/material/radio';
-import { CarProfileEditComponent } from './components/dialog-components/car-profile-edit/car-profile-edit.component';
-import { UserProfileEditComponent } from './components/dialog-components/user-profile-edit/user-profile-edit.component';
 
 @NgModule({
   declarations: [
@@ -41,8 +39,6 @@ import { UserProfileEditComponent } from './components/dialog-components/user-pr
     CarListComponent,
     UserProfileComponent,
     UserAccessDirective,
-    AddUserIntershipComponent,
-    EditUserInstructionComponent,
     CarProfileEditComponent,
     UserProfileEditComponent,
   ],
