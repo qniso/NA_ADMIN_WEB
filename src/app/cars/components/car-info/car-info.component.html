@@ -2,7 +2,7 @@
     <mat-card>
         <div class="card-header">
             <p>Відомості про транспортний засіб</p>
-            <button mat-flat-button><mat-icon>edit</mat-icon>Редагувати</button>
+            <button mat-flat-button (click)="openEditDialog('technicalCertificate')"><mat-icon>edit</mat-icon>Редагувати</button>
         </div>
         <mat-divider></mat-divider>
         <div class="card-content">
@@ -18,7 +18,7 @@
     <mat-card>
         <div class="card-header">
             <p>Відомості про транспортний засіб згідно з техпаспортом</p>
-            <button mat-flat-button><mat-icon>edit</mat-icon>Редагувати</button>
+            <button mat-flat-button (click)="openEditDialog('technicalCertificateDopInfo')"><mat-icon>edit</mat-icon>Редагувати</button>
         </div>
         <mat-divider></mat-divider>
         <div class="card-content">
@@ -33,7 +33,7 @@
             <p>Категорія: {{carInfo.technical_certificate.technical_certificate_dop_info.category || "-"}}</p>
             <p>Вид палива: {{carInfo.technical_certificate.technical_certificate_dop_info.fuel || "-"}}</p>
             <p>Тип кузова: {{carInfo.technical_certificate.technical_certificate_dop_info.body_type || "-"}}</p>
-            <p>Обʼєм двигуна, см.куб.: {{carInfo.technical_certificate.technical_certificate_dop_info.empty_weight || "-"}}</p>
+            <p>Обʼєм двигуна, см.куб.: {{carInfo.technical_certificate.technical_certificate_dop_info.engine_volume || "-"}}</p>
             <p>Потужність кВт: {{carInfo.technical_certificate.technical_certificate_dop_info.engine_power || "-"}}</p>
             <p>Екологічний стандарт: {{carInfo.technical_certificate.technical_certificate_dop_info.environmental_standard}}</p>
         </div>

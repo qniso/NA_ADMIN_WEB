@@ -33,5 +33,8 @@ export const URLS = {
   GET_TRANSPORT_INFO: '/get_transport_info',
   EDIT_USING_REASON_INFO: '/edit/using_reason_info',
   EDIT_GENERAL_INFO: '/edit/general_info',
-  //transport/transport/edit/general_info
+  EDIT_TECHNICAL_CERTIFICATE_DOP_INFO: '/edit/technical_certificate_dop_info',
+  EDIT_TECHNICAL_CERTIFICATE: '/edit/technical_certificate',
+  EDIT_NOMENCLATURE_NAME: '/edit/nomenclature_name',
+  ///transport/transport/edit/technical_certificate
 };

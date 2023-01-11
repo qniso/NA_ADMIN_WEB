@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CurrentCarProfile } from 'src/app/shared/models/transport.model';
+import {
+  CurrentCarProfile,
+  TechnicalCertificateDopInfo,
+} from 'src/app/shared/models/transport.model';
 import { TransportService } from 'src/app/shared/services/transport.service';
 
 @Component({
@@ -15,6 +18,8 @@ export class CarProfileEditComponent implements OnInit {
 
   generalInfo!: FormGroup;
   usingReason!: FormGroup;
+  techicalCertificateDopInfo!: FormGroup;
+  technicalCertificate!: FormGroup;
 
   constructor(
     private fb: FormBuilder,
@@ -65,6 +70,100 @@ export class CarProfileEditComponent implements OnInit {
           mileage: [this.data.general_info.mileage, [Validators.required]],
           length: [this.data.general_info.length, [Validators.required]],
           width: [this.data.general_info.width, [Validators.required]],
+        });
+        break;
+      case 'technicalCertificateDopInfo':
+        this.techicalCertificateDopInfo = this.fb.group({
+          brand: [
+            this.data.technical_certificate.technical_certificate_dop_info
+              .brand,
+            Validators.required,
+          ],
+          stateNumber: [
+            this.data.technical_certificate.technical_certificate_dop_info
+              .state_number,
+            Validators.required,
+          ],
+          VINCode: [
+            this.data.technical_certificate.technical_certificate_dop_info
+              .VIN_code,
+            Validators.required,
+          ],
+          colour: [
+            this.data.technical_certificate.technical_certificate_dop_info
+              .colour,
+            Validators.required,
+          ],
+          dateIssue: [
+            this.data.technical_certificate.technical_certificate_dop_info
+              .date_issue,
+            Validators.required,
+          ],
+          seats: [
+            this.data.technical_certificate.technical_certificate_dop_info
+              .seats,
+            Validators.required,
+          ],
+          fullWeight: [
+            this.data.technical_certificate.technical_certificate_dop_info
+              .full_weight,
+            Validators.required,
+          ],
+          emptyWeight: [
+            this.data.technical_certificate.technical_certificate_dop_info
+              .empty_weight,
+            Validators.required,
+          ],
+          category: [
+            this.data.technical_certificate.technical_certificate_dop_info
+              .category,
+            Validators.required,
+          ],
+          fuel: [
+            this.data.technical_certificate.technical_certificate_dop_info.fuel,
+            Validators.required,
+          ],
+          bodyType: [
+            this.data.technical_certificate.technical_certificate_dop_info
+              .body_type,
+            Validators.required,
+          ],
+          engineVolume: [
+            this.data.technical_certificate.technical_certificate_dop_info
+              .engine_volume,
+            Validators.required,
+          ],
+          enginePower: [
+            this.data.technical_certificate.technical_certificate_dop_info
+              .engine_power,
+            Validators.required,
+          ],
+          environmentalStandard: [
+            this.data.technical_certificate.technical_certificate_dop_info
+              .environmental_standard,
+            Validators.required,
+          ],
+        });
+        break;
+      case 'technicalCertificate':
+        this.technicalCertificate = this.fb.group({
+          nomenclatureName: [this.data.nomenclature_name, Validators.required],
+          numAndSeries: [
+            this.data.technical_certificate.num_and_series,
+            Validators.required,
+          ],
+          issuedBy: [
+            this.data.technical_certificate.issued_by,
+            Validators.required,
+          ],
+          dateEnd: [
+            this.data.technical_certificate.date_end,
+            Validators.required,
+          ],
+          dateIssue: [
+            this.data.technical_certificate.date_issue,
+            Validators.required,
+          ],
         });
         break;
       default:
@@ -140,6 +239,75 @@ export class CarProfileEditComponent implements OnInit {
         console.log(generalInfoBody);
         this.transportService.editGeneralInfo(generalInfoBody).subscribe();
         break;
+      case 'technicalCertificateDopInfo':
+        const _dateIssue =
+          this.techicalCertificateDopInfo.controls['dateIssue'].value;
+        let dateIssue = this.formatDate(_dateIssue);
+        const techicalCertificateDopInfo = {
+          id: this.transportService.currentCarId,
+          technical_certificate_dop_info: {
+            brand: this.techicalCertificateDopInfo.controls['brand'].value,
+            state_number:
+              this.techicalCertificateDopInfo.controls['stateNumber'].value,
+            colour: this.techicalCertificateDopInfo.controls['colour'].value,
+            date_issue: dateIssue,
+            seats: this.techicalCertificateDopInfo.controls['seats'].value,
+            full_weight:
+              this.techicalCertificateDopInfo.controls['fullWeight'].value,
+            empty_weight:
+              this.techicalCertificateDopInfo.controls['emptyWeight'].value,
+            category:
+              this.techicalCertificateDopInfo.controls['category'].value,
+            fuel: this.techicalCertificateDopInfo.controls['fuel'].value,
+            body_type:
+              this.techicalCertificateDopInfo.controls['bodyType'].value,
+            engine_volume:
+              this.techicalCertificateDopInfo.controls['engineVolume'].value,
+            engine_power:
+              this.techicalCertificateDopInfo.controls['enginePower'].value,
+            environmental_standard:
+              this.techicalCertificateDopInfo.controls['environmentalStandard']
+                .value,
+            vin_code: this.techicalCertificateDopInfo.controls['VINCode'].value,
+          },
+        };
+        this.transportService
+          .editTechnicalCertificateDopInfo(techicalCertificateDopInfo)
+          .subscribe();
+        break;
+      case 'technicalCertificate':
+        const _dateIssuetechnicalCertificate =
+          this.technicalCertificate.controls['dateIssue'].value;
+        let dateIssuetechnicalCertificate = this.formatDate(
+          _dateIssuetechnicalCertificate
+        );
+        const _dateEndtechnicalCertificate =
+          this.technicalCertificate.controls['dateEnd'].value;
+        let dateEndtechnicalCertificate = this.formatDate(
+          _dateEndtechnicalCertificate
+        );
+        const nomenclatureName = {
+          id: this.transportService.currentCarId,
+          nomenclature_name:
+            this.technicalCertificate.controls['nomenclatureName'].value,
+        };
+        this.transportService
+          .editNomenclatureName(nomenclatureName)
+          .subscribe();
+        const technicalCertificate = {
+          id: this.transportService.currentCarId,
+          technical_certificate: {
+            num_and_series:
+              this.technicalCertificate.controls['numAndSeries'].value,
+            issued_by: this.technicalCertificate.controls['issuedBy'].value,
+            date_end: dateEndtechnicalCertificate,
+            date_issue: dateIssuetechnicalCertificate,
+          },
+        };
+        this.transportService
+          .editTechnicalCertificate(technicalCertificate)
+          .subscribe();
+        break;
       default:
         break;
     }
@@ -152,6 +320,15 @@ export class CarProfileEditComponent implements OnInit {
         break;
       case 'generalInfo':
         this.cardName = 'Загальні відомості про транспортний засіб';
+        break;
+      case 'technicalCertificateDopInfo':
+        this.cardName =
+          'Відомості про транспортний засіб згідно з техпаспортом';
+        break;
+      case 'technicalCertificate':
+        this.cardName = 'Відомості про транспортний засіб';
+        break;
+      default:
         break;
     }
   }

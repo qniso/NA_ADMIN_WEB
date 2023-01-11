@@ -7,6 +7,79 @@
     </div>
     <mat-divider></mat-divider>
 </div>
+<div class="editCertificate" *ngIf="editModalKey == 'technicalCertificate'">
+    <div class="container">
+        <div class="transport-certificate">
+            <form [formGroup]="technicalCertificate">
+                <div class="section">
+                    <div class="card-row">
+                        <p>Номенклатурна назва</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Номенклатурна назва" formControlName="nomenclatureName">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="section general-info">
+                    <div class="card-row">
+                        <p>Номер та серія техпаспорту</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Номер та серія техпаспорту" formControlName="numAndSeries">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="card-row">
+                        <p>Техпаспорт виданий органом</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Техпаспорт виданий органом" formControlName="issuedBy">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="card-row">
+                        <p>Техпаспорт дійсний до</p>
+                        <div class="date">
+                            <mat-form-field appearance="outline">
+                                <input matInput [matDatepicker]="dateEnd" formControlName="dateEnd">
+                                <mat-datepicker-toggle matIconSuffix [for]="dateEnd"></mat-datepicker-toggle>
+                                <mat-datepicker #dateEnd>
+                                  <mat-datepicker-actions>
+                                    <a mat-button matDatepickerCancel>Cancel</a>
+                                    <a mat-raised-button color="primary" matDatepickerApply>Apply</a>
+                                  </mat-datepicker-actions>
+                                </mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="card-row">
+                        <p>Взятий на облік (дата видачі техпаспорту)</p>
+                        <div class="date">
+                            <mat-form-field appearance="outline">
+                                <input matInput [matDatepicker]="dateIssue" formControlName="dateIssue">
+                                <mat-datepicker-toggle matIconSuffix [for]="dateIssue"></mat-datepicker-toggle>
+                                <mat-datepicker #dateIssue>
+                                  <mat-datepicker-actions>
+                                    <a mat-button matDatepickerCancel>Cancel</a>
+                                    <a mat-raised-button color="primary" matDatepickerApply>Apply</a>
+                                  </mat-datepicker-actions>
+                                </mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <div class="edit-using-reason" *ngIf="editModalKey == 'usingReasonInfo'">
     <div class="container">
         <div class="using-reason">
@@ -90,15 +163,6 @@
     </div>
 </div>
 <div class="edit-car-general-info" *ngIf="editModalKey == 'generalInfo'">
-    <!-- <div class="card-header">
-        <div class="header-content">
-            <p>Загальні відомості про транспортний засіб</p>
-            <div class="control-panel">
-                <button mat-flat-button (click)="submit()">Зберегти</button>
-            </div>
-        </div>
-        <mat-divider></mat-divider>
-    </div> -->
     <div class="container">
         <div class="using-reason">
             <form [formGroup]="generalInfo">
@@ -154,6 +218,161 @@
                 </div>
             </form>
         </div>
-    </div>
 
+    </div>
+</div>
+<div class="edit-technical-certificate-dop-info" *ngIf="editModalKey == 'technicalCertificateDopInfo'">
+    <div class="container">
+        <div class="technical-certificate-dop-info" >
+            <form [formGroup]="techicalCertificateDopInfo">
+                <div class="section">
+                    <div class="card-row">
+                        <p>Марка</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Марка" formControlName="brand">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="card-row">
+                        <p>Держ номер.</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Держ номер." formControlName="stateNumber">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="card-row">
+                        <p>VIN-код</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="VIN-код" formControlName="VINCode">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="card-row">
+                        <p>Колір</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Колір" formControlName="colour">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="card-row">
+                        <p>Рік випуску</p>
+                        <div class="date">
+                            <mat-form-field appearance="outline">
+                                <input matInput [matDatepicker]="dateIssue" formControlName="dateIssue">
+                                <mat-datepicker-toggle matIconSuffix [for]="dateIssue"></mat-datepicker-toggle>
+                                <mat-datepicker #dateIssue>
+                                  <mat-datepicker-actions>
+                                    <a mat-button matDatepickerCancel>Cancel</a>
+                                    <a mat-raised-button color="primary" matDatepickerApply>Apply</a>
+                                  </mat-datepicker-actions>
+                                </mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="card-row">
+                        <p>Кількість місць для сидіння</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Кількість місць для сидіння" formControlName="seats">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="card-row">
+                        <p>Повна маса</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Повна маса" formControlName="fullWeight">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="card-row">
+                        <p>Маса без навантаження</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Маса без навантаження" formControlName="emptyWeight">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="card-row">
+                        <p>Категорія</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Категорія" formControlName="category">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="card-row">
+                        <p>Вид палива</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Вид палива" formControlName="fuel">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="card-row">
+                        <p>Тип кузова</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Тип кузова" formControlName="bodyType">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="card-row">
+                        <p>Обʼєм двигуна, см.куб.</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Обʼєм двигуна, см.куб." formControlName="engineVolume">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="card-row">
+                        <p>Потужність кВт</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Потужність кВт" formControlName="enginePower">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="card-row">
+                        <p>Екологічний стандарт</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Екологічний стандарт" formControlName="environmentalStandard">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>

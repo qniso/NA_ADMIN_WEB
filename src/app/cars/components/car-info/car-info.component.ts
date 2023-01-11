@@ -44,6 +44,12 @@ export class CarInfoComponent implements OnInit {
       case 'generalInfo':
         this.transportService.editKey$$.next(value);
         break;
+      case 'technicalCertificateDopInfo':
+        this.transportService.editKey$$.next(value);
+        break;
+      case 'technicalCertificate':
+        this.transportService.editKey$$.next(value);
+        break;
       default:
         break;
     }

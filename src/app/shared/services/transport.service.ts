@@ -59,4 +59,33 @@ export class TransportService {
       body
     );
   }
+
+  editTechnicalCertificateDopInfo(body: {}): Observable<any> {
+    return this.http.post<any>(
+      URLS.BASE_URL +
+        URLS.NA_API +
+        URLS.TRANSPORT +
+        URLS.EDIT_TECHNICAL_CERTIFICATE_DOP_INFO,
+      body
+    );
+  }
+
+  editTechnicalCertificate(body: {}): Observable<any> {
+    return this.http.post<any>(
+      URLS.BASE_URL +
+        URLS.NA_API +
+        URLS.TRANSPORT +
+        URLS.EDIT_TECHNICAL_CERTIFICATE,
+      body
+    );
+  }
+  editNomenclatureName(body: {}): Observable<any> {
+    return this.http.post<any>(
+      URLS.BASE_URL +
+        URLS.NA_API +
+        URLS.TRANSPORT +
+        URLS.EDIT_NOMENCLATURE_NAME,
+      body
+    );
+  }
 }
