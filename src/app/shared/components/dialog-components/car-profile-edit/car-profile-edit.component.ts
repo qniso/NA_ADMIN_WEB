@@ -340,6 +340,7 @@ export class CarProfileEditComponent implements OnInit {
         let dateIssuetechnicalCertificate = this.formatDate(
           _dateIssuetechnicalCertificate
         );
+
         const _dateEndtechnicalCertificate =
           this.technicalCertificate.controls['dateEnd'].value;
         let dateEndtechnicalCertificate = this.formatDate(

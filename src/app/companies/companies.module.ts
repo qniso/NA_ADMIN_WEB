@@ -7,12 +7,14 @@ import { AddCompanyComponent } from './components/add-company/add-company.compon
 import { CompaniesRoutingModule } from './companies-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CompanyEditComponent } from './components/company-edit/company-edit.component';
 
 
 @NgModule({
   declarations: [
     CompanyListComponent,
-    AddCompanyComponent
+    AddCompanyComponent,
+    CompanyEditComponent
   ],
   imports: [
     CommonModule,

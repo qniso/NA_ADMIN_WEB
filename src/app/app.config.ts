@@ -36,5 +36,6 @@ export const URLS = {
   EDIT_TECHNICAL_CERTIFICATE_DOP_INFO: '/edit/technical_certificate_dop_info',
   EDIT_TECHNICAL_CERTIFICATE: '/edit/technical_certificate',
   EDIT_NOMENCLATURE_NAME: '/edit/nomenclature_name',
-  ///transport/transport/edit/technical_certificate
+  GET_COMPANY_INFO: '/get_company_info',
+  ///company
 };
