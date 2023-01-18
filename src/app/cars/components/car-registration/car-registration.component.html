@@ -42,30 +42,35 @@
                     <div>
                         <p>Техпаспорт дійсний до</p>
                         <div class="edit-input">
-                            <mat-form-field class="date-picker" appearance="outline">
-                                <!-- <mat-label>Choose a date</mat-label> -->
-                                <input matInput [matDatepicker]="validUntil" formControlName="validUntil" placeholder="Техпаспорт дійсний до">
-                                <mat-datepicker-toggle matIconSuffix [for]="validUntil">
-                                  <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
-                                </mat-datepicker-toggle>
-                                <mat-datepicker #validUntil></mat-datepicker>
-                              </mat-form-field>
+                              <div class="date">
+                                <mat-form-field appearance="outline">
+                                    <input matInput [matDatepicker]="validUntil" placeholder="Техпаспорт дійсний до" formControlName="validUntil">
+                                    <mat-datepicker-toggle matIconSuffix [for]="validUntil"></mat-datepicker-toggle>
+                                    <mat-datepicker #validUntil>
+                                      <mat-datepicker-actions>
+                                        <a mat-button matDatepickerCancel>Cancel</a>
+                                        <a mat-raised-button color="primary" matDatepickerApply>Apply</a>
+                                      </mat-datepicker-actions>
+                                    </mat-datepicker>
+                                </mat-form-field>
+                            </div>
                         </div>
                     </div>
                     <div>
                         <p>Взятий на облік (дата видачі техпаспорту)</p>
                         <div class="edit-input">
-                            <!-- <mat-form-field appearance="outline">
-                                <input matInput placeholder="Взятий на облік (дата видачі техпаспорту)" formControlName="dateOfIssuance">
-                            </mat-form-field> -->
-                            <mat-form-field class="date-picker" appearance="outline">
-                                <!-- <mat-label>Choose a date</mat-label> -->
-                                <input matInput [matDatepicker]="dateOfIssuance" formControlName="dateOfIssuance" placeholder="Взятий на облік (дата видачі техпаспорту)">
-                                <mat-datepicker-toggle matIconSuffix [for]="dateOfIssuance">
-                                  <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
-                                </mat-datepicker-toggle>
-                                <mat-datepicker #dateOfIssuance></mat-datepicker>
-                              </mat-form-field>
+                              <div class="date">
+                                <mat-form-field appearance="outline">
+                                    <input matInput [matDatepicker]="dateOfIssuance" placeholder="Взятий на облік (дата видачі техпаспорту)" formControlName="dateOfIssuance">
+                                    <mat-datepicker-toggle matIconSuffix [for]="dateOfIssuance"></mat-datepicker-toggle>
+                                    <mat-datepicker #dateOfIssuance>
+                                      <mat-datepicker-actions>
+                                        <a mat-button matDatepickerCancel>Cancel</a>
+                                        <a mat-raised-button color="primary" matDatepickerApply>Apply</a>
+                                      </mat-datepicker-actions>
+                                    </mat-datepicker>
+                                </mat-form-field>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -203,12 +208,22 @@
                     <div>
                         <p>Дата договору</p>
                         <div class="edit-input">
-                            <mat-form-field appearance="outline">
-                                <input matInput placeholder="Дата договору" formControlName="dateOfTheContract">
-                            </mat-form-field>
+                            <div class="date">
+                                <mat-form-field appearance="outline">
+                                    <input matInput [matDatepicker]="dateOfTheContract" placeholder="Дата договору" formControlName="dateOfTheContract">
+                                    <mat-datepicker-toggle matIconSuffix [for]="dateOfTheContract"></mat-datepicker-toggle>
+                                    <mat-datepicker #dateOfTheContract>
+                                      <mat-datepicker-actions>
+                                        <a mat-button matDatepickerCancel>Cancel</a>
+                                        <a mat-raised-button color="primary" matDatepickerApply>Apply</a>
+                                      </mat-datepicker-actions>
+                                    </mat-datepicker>
+                                </mat-form-field>
+                            </div>
                         </div>
                     </div>
                     <div>
+                        <!-- CHECKBOX -->
                         <p>Договір строковий (так, ні)</p>
                         <div class="edit-input">
                             <mat-form-field appearance="outline">
@@ -219,17 +234,35 @@
                     <div>
                         <p>Дата закінчення строку користування</p>
                         <div class="edit-input">
-                            <mat-form-field appearance="outline">
-                                <input matInput placeholder="Дата закінчення строку користування" formControlName="expiryDate">
-                            </mat-form-field>
+                            <div class="date">
+                                <mat-form-field appearance="outline">
+                                    <input matInput [matDatepicker]="expiryDate" placeholder="Дата закінчення строку користування" formControlName="expiryDate">
+                                    <mat-datepicker-toggle matIconSuffix [for]="expiryDate"></mat-datepicker-toggle>
+                                    <mat-datepicker #expiryDate>
+                                      <mat-datepicker-actions>
+                                        <a mat-button matDatepickerCancel>Cancel</a>
+                                        <a mat-raised-button color="primary" matDatepickerApply>Apply</a>
+                                      </mat-datepicker-actions>
+                                    </mat-datepicker>
+                                </mat-form-field>
+                            </div>
                         </div>
                     </div>
                     <div>
                         <p>Подальші плани використання</p>
                         <div class="edit-input">
-                            <mat-form-field appearance="outline">
-                                <input matInput placeholder="Подальші плани використання" formControlName="futureUsagePlans">
-                            </mat-form-field>
+                            <div class="date">
+                                <mat-form-field appearance="outline">
+                                    <input matInput [matDatepicker]="futureUsagePlans" placeholder="Подальші плани використання" formControlName="futureUsagePlans">
+                                    <mat-datepicker-toggle matIconSuffix [for]="futureUsagePlans"></mat-datepicker-toggle>
+                                    <mat-datepicker #futureUsagePlans>
+                                      <mat-datepicker-actions>
+                                        <a mat-button matDatepickerCancel>Cancel</a>
+                                        <a mat-raised-button color="primary" matDatepickerApply>Apply</a>
+                                      </mat-datepicker-actions>
+                                    </mat-datepicker>
+                                </mat-form-field>
+                            </div>
                         </div>
                     </div>
                 </div>

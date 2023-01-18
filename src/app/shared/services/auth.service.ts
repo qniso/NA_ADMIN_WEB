@@ -122,6 +122,8 @@ export class AuthService {
   }
 
   private startRefreshTokenTimer(): void {
+    console.log('start timer', true);
+
     this.refreshTokenTimer = setTimeout(() => {
       // Запрос на обновление токена пошёл
       this.refreshToken().subscribe();

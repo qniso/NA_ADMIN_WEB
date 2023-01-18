@@ -7,7 +7,7 @@ export interface Transport {
   };
 }
 
-export interface CurrentCarProfile{
+export interface CurrentCarProfile {
   nomenclature_name: string;
   technical_certificate: TechnicalCertificate;
   using_reason_info: UsingReasonInfo;

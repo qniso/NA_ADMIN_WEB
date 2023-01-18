@@ -1,44 +1,47 @@
-.container{
-        width: 1440px;
+.container {
+  width: 1440px;
 }
-.section{
-    margin-top: 22px;
-    p{
-        font-weight: 500;
-    }
-    mat-form-field{
-        width: 50%;
-    }
-    mat-card{
-        border-radius: 14px;
-    }
+.section {
+  margin-top: 22px;
+  p {
+    font-weight: 500;
+  }
+  mat-form-field {
+    width: 50%;
+  }
+  mat-card {
+    border-radius: 14px;
+  }
 }
-.control-panel{
-    margin: 12px auto 50px auto;
-    text-align: end;
+.control-panel {
+  margin: 12px auto 50px auto;
+  text-align: end;
 }
-.save-transport{
-    color: #FFFF;
-    background-color: #159A9C;
+.save-transport {
+  color: #ffff;
+  background-color: #159a9c;
 }
-.cancel{
-    color: #02374f;
-    background-color: #b4bec9;
-    margin-right: 12px;
+.cancel {
+  color: #02374f;
+  background-color: #b4bec9;
+  margin-right: 12px;
 }
 
-.date-picker{
-    ::ng-deep{
-        .mat-form-field-infix{
-            display: flex ;
-        }
+.date {
+  ::ng-deep {
+    .mat-form-field-infix {
+      display: flex;
     }
+    .mat-form-field-appearance-outline .mat-form-field-infix {
+      padding: 0;
+    }
+  }
 }
 
 .card-content {
-    margin-top: 24px;
-    .card-content-header {
-      margin-top: 12px;
-      font-weight: 500;
-    }
+  margin-top: 24px;
+  .card-content-header {
+    margin-top: 12px;
+    font-weight: 500;
   }
+}

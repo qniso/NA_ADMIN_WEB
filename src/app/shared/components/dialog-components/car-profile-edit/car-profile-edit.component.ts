@@ -37,134 +37,193 @@ export class CarProfileEditComponent implements OnInit {
   initializeForm(): void {
     switch (this.editModalKey) {
       case 'usingReasonInfo':
-        this.usingReason = this.fb.group({
-          numAndNameContract: [
-            this.data.using_reason_info.num_and_name_contract,
-            [Validators.required],
-          ],
-          dateStart: [
-            this.convertToDate(this.data.using_reason_info.date_start),
-            [Validators.required],
-          ],
-          isContractFixedTerm: [
-            this.data.using_reason_info.is_contract_fixed_term,
-            [Validators.required],
-          ],
-          dateEnd: [
-            this.convertToDate(this.data.using_reason_info.date_end),
-            [Validators.required],
-          ],
-          dateNextStart: [
-            this.convertToDate(this.data.using_reason_info.date_next_start),
-            [Validators.required],
-          ],
-        });
+        if (this.data.using_reason_info) {
+          this.usingReason = this.fb.group({
+            numAndNameContract: [
+              this.data.using_reason_info.num_and_name_contract,
+              [Validators.required],
+            ],
+            dateStart: [
+              this.convertToDate(this.data.using_reason_info.date_start),
+              [Validators.required],
+            ],
+            isContractFixedTerm: [
+              this.data.using_reason_info.is_contract_fixed_term,
+              [Validators.required],
+            ],
+            dateEnd: [
+              this.convertToDate(this.data.using_reason_info.date_end),
+              [Validators.required],
+            ],
+            dateNextStart: [
+              this.convertToDate(this.data.using_reason_info.date_next_start),
+              [Validators.required],
+            ],
+          });
+        } else {
+          this.usingReason = this.fb.group({
+            numAndNameContract: ['', [Validators.required]],
+            dateStart: ['', [Validators.required]],
+            isContractFixedTerm: ['', [Validators.required]],
+            dateEnd: ['', [Validators.required]],
+            dateNextStart: ['', [Validators.required]],
+          });
+        }
+
         break;
       case 'generalInfo':
-        this.generalInfo = this.fb.group({
-          fuelTankVolume: [
-            this.data.general_info.fuel_tank_volume,
-            [Validators.required],
-          ],
-          height: [this.data.general_info.height, [Validators.required]],
-          mileage: [this.data.general_info.mileage, [Validators.required]],
-          length: [this.data.general_info.length, [Validators.required]],
-          width: [this.data.general_info.width, [Validators.required]],
-        });
+        if (this.data.general_info) {
+          this.generalInfo = this.fb.group({
+            fuelTankVolume: [
+              this.data.general_info.fuel_tank_volume,
+              [Validators.required],
+            ],
+            height: [this.data.general_info.height, [Validators.required]],
+            mileage: [this.data.general_info.mileage, [Validators.required]],
+            length: [this.data.general_info.length, [Validators.required]],
+            width: [this.data.general_info.width, [Validators.required]],
+          });
+        } else {
+          this.generalInfo = this.fb.group({
+            fuelTankVolume: ['', [Validators.required]],
+            height: ['', [Validators.required]],
+            mileage: ['', [Validators.required]],
+            length: ['', [Validators.required]],
+            width: ['', [Validators.required]],
+          });
+        }
+
         break;
       case 'technicalCertificateDopInfo':
-        this.techicalCertificateDopInfo = this.fb.group({
-          brand: [
-            this.data.technical_certificate.technical_certificate_dop_info
-              .brand,
-            Validators.required,
-          ],
-          stateNumber: [
-            this.data.technical_certificate.technical_certificate_dop_info
-              .state_number,
-            Validators.required,
-          ],
-          VINCode: [
-            this.data.technical_certificate.technical_certificate_dop_info
-              .VIN_code,
-            Validators.required,
-          ],
-          colour: [
-            this.data.technical_certificate.technical_certificate_dop_info
-              .colour,
-            Validators.required,
-          ],
-          dateIssue: [
-            this.data.technical_certificate.technical_certificate_dop_info
-              .date_issue,
-            Validators.required,
-          ],
-          seats: [
-            this.data.technical_certificate.technical_certificate_dop_info
-              .seats,
-            Validators.required,
-          ],
-          fullWeight: [
-            this.data.technical_certificate.technical_certificate_dop_info
-              .full_weight,
-            Validators.required,
-          ],
-          emptyWeight: [
-            this.data.technical_certificate.technical_certificate_dop_info
-              .empty_weight,
-            Validators.required,
-          ],
-          category: [
-            this.data.technical_certificate.technical_certificate_dop_info
-              .category,
-            Validators.required,
-          ],
-          fuel: [
-            this.data.technical_certificate.technical_certificate_dop_info.fuel,
-            Validators.required,
-          ],
-          bodyType: [
-            this.data.technical_certificate.technical_certificate_dop_info
-              .body_type,
-            Validators.required,
-          ],
-          engineVolume: [
-            this.data.technical_certificate.technical_certificate_dop_info
-              .engine_volume,
-            Validators.required,
-          ],
-          enginePower: [
-            this.data.technical_certificate.technical_certificate_dop_info
-              .engine_power,
-            Validators.required,
-          ],
-          environmentalStandard: [
-            this.data.technical_certificate.technical_certificate_dop_info
-              .environmental_standard,
-            Validators.required,
-          ],
-        });
+        if (
+          this.data.technical_certificate.technical_certificate_dop_info !==
+          null
+        ) {
+          this.techicalCertificateDopInfo = this.fb.group({
+            brand: [
+              this.data.technical_certificate.technical_certificate_dop_info
+                .brand,
+              Validators.required,
+            ],
+            stateNumber: [
+              this.data.technical_certificate.technical_certificate_dop_info
+                .state_number,
+              Validators.required,
+            ],
+            VINCode: [
+              this.data.technical_certificate.technical_certificate_dop_info
+                .VIN_code,
+              Validators.required,
+            ],
+            colour: [
+              this.data.technical_certificate.technical_certificate_dop_info
+                .colour,
+              Validators.required,
+            ],
+            dateIssue: [
+              this.data.technical_certificate.technical_certificate_dop_info
+                .date_issue,
+              Validators.required,
+            ],
+            seats: [
+              this.data.technical_certificate.technical_certificate_dop_info
+                .seats,
+              Validators.required,
+            ],
+            fullWeight: [
+              this.data.technical_certificate.technical_certificate_dop_info
+                .full_weight,
+              Validators.required,
+            ],
+            emptyWeight: [
+              this.data.technical_certificate.technical_certificate_dop_info
+                .empty_weight,
+              Validators.required,
+            ],
+            category: [
+              this.data.technical_certificate.technical_certificate_dop_info
+                .category,
+              Validators.required,
+            ],
+            fuel: [
+              this.data.technical_certificate.technical_certificate_dop_info
+                .fuel,
+              Validators.required,
+            ],
+            bodyType: [
+              this.data.technical_certificate.technical_certificate_dop_info
+                .body_type,
+              Validators.required,
+            ],
+            engineVolume: [
+              this.data.technical_certificate.technical_certificate_dop_info
+                .engine_volume,
+              Validators.required,
+            ],
+            enginePower: [
+              this.data.technical_certificate.technical_certificate_dop_info
+                .engine_power,
+              Validators.required,
+            ],
+            environmentalStandard: [
+              this.data.technical_certificate.technical_certificate_dop_info
+                .environmental_standard,
+              Validators.required,
+            ],
+          });
+        } else {
+          this.techicalCertificateDopInfo = this.fb.group({
+            brand: ['', Validators.required],
+            stateNumber: ['', Validators.required],
+            VINCode: ['', Validators.required],
+            colour: ['', Validators.required],
+            dateIssue: ['', Validators.required],
+            seats: ['', Validators.required],
+            fullWeight: ['', Validators.required],
+            emptyWeight: ['', Validators.required],
+            category: ['', Validators.required],
+            fuel: ['', Validators.required],
+            bodyType: ['', Validators.required],
+            engineVolume: ['', Validators.required],
+            enginePower: ['', Validators.required],
+            environmentalStandard: ['', Validators.required],
+          });
+        }
+
         break;
       case 'technicalCertificate':
-        this.technicalCertificate = this.fb.group({
-          nomenclatureName: [this.data.nomenclature_name, Validators.required],
-          numAndSeries: [
-            this.data.technical_certificate.num_and_series,
-            Validators.required,
-          ],
-          issuedBy: [
-            this.data.technical_certificate.issued_by,
-            Validators.required,
-          ],
-          dateEnd: [
-            this.data.technical_certificate.date_end,
-            Validators.required,
-          ],
-          dateIssue: [
-            this.data.technical_certificate.date_issue,
-            Validators.required,
-          ],
-        });
+        if (this.data.technical_certificate) {
+          this.technicalCertificate = this.fb.group({
+            nomenclatureName: [
+              this.data.nomenclature_name,
+              Validators.required,
+            ],
+            numAndSeries: [
+              this.data.technical_certificate.num_and_series,
+              Validators.required,
+            ],
+            issuedBy: [
+              this.data.technical_certificate.issued_by,
+              Validators.required,
+            ],
+            dateEnd: [
+              this.data.technical_certificate.date_end,
+              Validators.required,
+            ],
+            dateIssue: [
+              this.data.technical_certificate.date_issue,
+              Validators.required,
+            ],
+          });
+        } else {
+          this.technicalCertificate = this.fb.group({
+            nomenclatureName: ['', Validators.required],
+            numAndSeries: ['', Validators.required],
+            issuedBy: ['', Validators.required],
+            dateEnd: ['', Validators.required],
+            dateIssue: ['', Validators.required],
+          });
+        }
         break;
       default:
         break;

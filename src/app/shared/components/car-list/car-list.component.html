@@ -46,3 +46,8 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+
+
+  <div class="empty-request" *ngIf="dataSource == null">
+    <p>На даний момент немає зареєстрованного транспорту</p>
+  </div>
