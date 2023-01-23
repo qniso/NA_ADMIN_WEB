@@ -183,7 +183,7 @@ export class UsersService {
     );
   }
 
-  deleteUserDrivingLicense(body: {}): Observable<any> {
+  deleteUserDrivingLicense(body?: {}): Observable<any> {
     return this.http.delete(
       URLS.BASE_URL +
         URLS.NA_API +

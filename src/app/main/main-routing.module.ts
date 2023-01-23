@@ -30,6 +30,14 @@ const routes: Routes = [
           import('../cars/cars.module').then((m) => m.CarsModule),
         canActivate: [AuthGuard],
       },
+      {
+        path: 'employee',
+        loadChildren: () =>
+          import('../current-user-profile/current-user-profile.module').then(
+            (m) => m.CurrentUserProfileModule
+          ),
+        canActivate: [AuthGuard],
+      },
     ],
   },
 ];

@@ -1,0 +1,91 @@
+.section-row {
+  display: flex;
+  justify-content: space-between;
+  .section-left {
+    position: relative;
+    width: 30%;
+    margin-right: 12px;
+  }
+  .section-right {
+    width: 70%;
+  }
+  .user-profile-picture {
+    left: 25%;
+    position: relative;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 50%;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  .edit-picture {
+    background-color: #024564;
+    position: absolute;
+    top: 177px;
+    left: 251px;
+  }
+}
+.container {
+  margin-top: 32px;
+  width: 1440px;
+}
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 12px;
+  p {
+    font-weight: 500;
+  }
+  mat-icon {
+    margin-right: 8px;
+  }
+  button {
+    border-radius: 7px;
+    color: #02374f;
+    background-color: #b4bec9;
+  }
+  .control-panel {
+    button:last-of-type {
+      margin-left: 12px;
+    }
+  }
+}
+.card-content {
+  margin-top: 24px;
+  .card-content-header {
+    margin-top: 12px;
+    font-weight: 500;
+  }
+}
+
+mat-card {
+  border-radius: 14px;
+  margin-bottom: 12px;
+}
+.mat-button-disabled {
+  opacity: 0.5;
+}
+.education-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.internship-info {
+  display: flex;
+  justify-content: space-between;
+}
+.instruction-info {
+  display: flex;
+  justify-content: space-between;
+}
+.driving-license {
+  display: flex;
+  justify-content: space-between;
+}
+.delete {
+  color: #f74d4d;
+}

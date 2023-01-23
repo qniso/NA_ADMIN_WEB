@@ -31,8 +31,12 @@
                 >Адміністрування</a> -->
             </div>
             <div class="navbar__right">
-                <p>super admin</p>
-                <button mat-button (click)="logout()"> <mat-icon matPrefix >logout</mat-icon></button>
+                <button mat-mini-fab class="menu-button" [matMenuTriggerFor]="headerMenu" ></button>
+                <mat-menu #headerMenu="matMenu">
+                    <a mat-menu-item  [routerLink]="['/main/employee']"><mat-icon matPrefix>person</mat-icon>Профіль користувача</a>
+                    <a mat-menu-item (click)="logout()"><mat-icon matPrefix>logout</mat-icon>Вийти</a>
+                </mat-menu>
+                <!-- <button mat-button (click)="logout()"> <mat-icon matPrefix >logout</mat-icon></button> -->
             </div>
         </div>
     </div>

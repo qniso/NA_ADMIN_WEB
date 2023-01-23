@@ -1,1 +1,185 @@
-<p>profile works!</p>
+<div class="container" *ngIf="userInfo">
+    <div class="section-row">
+        <div class="section-left">
+            <mat-card>
+                <div class="user-profile-picture">
+                    <img src="../../../../assets/img/img.jpg">
+                </div>
+                <button mat-mini-fab class="edit-picture"><mat-icon matPrefix>add</mat-icon></button>
+                <div class="card-content" >
+                    <p>ПІБ праціника :  {{userInfo.fio || "-"}} </p>
+                    <p>Посада: {{userInfo.role || "-"}}</p>
+                    <p>Дата народження : {{userInfo.birthday || "-"}}</p>
+                    <p>Номер телефону : {{userInfo.phone || "-"}}</p>
+                    <p>Email : {{userInfo.email || "-"}}</p>
+                </div>
+            </mat-card>
+        </div>
+        <div class="section-right">
+            <div>
+                <!-- <button >clicl</button> -->
+                <mat-card>
+                    <div class="card-header">
+                        <p>Відомості про користувача</p>
+                        <button mat-flat-button (click)="openEditModal('userProfile')"><mat-icon>edit</mat-icon>Редагувати</button>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div class="card-content">
+                        <p>Номер наказу : {{userInfo.acc_order_number || "-"}}</p>
+                        <p>Дата наказу : {{userInfo.acc_order_date || "-"}}</p>
+                        <p>Оклад  : {{userInfo.salary || "-"}}</p>
+                        <p>Стаж роботи на попередньому місці : {{userInfo.previous_work_exp || "-"}}</p>
+                        <p>Відомості щодо попередньої роботи для МП : {{userInfo.previous_info_work_mp || "-"}}</p>
+                        <p>Достатній стаж роботи для МП : {{userInfo.sufficient_experience_mp || "-"}}</p>
+                        <p>Адреса реєстрації : {{userInfo.registration_address || "-"}}</p>
+                        <p>Адреса фактичного мешкання : {{userInfo.actual_address || "-"}}</p>
+                    </div>
+                </mat-card>
+                <mat-card>
+                    <div class="card-header">
+                        <p>Освіта</p>
+                        <div class="control-panel">
+                            <button mat-flat-button (click)="openEditModal('addEducationInfo')"><mat-icon>add</mat-icon>Додати</button>
+                        </div>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div class="card-content" *ngFor="let element of userInfo.educationInfo">
+                        <div class="education-info">
+                            <div class="card__left">
+                                <p>Свідоцтво про освіту :  {{element.certificate}}</p>
+                                <p>Спеціальність : {{element.specialty}} </p>
+                                <p>Підвищення кваліфікації, свідоцтво : {{element.advanced_qualification}}</p>
+                            </div>
+                            <div class="card__right">
+                                <button mat-button [matMenuTriggerFor]="editEducation"><mat-icon>more_vert</mat-icon></button>
+                                <mat-menu #editEducation="matMenu">
+                                    <button mat-menu-item (click)="openEditModal('editEducation'); saveEducationData(element.id, element.certificate, element.specialty, element.advanced_qualification)" >Редагувати</button>
+                                    <button mat-menu-item  (click)="deleteEducation(element.id)"class="delete">Видалити</button>
+                                </mat-menu>
+                            </div>
+                            
+                        </div>
+                        <mat-divider  *ngIf="userInfo.educationInfo.length > 1"></mat-divider>
+                    </div>
+                    <div class="card-content" *ngIf="!userInfo.educationInfo.length">
+                            <p>Результатів не знайдено</p>
+                    </div>
+                </mat-card>
+                <mat-card>
+                    <div class="card-header">
+                        <p>Посвідчення водія</p>
+                        <div class="control-panel">
+                            <button mat-flat-button [disabled]="userInfo.driving_license.categories == null" (click)="openEditModal('addDriverLicense')"><mat-icon>edit</mat-icon>Редагувати</button>
+                            <button mat-flat-button (click)="openEditModal('editDriverLicense')"><mat-icon>add</mat-icon>Додати</button>
+                        </div>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div class="card-content" *ngIf="userInfo.driving_license.categories !== null">
+                        <div class="driving-license">
+                            <div class="card__left">
+                                <p>Категорії :  <span *ngFor="let element of userInfo.driving_license.categories">{{element}}, </span></p>
+                                <p>Дата видачі : {{userInfo.driving_license.date_issue}}</p>
+                                <p>Дата закінчення : {{userInfo.driving_license.date_end}}</p>
+                            </div>
+                            <div class="card__right">
+                                <button mat-button [matMenuTriggerFor]="editEducation"><mat-icon>more_vert</mat-icon></button>
+                                <mat-menu #editEducation="matMenu">
+                                    <button mat-menu-item (click)="deleteDrivingLicense(userInfo.id!)" class="delete">Видалити</button>
+                                </mat-menu>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content" *ngIf="userInfo.driving_license.categories == null">
+                        <p>Результатів не знайдено</p>
+                    </div>
+                </mat-card>
+                <mat-card>
+                    <div class="card-header">
+                        <p>Наявні документи</p>
+                        <button mat-flat-button (click)="openEditModal('editExistDocument')"><mat-icon>edit</mat-icon>Редагувати</button>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div class="card-content" *ngIf="userInfo.available_documents.passport !== null">
+                        <p>Паспорт :  {{userInfo.available_documents.passport}}</p>
+                        <p>Інн : {{userInfo.available_documents.ipn}} </p>
+                        <p>Трудова книжка : {{userInfo.available_documents.employment_history}}</p>
+                        <mat-divider></mat-divider>
+                        <p class="card-content-header" >Довідка про стан здоровʼя</p>
+                        <div *ngIf="userInfo.available_documents.health_certificate !== null">
+                        <p>Номер довідки та форма: {{userInfo.available_documents.health_certificate.certificate_number}}</p>
+                        <p>Дата отримання : {{userInfo.available_documents.health_certificate.date_issue}}</p>
+                        <p>Дата наступного огляду : {{userInfo.available_documents.health_certificate.date_next_review}}</p>
+                        <p>Військово-облікові документи : {{userInfo.available_documents.military_registration_doc}}</p>
+                        </div>
+                        <div *ngIf="userInfo.available_documents.health_certificate == null">
+                            <p>Результатів не знайдено</p>
+                        </div>
+                    </div>
+                    <div class="card-content" *ngIf="userInfo.available_documents.passport === null">
+                        <p>Результатів не знайдено</p>
+                    </div>
+                </mat-card>
+                <mat-card>
+                    <div class="card-header">
+                        <p>Стажування</p>
+                        <div class="control-panel">
+                            <button mat-flat-button (click)="openEditModal('addUserInternship')"><mat-icon>add</mat-icon>Додати</button>
+                        </div>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div class="card-content" *ngFor="let element of userInfo.internshipInfo">
+                        <div class="card-info">
+                            <div class="internship-info">
+                                <div class="card__left">
+                                    <p>Номер докмуента :  {{element.doc_number}}</p>
+                                    <p>Дата : {{element.date}}</p>
+                                </div>
+                                <div class="card__right">
+                                    <button mat-button [matMenuTriggerFor]="editEducation"><mat-icon>more_vert</mat-icon></button>
+                                    <mat-menu #editEducation="matMenu">
+                                        <button mat-menu-item (click)="openEditModal('editUserInternship'); saveInternshipData(element.id!, element.doc_number, element.date)">Редагувати</button>
+                                        <button mat-menu-item (click)="deleteInternsip(element.id!)" class="delete">Видалити</button>
+                                    </mat-menu>
+                                </div>
+                            </div>
+                        </div>
+                        <mat-divider *ngIf="userInfo.internshipInfo.length > 1"></mat-divider>
+                    </div>
+                    <div class="card-content" *ngIf="!userInfo.internshipInfo.length">
+                        <p>Результатів не знайдено</p>
+                    </div>
+                </mat-card>
+                <mat-card>
+                    <div class="card-header">
+                        <p>Інстркутаж</p>
+                        <div class="control-panel">
+                            <button mat-flat-button (click)="openEditModal('addUserInstruction')"><mat-icon>add</mat-icon>Додати</button>
+                        </div>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div class="card-content" *ngFor="let element of userInfo.instructionInfo">
+                            <div class="instruction-info">
+                                <div class="card__left">
+                                    <p>Номер докмуента :  {{element.doc_number}}</p>
+                                    <p>Дата : {{element.date}}</p>
+                                </div>
+                                <div class="card__right">
+                                    <button mat-button [matMenuTriggerFor]="editEducation"><mat-icon>more_vert</mat-icon></button>
+                                    <mat-menu #editEducation="matMenu">
+                                        <button mat-menu-item (click)="openEditModal('editUserInstruction'); saveInternshipData(element.id!, element.doc_number, element.date)">Редагувати</button>
+                                        <button mat-menu-item (click)="deleteInstruction(element.id!)" class="delete">Видалити</button>
+                                    </mat-menu>
+                                </div>
+                            </div>
+                            
+                            <mat-divider *ngIf="userInfo.instructionInfo.length > 1"></mat-divider>
+                        </div>
+                    <div class="card-content" *ngIf="!userInfo.instructionInfo.length">
+                        <p>Результатів не знайдено</p>
+                    </div>
+                </mat-card>
+                </div>
+        </div>
+    </div>
+    
+</div>

@@ -1,47 +1,48 @@
-:host{
-    width: 100%;
-    font-family:'Montserrat', sans-serif;
+:host {
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
+}
+.navbar-container {
+  width: 100%;
+}
+.navbar-row {
+  width: 1440px;
+  display: flex;
+  justify-content: center;
+}
 
-}
-.navbar-container{
-    width: 100%;
-}
-.navbar-row{
-    width: 1440px;
-    display: flex;
-    justify-content: center;
-}
-
-.navbar{
-    margin-top: 6px;
-    width: 100%;
+.navbar {
+  margin-top: 6px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  p,
+  a {
+    font-size: 16px;
+    font-weight: 500;
+  }
+  &__left {
     display: flex;
     justify-content: space-between;
-    p,a{
-        font-size: 16px;
-        font-weight: 500;
+    a:not(:last-child) {
+      margin-right: 24px;
     }
-    &__left{
-        display: flex;
-        justify-content: space-between;
-        a:not(:last-child){
-            margin-right: 24px;
-        }
-        a:hover{
-            cursor: pointer;
-            color: #159A9C;
-        }
+    a:hover {
+      cursor: pointer;
+      color: #159a9c;
     }
-    &__right{
-        display: flex;
-    }
-    a{
-        text-decoration: none;
-        color: black;
-        
-    }
-    .active {
-        color: #159A9C;
-    }
-
+  }
+  &__right {
+    display: flex;
+  }
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  .active {
+    color: #159a9c;
+  }
+}
+.menu-button {
+  background-color: gray;
 }
