@@ -46,47 +46,74 @@ export class UserProfileEditComponent implements OnInit {
   private initializeForm(): void {
     switch (this.editModalKey) {
       case 'userProfile':
-        this.userEditForm = this.fb.group({
-          fio: [this.userService.data.fio, [Validators.required]],
-          birthday: [
-            this.convertToDate(this.userService.data.birthday),
-            [Validators.required],
-          ],
-          phone: [this.userService.data.phone, [Validators.required]],
-          registrationAddress: [
-            this.userService.data.registration_address,
-            [Validators.required],
-          ],
-          email: [this.userService.data.email, [Validators.required]],
-          actualAddress: [
-            this.userService.data.actual_address,
-            [Validators.required],
-          ],
-          accOrderNumber: [
-            this.userService.data.acc_order_number,
-            [Validators.required],
-          ],
-          accOrderDate: [
-            this.convertToDate(this.userService.data.acc_order_date),
-            [Validators.required],
-          ],
-          salary: [
-            this.userService.data.salary,
-            [Validators.required, Validators.pattern(/^[0-9]/)],
-          ],
-          previousWorkExp: [
-            this.userService.data.previous_work_exp,
-            [Validators.required],
-          ],
-          previousInfoWorkMp: [
-            this.userService.data.previous_info_work_mp,
-            [Validators.required],
-          ],
-          sufficientExperienceMp: [
-            this.userService.data.sufficient_experience_mp,
-            [Validators.required],
-          ],
-        });
+        if (
+          this.userService.data.fio &&
+          this.userService.data.phone &&
+          this.userService.data.email &&
+          this.userService.data.acc_order_number &&
+          this.userService.data.acc_order_date &&
+          this.userService.data.previous_work_exp &&
+          this.userService.data.previous_info_work_mp &&
+          this.userService.data.sufficient_experience_mp
+        ) {
+          this.userEditForm = this.fb.group({
+            fio: [this.userService.data.fio, [Validators.required]],
+            birthday: [
+              this.convertToDate(this.userService.data.birthday),
+              [Validators.required],
+            ],
+            phone: [this.userService.data.phone, [Validators.required]],
+            registrationAddress: [
+              this.userService.data.registration_address,
+              [Validators.required],
+            ],
+            email: [this.userService.data.email, [Validators.required]],
+            actualAddress: [
+              this.userService.data.actual_address,
+              [Validators.required],
+            ],
+            accOrderNumber: [
+              this.userService.data.acc_order_number,
+              [Validators.required],
+            ],
+            accOrderDate: [
+              this.convertToDate(this.userService.data.acc_order_date),
+              [Validators.required],
+            ],
+            salary: [
+              this.userService.data.salary,
+              [Validators.required, Validators.pattern(/^[0-9]/)],
+            ],
+            previousWorkExp: [
+              this.userService.data.previous_work_exp,
+              [Validators.required],
+            ],
+            previousInfoWorkMp: [
+              this.userService.data.previous_info_work_mp,
+              [Validators.required],
+            ],
+            sufficientExperienceMp: [
+              this.userService.data.sufficient_experience_mp,
+              [Validators.required],
+            ],
+          });
+        } else {
+          this.userEditForm = this.fb.group({
+            fio: [, [Validators.required]],
+            birthday: [, [Validators.required]],
+            phone: [, [Validators.required]],
+            registrationAddress: [, [Validators.required]],
+            email: [, [Validators.required]],
+            actualAddress: [, [Validators.required]],
+            accOrderNumber: [, [Validators.required]],
+            accOrderDate: [, [Validators.required]],
+            salary: [, [Validators.required, Validators.pattern(/^[0-9]/)]],
+            previousWorkExp: [, [Validators.required]],
+            previousInfoWorkMp: [, [Validators.required]],
+            sufficientExperienceMp: [, [Validators.required]],
+          });
+        }
+
         break;
       case 'addEducationInfo':
         this.userEducation = this.fb.group({

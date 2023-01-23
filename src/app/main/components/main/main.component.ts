@@ -14,7 +14,7 @@ import { UsersService } from 'src/app/shared/services/users.service';
 })
 export class MainComponent implements OnInit {
   loader$ = this.load.loading$;
-
+  userName: string | undefined;
   constructor(
     private load: LoadingService,
     private router: Router,
@@ -25,6 +25,7 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     // console.log(sessionStorage.getItem('role'));
+    this.getUserInfo();
     this.checkCurrentUser();
     this.auth.getRefreshToken().subscribe();
   }
@@ -36,6 +37,14 @@ export class MainComponent implements OnInit {
 
       if (token) this.auth.setToken(token);
       this.router.navigate(['/login']);
+    });
+  }
+  getUserInfo(): void {
+    this.userService.getUserProfile().subscribe((res) => {
+      this.userName = res.fio;
+      console.log(res);
+
+      console.log(this.userName);
     });
   }
 }

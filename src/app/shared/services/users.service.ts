@@ -104,7 +104,7 @@ export class UsersService {
     );
   }
 
-  getUserProfile(id: number): Observable<any> {
+  getUserProfile(id?: number): Observable<any> {
     return this.http
       .post<any>(
         URLS.BASE_URL + URLS.NA_API + URLS.USER_PROFILE + URLS.GET_USER_PROFILE,
