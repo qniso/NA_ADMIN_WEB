@@ -210,10 +210,18 @@
                 <div class="section">
                     <div class="card-row">
                         <p>Категорії</p>
+
                         <div class="edit-input">
-                            <mat-form-field appearance="outline">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Toppings</mat-label>
+                                <mat-select formControlName="categories" multiple>
+                                  <mat-option *ngFor="let categorie of categorieList" [value]="categorie">{{categorie}}</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+
+                            <!-- <mat-form-field appearance="outline">
                                 <input matInput placeholder="Категорії" formControlName="categories">
-                            </mat-form-field>
+                            </mat-form-field> -->
                         </div>
                     </div>
                     <div class="card-row">
@@ -261,8 +269,10 @@
                         <p>Категорії</p>
                         <div class="edit-input">
                             <mat-form-field appearance="outline">
-                                <input matInput placeholder="Категорії" formControlName="categories">
-                            </mat-form-field>
+                                <mat-select formControlName="categories" multiple placeholder="Категорії">
+                                  <mat-option *ngFor="let categorie of categorieList" [value]="categorie">{{categorie}}</mat-option>
+                                </mat-select>
+                              </mat-form-field>
                         </div>
                     </div>
                     <div class="card-row">

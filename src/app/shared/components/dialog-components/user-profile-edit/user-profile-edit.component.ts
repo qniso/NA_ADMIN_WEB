@@ -31,7 +31,21 @@ export class UserProfileEditComponent implements OnInit {
 
   userObject = this.userService.userProfile$$;
   driverCategories: string[] = this.userService.data.driving_license.categories;
-
+  categorieList: string[] = [
+    'A',
+    'A1',
+    'B1',
+    'C',
+    'C1',
+    'BE',
+    'CE',
+    'C1E',
+    'D',
+    'D1',
+    'D1E',
+    'DE',
+    'T',
+  ];
   constructor(
     public dialog: MatDialog,
     private fb: FormBuilder,
@@ -293,9 +307,8 @@ export class UserProfileEditComponent implements OnInit {
         const _dateEnd = this.userDriverLicense.controls['dateEnd'].value;
         let dateIssue = this.formatDate(_dateIssue);
         let dateEnd = this.formatDate(_dateEnd);
-        const categoryArray = [
-          this.userDriverLicense.controls['categories'].value,
-        ];
+        const categoryArray =
+          this.userDriverLicense.controls['categories'].value;
         const editDriverLicense: UserDriverLicense = {
           userId: this.userService.data.id,
           // categories: this.driverCategories.concat(
@@ -314,15 +327,12 @@ export class UserProfileEditComponent implements OnInit {
         const _dateEndDriverLicense =
           this.userDriverLicense.controls['dateEnd'].value.toISOString();
 
-        const category: string =
-          this.userDriverLicense.controls['categories'].value;
-
         let dateIssueDriverLicense = this.formatDate(_dateIssueDriverLicense);
         let dateEndDriverLicense = this.formatDate(_dateEndDriverLicense);
 
         const addDriverLicense: UserDriverLicense = {
           userId: this.userService.data.id,
-          categories: [category],
+          categories: this.userDriverLicense.controls['categories'].value,
           date_issue: dateIssueDriverLicense,
           date_end: dateEndDriverLicense,
         };

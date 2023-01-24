@@ -14,13 +14,14 @@ import { UsersService } from '../../services/users.service';
 })
 export class NavbarComponent implements OnInit {
   ROLES = Roles;
-
+  userName!: string;
   constructor(private router: Router, private userService: UsersService) {}
 
   userRoles = this.userService.userRoles$$;
   userButtons!: Array<UserButtons>;
 
   ngOnInit(): void {
+    this.getUserInfo();
     this.getButtons();
   }
 
@@ -40,5 +41,13 @@ export class NavbarComponent implements OnInit {
         })
       )
       .subscribe();
+  }
+  getUserInfo(): void {
+    this.userService.getUserProfile().subscribe((res) => {
+      this.userName = res.fio;
+      console.log(res);
+
+      console.log(this.userName);
+    });
   }
 }
