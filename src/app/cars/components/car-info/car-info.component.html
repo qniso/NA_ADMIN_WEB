@@ -14,7 +14,7 @@
             <p>Техпаспорт дійсний до : {{carInfo.technical_certificate.date_end || "-"}}</p>
             <p>Взятий на облік (дата видачі техпаспорту): {{carInfo.technical_certificate.date_issue || "-"}}</p>
         </div>
-        <div class="card-content" *ngIf="carInfo.technical_certificate == null">
+        <div class="card-content" *ngIf="!carInfo.technical_certificate">
             <p>Результатів не знайдено</p>
         </div>
     </mat-card>
@@ -40,7 +40,7 @@
             <p>Потужність кВт: {{carInfo.technical_certificate.technical_certificate_dop_info.engine_power || "-"}}</p>
             <p>Екологічний стандарт: {{carInfo.technical_certificate.technical_certificate_dop_info.environmental_standard}}</p>
         </div>
-        <div class="card-content" *ngIf="carInfo.technical_certificate.technical_certificate_dop_info == null">
+        <div class="card-content" *ngIf="!carInfo.technical_certificate.technical_certificate_dop_info">
             <p>Результатів не знайдено</p>
         </div>
     </mat-card>
@@ -57,7 +57,7 @@
             <p>Дата закінчення строку користування: {{carInfo.using_reason_info.date_end || "-"}}</p>
             <p>Додальші плани використання: {{carInfo.using_reason_info.date_next_start || "-"}}</p>
         </div>
-        <div class="card-content" *ngIf="carInfo.using_reason_info == null">
+        <div class="card-content" *ngIf="!carInfo.using_reason_info">
             <p>Результатів не знайдено</p>
         </div>
     </mat-card>
@@ -74,7 +74,7 @@
             <p>Ширина, м: {{carInfo.general_info.width || "-"}}</p>
             <p>Довжина, м: {{carInfo.general_info.length || "-"}}</p>
         </div>
-        <div class="card-content" *ngIf="carInfo.general_info == null">
+        <div class="card-content" *ngIf="!carInfo.general_info">
             <p>Результатів не знайдено</p>
         </div>
     </mat-card>

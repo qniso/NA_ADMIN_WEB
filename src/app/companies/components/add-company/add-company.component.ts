@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NewCompany } from 'src/app/shared/models/company.model';
+import { Company } from 'src/app/shared/models/company.model';
 import { EditCompanyService } from 'src/app/shared/services/edit-company.service';
 
 @Component({
@@ -59,26 +59,26 @@ export class AddCompanyComponent implements OnInit {
     let taxForm = this.editCompany.controls['taxForm'].value;
     let licenceInfo = this.editCompany.controls['licenceInfo'].value;
 
-    let header: NewCompany = {
-      ukr_name: {
+    let header: Company = {
+      ukrName: {
         full_name: companyFullNameUa,
         short_name: companyNameUa,
       },
-      eng_name: {
+      engName: {
         full_name: companyFullNameEng,
         short_name: companyNameEng,
       },
       address: generalAddress,
-      postal_address: postAddress,
+      postalAddress: postAddress,
       communication: {
         phone_number: [phoneNum],
         email: email,
       },
-      banking_details: {
+      bankingDetails: {
         remittance_bank: 'PrivatBank',
         iban: '121312312331',
       },
-      identification_details: {
+      identificationDetails: {
         edrpou: edrpou,
         registration_certificate: registrationCertificate,
         ipn: ipn,

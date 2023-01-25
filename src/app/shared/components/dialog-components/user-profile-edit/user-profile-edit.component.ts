@@ -307,19 +307,17 @@ export class UserProfileEditComponent implements OnInit {
         const _dateEnd = this.userDriverLicense.controls['dateEnd'].value;
         let dateIssue = this.formatDate(_dateIssue);
         let dateEnd = this.formatDate(_dateEnd);
-        const categoryArray =
-          this.userDriverLicense.controls['categories'].value;
+
         const editDriverLicense: UserDriverLicense = {
           userId: this.userService.data.id,
-          // categories: this.driverCategories.concat(
-          //   this.userDriverLicense.controls['categories'].value
-          // ),
-          categories: categoryArray,
+          categories: this.userDriverLicense.controls['categories'].value,
           date_issue: dateIssue,
           date_end: dateEnd,
         };
-        this.userService.editUserDriverLicense(editDriverLicense).subscribe();
-        //() => location.reload()
+
+        this.userService
+          .addUserDriverLicense(editDriverLicense)
+          .subscribe(() => location.reload());
         break;
       case 'addDriverLicense':
         const _dateIssueDriverLicense =
@@ -336,11 +334,9 @@ export class UserProfileEditComponent implements OnInit {
           date_issue: dateIssueDriverLicense,
           date_end: dateEndDriverLicense,
         };
-        console.log(addDriverLicense);
 
-        this.userService
-          .addUserDriverLicense(addDriverLicense)
-          .subscribe(() => location.reload());
+        this.userService.editUserDriverLicense(addDriverLicense).subscribe();
+
         break;
       case 'editExistDocument':
         const _dateIssueExistDocumen =
