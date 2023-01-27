@@ -42,9 +42,6 @@ export class MainComponent implements OnInit {
   getUserInfo(): void {
     this.userService.getUserProfile().subscribe((res) => {
       this.userName = res.fio;
-      console.log(res);
-
-      console.log(this.userName);
     });
   }
 }

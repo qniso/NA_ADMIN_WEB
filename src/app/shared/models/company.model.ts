@@ -6,6 +6,7 @@ export interface Company {
   communication: CompanyCommunication;
   bankingDetails: CompanyBanking;
   identificationDetails: CompanyIndentifikationDetails;
+  licenceInfo: string;
 }
 
 export interface UACompanyName {
@@ -33,7 +34,6 @@ export interface CompanyIndentifikationDetails {
   ipn: string;
   accounting_tax_info: string;
   tax_form: string;
-  licence_info: string;
 }
 
 export interface CompanyList {

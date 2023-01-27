@@ -37,5 +37,8 @@ export const URLS = {
   EDIT_TECHNICAL_CERTIFICATE: '/edit/technical_certificate',
   EDIT_NOMENCLATURE_NAME: '/edit/nomenclature_name',
   GET_COMPANY_INFO: '/get_company_info',
-  ///company
+  EDIT_COMPANY_NAME: '/edit/company_name',
+  EDIT_GLOBAL_INFO: '/edit/global_info',
+  EDIT_IDENTIFICATION_DETAILS: '/edit/identification_details',
+  ///company/edit/identification_details
 };

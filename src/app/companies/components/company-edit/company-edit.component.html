@@ -1,20 +1,20 @@
-<div class="container">
+<div class="container" *ngIf="companyInfo">
     <mat-card>
         <div class="card-header">
             <p>Назва підприємства</p>
             <button mat-flat-button><mat-icon>edit</mat-icon>Редагувати</button>
         </div>
         <mat-divider></mat-divider>
-        <div class="card-content" >
+        <div class="card-content" *ngIf="companyInfo.ukrName || companyInfo.engName">
             <p class="card-content-header">Назва українською</p>
-            <p>Повна назва: {{"carInfo.nomenclature_name" || "-"}}</p>
-            <p>Скорочена назва: {{"carInfo.nomenclature_name" || "-"}}</p>
+            <p>Повна назва: {{companyInfo.ukrName.full_name || "-"}}</p>
+            <p>Скорочена назва: {{companyInfo.ukrName.short_name || "-"}}</p>
             <mat-divider></mat-divider>
-            <p class="card-content-header">Відомості техпаспорту</p>
-            <p>Повна назва: {{"arInfo.technical_certificate.num_and_series" || "-"}}</p>
-            <p>Скорочена назва: {{"carInfo.nomenclature_name" || "-"}}</p>
+            <p class="card-content-header">Назва англійскою</p>
+            <p>Повна назва: {{companyInfo.engName.full_name || "-"}}</p>
+            <p>Скорочена назва: {{companyInfo.engName.short_name || "-"}}</p>
         </div>
-        <div class="card-content" >
+        <div class="card-content" *ngIf="!companyInfo.ukrName || !companyInfo.engName">
             <p>Результатів не знайдено</p>
         </div>
     </mat-card>
@@ -24,19 +24,39 @@
             <button mat-flat-button><mat-icon>edit</mat-icon>Редагувати</button>
         </div>
         <mat-divider></mat-divider>
-        <div class="card-content" >
-            <p>Місце приймання рішенян (юридична адреса): {{"carInfo.nomenclature_name" || "-"}}</p>
-            <p>Поштова адреса: {{"carInfo.nomenclature_name" || "-"}}</p>
+        <div class="card-content"  
+        *ngIf="
+        companyInfo.address && 
+        companyInfo.postalAddress && 
+        companyInfo.communication.phone_number.length && 
+        companyInfo.communication.email &&
+        companyInfo.bankingDetails.iban && 
+        companyInfo.bankingDetails.remittance_bank"
+        >
+            <p>Місце приймання рішенян (юридична адреса): {{companyInfo.address || "-"}}</p>
+            <p>Поштова адреса: {{companyInfo.postalAddress || "-"}}</p>
             <mat-divider></mat-divider>
             <p class="card-content-header">Засоби звʼязку</p>
-            <p>Телефони: {{"arInfo.technical_certificate.num_and_series" || "-"}}</p>
-            <p>Email: {{"carInfo.nomenclature_name" || "-"}}</p>
+            <p>Телефони: 
+                <span  *ngFor="let element of companyInfo.communication.phone_number"> {{element || "-"}}
+                <span *ngIf="element.length > 1">;</span>
+                </span>
+            </p>
+            <p>Email: {{companyInfo.communication.email || "-"}}</p>
             <mat-divider></mat-divider>
             <p class="card-content-header">Банківські реквізити</p>
-            <p>Номер рахунку IBAN: {{"arInfo.technical_certificate.num_and_series" || "-"}}</p>
-            <p>Відділення банку: {{"carInfo.nomenclature_name" || "-"}}</p>
+            <p>Номер рахунку IBAN: {{companyInfo.bankingDetails.iban || "-"}}</p>
+            <p>Відділення банку: {{companyInfo.bankingDetails.remittance_bank || "-"}}</p>
         </div>
-        <div class="card-content" >
+        <div class="card-content" 
+        *ngIf="
+        !companyInfo.address && 
+        !companyInfo.postalAddress && 
+        !companyInfo.communication.phone_number.length && 
+        !companyInfo.communication.email &&
+        !companyInfo.bankingDetails.iban && 
+        !companyInfo.bankingDetails.remittance_bank"
+        >
             <p>Результатів не знайдено</p>
         </div>
     </mat-card>
@@ -46,14 +66,14 @@
             <button mat-flat-button><mat-icon>edit</mat-icon>Редагувати</button>
         </div>
         <mat-divider></mat-divider>
-        <div class="card-content" >
-            <p>Код підприємства ЄДРПОУ: {{"carInfo.nomenclature_name" || "-"}}</p>
-            <p>Свідоцтво про державну реєстрацію: {{"carInfo.nomenclature_name" || "-"}}</p>
-            <p>Податковий код ІПН: {{"carInfo.nomenclature_name" || "-"}}</p>
-            <p>Відомості про облік податку на додану вартість: {{"carInfo.nomenclature_name" || "-"}}</p>
-            <p>Форма (група) оподаткування: {{"carInfo.nomenclature_name" || "-"}}</p>
+        <div class="card-content" *ngIf="companyInfo.identificationDetails">
+            <p>Код підприємства ЄДРПОУ: {{companyInfo.identificationDetails.edrpou || "-"}}</p>
+            <p>Свідоцтво про державну реєстрацію: {{companyInfo.identificationDetails.registration_certificate || "-"}}</p>
+            <p>Податковий код ІПН: {{companyInfo.identificationDetails.ipn || "-"}}</p>
+            <p>Відомості про облік податку на додану вартість: {{companyInfo.identificationDetails.accounting_tax_info || "-"}}</p>
+            <p>Форма (група) оподаткування: {{companyInfo.identificationDetails.tax_form || "-"}}</p>
         </div>
-        <div class="card-content" >
+        <div class="card-content" *ngIf="!companyInfo.identificationDetails">
             <p>Результатів не знайдено</p>
         </div>
     </mat-card>
@@ -65,7 +85,6 @@
         <mat-divider></mat-divider>
         <div class="card-content" >
             <p>Код підприємства ЄДРПОУ: Наказом Державної служби України з безпеки на транспорті від 03.06.2022 № 282, у додатку до цього наказу номер запису 29 ТОВ «АФ «НОВООЛЕКСАНДРІВСЬКА» отримала ліцензію на провадження господарської діяльності у сфері міжнародних перевезень вантажів вантажними автомобілями (крім перевезення небезпечних вантажів та небезпечних відходів) </p>
-            
         </div>
         <div class="card-content" >
             <p>Результатів не знайдено</p>

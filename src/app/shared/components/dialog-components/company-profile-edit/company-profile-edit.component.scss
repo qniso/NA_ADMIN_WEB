@@ -1,0 +1,37 @@
+.container {
+  padding: 24px;
+}
+button {
+  text-align: end;
+  color: #ffff;
+  background-color: #159a9c;
+}
+mat-form-field {
+  width: 50%;
+}
+.card-header {
+  position: sticky;
+  top: 0;
+  background-color: rgb(255, 255, 255);
+  z-index: 1000;
+  p {
+    margin-top: 12px;
+    font-weight: 500;
+  }
+}
+.header-content {
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+}
+.second-section {
+  margin-top: 12px;
+}
+.section-name {
+  font-weight: 500;
+}
+.licence-info {
+  mat-form-field {
+    width: 100%;
+  }
+}

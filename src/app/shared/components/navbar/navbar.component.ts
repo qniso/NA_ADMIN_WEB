@@ -37,7 +37,6 @@ export class NavbarComponent implements OnInit {
         map((userButtonsInfo) => {
           if (!userButtonsInfo) return;
           this.userButtons = userButtonsInfo.buttons;
-          // console.log(this.userButtons);
         })
       )
       .subscribe();
@@ -45,9 +44,6 @@ export class NavbarComponent implements OnInit {
   getUserInfo(): void {
     this.userService.getUserProfile().subscribe((res) => {
       this.userName = res.fio;
-      console.log(res);
-
-      console.log(this.userName);
     });
   }
 }

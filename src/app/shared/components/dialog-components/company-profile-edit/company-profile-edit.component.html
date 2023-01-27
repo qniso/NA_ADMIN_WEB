@@ -1,0 +1,203 @@
+<div class="card-header">
+    <div class="header-content">
+        <p>{{cardName}}</p>
+        <div class="control-panel">
+            <button mat-flat-button (click)="submit()">Зберегти</button>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+</div>
+<div class="edit-company-name" *ngIf="editModalKey == 'companyName'">
+    <div class="container">
+        <div class="company-name">
+            <form [formGroup]="companyNameGroup">
+                <div class="section">
+                    <div class="card-row">
+                        <p class="section-name">Назва українською</p>
+                        <p>Повна назва</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Повна назва" formControlName="uaFullName">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="card-row">
+                        <p>Скорочена назва</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Скорочена назва" formControlName="uaShortName">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="section second-section">
+                    <div class="card-row">
+                        <p class="section-name">Назва англійскою</p>
+                        <p>Повна назва</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Повна назва" formControlName="engFullName">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="card-row">
+                        <p>Скорочена назва</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Скорочена назва" formControlName="engShortName">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="edit-contact-info" *ngIf="editModalKey == 'companyContact'">
+    <div class="container">
+        <div class="contact-info">
+            <form [formGroup]="companyContactGroup">
+                <div class="section">
+                    <div class="card-row">
+                        <p>Місце приймання рішенян (юридична адреса)</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Місце приймання рішенян (юридична адреса)" formControlName="address">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="card-row">
+                        <p>Поштова адреса</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Поштова адреса" formControlName="postalAddress">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="section second-section">
+                    <div class="card-row">
+                        <p class="section-name">Засоби звʼязку</p>
+                        <p>Телефони</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Телефони" formControlName="phoneNumber">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="card-row">
+                        <p>Email</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Email" formControlName="email">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="section second-section">
+                    <div class="card-row">
+                        <p class="section-name">Банківські реквізити</p>
+                        <p>Номер рахунку IBAN</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Номер рахунку IBAN" formControlName="iban">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="card-row">
+                        <p>Відділення банку</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Відділення банку" formControlName="remittanceBank">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="edit-identification-details" *ngIf="editModalKey == 'companyIdentificationDetails'">
+    <div class="container">
+        <div class="identification-details">
+            <form [formGroup]="companyIdentificationDetailsGruop">
+                <div class="section">
+                    <div class="card-row">
+                        <p>Код підприємства ЄДРПОУ</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Код підприємства ЄДРПОУ" formControlName="edrpou">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div> <div class="section">
+                    <div class="card-row">
+                        <p>Свідоцтво про державну реєстрацію</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Свідоцтво про державну реєстрацію" formControlName="registrationCertificate">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div> <div class="section">
+                    <div class="card-row">
+                        <p>Податковий код ІПН</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Податковий код ІПН" formControlName="ipn">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div> <div class="section">
+                    <div class="card-row">
+                        <p>Відомості про облік податку на додану вартість</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Відомості про облік податку на додану вартість" formControlName="accountingTaxInfo">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div> <div class="section">
+                    <div class="card-row">
+                        <p>Форма (група) оподаткування</p>
+                        <div class="edit-input">
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Форма (група) оподаткування" formControlName="taxForm">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- <div class="edit-licence-info">
+    <div class="container">
+        <div class="licence-info">
+            <form [formGroup]="companyLicenceInfoGroup">
+                <mat-form-field appearance="outline">
+                    <textarea
+                    matInput 
+                    cdkTextareaAutosize
+                    #autosize="cdkTextareaAutosize"
+                    placeholder="Відомості про отриману ліцензію"
+                    formControlName="licenceInfo"
+                    ></textarea>
+                  </mat-form-field>
+            </form>
+        </div>
+    </div>
+</div> -->

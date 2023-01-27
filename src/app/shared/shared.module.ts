@@ -30,6 +30,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatRadioModule } from '@angular/material/radio';
+import { CompanyProfileEditComponent } from './components/dialog-components/company-profile-edit/company-profile-edit.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { MatRadioModule } from '@angular/material/radio';
     UserAccessDirective,
     CarProfileEditComponent,
     UserProfileEditComponent,
+    CompanyProfileEditComponent,
   ],
   imports: [
     CommonModule,

@@ -84,8 +84,8 @@ export class AddCompanyComponent implements OnInit {
         ipn: ipn,
         accounting_tax_info: accountingTaxInfo,
         tax_form: taxForm,
-        licence_info: licenceInfo,
       },
+      licenceInfo: licenceInfo,
     };
     this.editNewCompany.test(header).subscribe();
     // this.editCompany.value

@@ -2,7 +2,7 @@
     <mat-card>
         <div class="card-header">
             <p>Назва підприємства</p>
-            <button mat-flat-button><mat-icon>edit</mat-icon>Редагувати</button>
+            <button mat-flat-button (click)="openEditDialog('companyName')"><mat-icon>edit</mat-icon>Редагувати</button>
         </div>
         <mat-divider></mat-divider>
         <div class="card-content" *ngIf="companyInfo.ukrName || companyInfo.engName">
@@ -21,17 +21,15 @@
     <mat-card>
         <div class="card-header">
             <p>Контактні дані</p>
-            <button mat-flat-button><mat-icon>edit</mat-icon>Редагувати</button>
+            <button mat-flat-button (click)="openEditDialog('companyContact')"><mat-icon>edit</mat-icon>Редагувати</button>
         </div>
         <mat-divider></mat-divider>
         <div class="card-content"  
         *ngIf="
         companyInfo.address && 
         companyInfo.postalAddress && 
-        companyInfo.communication.phone_number.length && 
-        companyInfo.communication.email &&
-        companyInfo.bankingDetails.iban && 
-        companyInfo.bankingDetails.remittance_bank"
+        companyInfo.communication &&
+        companyInfo.bankingDetails"
         >
             <p>Місце приймання рішенян (юридична адреса): {{companyInfo.address || "-"}}</p>
             <p>Поштова адреса: {{companyInfo.postalAddress || "-"}}</p>
@@ -51,11 +49,8 @@
         <div class="card-content" 
         *ngIf="
         !companyInfo.address && 
-        !companyInfo.postalAddress && 
-        !companyInfo.communication.phone_number.length && 
-        !companyInfo.communication.email &&
-        !companyInfo.bankingDetails.iban && 
-        !companyInfo.bankingDetails.remittance_bank"
+        !companyInfo.postalAddress &&
+        !companyInfo.bankingDetails"
         >
             <p>Результатів не знайдено</p>
         </div>
@@ -63,7 +58,7 @@
     <mat-card>
         <div class="card-header">
             <p>Ідентифікаційні реквізити підприємства</p>
-            <button mat-flat-button><mat-icon>edit</mat-icon>Редагувати</button>
+            <button mat-flat-button (click)="openEditDialog('companyIdentificationDetails')"><mat-icon>edit</mat-icon>Редагувати</button>
         </div>
         <mat-divider></mat-divider>
         <div class="card-content" *ngIf="companyInfo.identificationDetails">
@@ -77,17 +72,18 @@
             <p>Результатів не знайдено</p>
         </div>
     </mat-card>
-    <mat-card>
+    <!-- <mat-card>
         <div class="card-header">
             <p>Відомості про отриману ліцензію</p>
-            <button mat-flat-button><mat-icon>edit</mat-icon>Редагувати</button>
+            <button mat-flat-button (click)="openEditDialog('companyLicenceInfo')"><mat-icon>edit</mat-icon>Редагувати</button>
         </div>
         <mat-divider></mat-divider>
-        <div class="card-content" >
+        <div class="card-content" *ngIf="companyInfo.licenceInfo">
             <p>Код підприємства ЄДРПОУ: Наказом Державної служби України з безпеки на транспорті від 03.06.2022 № 282, у додатку до цього наказу номер запису 29 ТОВ «АФ «НОВООЛЕКСАНДРІВСЬКА» отримала ліцензію на провадження господарської діяльності у сфері міжнародних перевезень вантажів вантажними автомобілями (крім перевезення небезпечних вантажів та небезпечних відходів) </p>
+            <p>{{companyInfo.licenceInfo}}</p>
         </div>
-        <div class="card-content" >
+        <div class="card-content" *ngIf="!companyInfo.licenceInfo">
             <p>Результатів не знайдено</p>
         </div>
-    </mat-card>
+    </mat-card> -->
 </div>
