@@ -40,5 +40,7 @@ export const URLS = {
   EDIT_COMPANY_NAME: '/edit/company_name',
   EDIT_GLOBAL_INFO: '/edit/global_info',
   EDIT_IDENTIFICATION_DETAILS: '/edit/identification_details',
-  ///company/edit/identification_details
+  FUELS: '/fuels',
+  ENVIRONMENT_STANDART: '/environmental_standard',
+  ///transport/environmental_standard
 };

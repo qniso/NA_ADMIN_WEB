@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Transport } from 'src/app/shared/models/transport.model';
+import {
+  EnvironmentStandart,
+  Fuels,
+  Transport,
+} from 'src/app/shared/models/transport.model';
 import { TransportService } from 'src/app/shared/services/transport.service';
 
 @Component({
@@ -11,6 +15,8 @@ import { TransportService } from 'src/app/shared/services/transport.service';
 })
 export class CarRegistrationComponent implements OnInit {
   carRegistration!: FormGroup;
+  fuels!: Fuels[];
+  envStandarts!: EnvironmentStandart[];
 
   constructor(
     private fb: FormBuilder,
@@ -19,6 +25,7 @@ export class CarRegistrationComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.getCarSettingsData();
     this.initializeForm();
   }
 
@@ -81,6 +88,15 @@ export class CarRegistrationComponent implements OnInit {
     let yy: any = date.getFullYear();
 
     return dd + '.' + mm + '.' + yy;
+  }
+
+  getCarSettingsData(): void {
+    this.transportService
+      .getFuel()
+      .subscribe((res) => (this.fuels = res.fuels));
+    this.transportService
+      .getEnvironmentStandart()
+      .subscribe((res) => (this.envStandarts = res.standards));
   }
 
   submit(): void {

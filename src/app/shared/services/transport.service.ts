@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { BehaviorSubject, map, Observable, share, tap } from 'rxjs';
@@ -86,6 +86,16 @@ export class TransportService {
         URLS.TRANSPORT +
         URLS.EDIT_NOMENCLATURE_NAME,
       body
+    );
+  }
+  getFuel(): Observable<any> {
+    return this.http.get<any>(
+      URLS.BASE_URL + URLS.NA_API + URLS.TRANSPORT + URLS.FUELS
+    );
+  }
+  getEnvironmentStandart(): Observable<any> {
+    return this.http.get<any>(
+      URLS.BASE_URL + URLS.NA_API + URLS.TRANSPORT + URLS.ENVIRONMENT_STANDART
     );
   }
 }

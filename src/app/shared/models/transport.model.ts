@@ -54,3 +54,12 @@ export interface TechnicalCertificate {
   date_issue: string;
   technical_certificate_dop_info: TechnicalCertificateDopInfo;
 }
+export interface Fuels {
+  name: string;
+  fuel: string;
+}
+
+export interface EnvironmentStandart {
+  name: string;
+  standard: string;
+}
