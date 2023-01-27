@@ -41,7 +41,6 @@ export class CompanyComponent implements OnInit {
         break;
       case 'companyLicenceInfo':
         this.companyService.editKey$$.next(value);
-
         break;
       default:
         break;
