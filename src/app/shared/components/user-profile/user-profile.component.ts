@@ -29,7 +29,7 @@ export class UserProfileComponent implements OnInit {
       birthday: ['', [Validators.required]],
       phone: ['', [Validators.required]],
       registrationAddress: ['', [Validators.required]],
-      email: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
       actualAddress: ['', [Validators.required]],
       accOrderNumber: ['', [Validators.required]],
       accOrderDate: ['', [Validators.required]],

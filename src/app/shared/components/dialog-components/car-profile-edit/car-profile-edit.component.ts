@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {
   CurrentCarProfile,
+  EnvironmentStandart,
+  Fuels,
   TechnicalCertificateDopInfo,
 } from 'src/app/shared/models/transport.model';
 import { TransportService } from 'src/app/shared/services/transport.service';
@@ -21,6 +23,9 @@ export class CarProfileEditComponent implements OnInit {
   techicalCertificateDopInfo!: FormGroup;
   technicalCertificate!: FormGroup;
 
+  fuels!: Fuels[];
+  envStandarts!: EnvironmentStandart[];
+
   constructor(
     private fb: FormBuilder,
     private transportService: TransportService
@@ -32,6 +37,9 @@ export class CarProfileEditComponent implements OnInit {
     );
     this.checkCardName();
     this.initializeForm();
+    if(this.editModalKey == 'technicalCertificateDopInfo')
+      this.getCarSettingsData()
+    
   }
 
   initializeForm(): void {
@@ -250,6 +258,15 @@ export class CarProfileEditComponent implements OnInit {
     let yy: any = date.getFullYear();
 
     return dd + '.' + mm + '.' + yy;
+  }
+
+  getCarSettingsData(): void {
+    this.transportService
+      .getFuel()
+      .subscribe((res) => (this.fuels = res.fuels));
+    this.transportService
+      .getEnvironmentStandart()
+      .subscribe((res) => (this.envStandarts = res.standards));
   }
 
   submit(): void {

@@ -327,8 +327,10 @@
                         <p>Вид палива</p>
                         <div class="edit-input">
                             <mat-form-field appearance="outline">
-                                <input matInput placeholder="Вид палива" formControlName="fuel">
-                            </mat-form-field>
+                                <mat-select placeholder="Вид палива" formControlName="fuel">
+                                    <mat-option *ngFor="let item of fuels" [value]="item.fuel">{{item.name}}</mat-option>
+                                </mat-select>
+                              </mat-form-field>
                         </div>
                     </div>
                 </div>
@@ -367,7 +369,9 @@
                         <p>Екологічний стандарт</p>
                         <div class="edit-input">
                             <mat-form-field appearance="outline">
-                                <input matInput placeholder="Екологічний стандарт" formControlName="environmentalStandard">
+                                <mat-select placeholder="Екологічний стандарт" formControlName="environmentalStandard">
+                                    <mat-option *ngFor="let item of envStandarts" [value]="item.standard">{{item.name}}</mat-option>
+                                </mat-select>
                             </mat-form-field>
                         </div>
                     </div>
