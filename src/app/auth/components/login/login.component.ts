@@ -9,6 +9,7 @@ import {
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import {
   BehaviorSubject,
+  catchError,
   combineLatest,
   map,
   mergeMap,
@@ -17,6 +18,7 @@ import {
   Subscription,
   switchMap,
   tap,
+  throwError,
 } from 'rxjs';
 import { User } from 'src/app/shared/models/user.model';
 import { ContentService } from 'src/app/shared/services/content.service';
@@ -78,10 +80,16 @@ export class LoginComponent implements OnInit, OnDestroy {
         tap(() => (this.showSpinner = true)),
         switchMap((auth) =>
           this.contentService.getRoleButtons().pipe(
-            tap((data) => console.log(auth, data)),
             map((roles) => [auth, roles])
           )
-        )
+        ),
+        catchError(err => {
+          this.authForm.reset();
+          this.authForm.controls['login'].markAsTouched();
+          this.authForm.controls['pass'].markAsTouched();
+          this.errorHint = true;
+          return throwError(err)
+        })
       )
       .subscribe(([auth, roles]) => {
         if (auth.error.code === 0) {
